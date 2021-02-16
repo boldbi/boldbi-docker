@@ -14,14 +14,14 @@ Download the configuration files [here](deploy/). This directory includes docker
 
     [Consent to deploy client libraries](consent-to-deploy-client-libraries.md)
 
-3. Note the optional client libraries from the above link as comma separated names and replace it in `<comma_separated_library_names>` place. Save the file after the required values has been replaced.
+3. Note the optional client libraries from the above link as comma separated names and replace it in `<comma_separated_library_names>` place.
 
-![docker-compose.yml](images/baseurl_clientlibrary.png) 
+    ![docker-compose.yml](images/baseurl_clientlibrary.png) 
 
-4. Provide **default.conf** file path in `<default_conf_path>` place.
+4. Provide **default.conf** file path which you have downloaded at earlier in `<default_conf_path>` place.
 
     Ex: `"./default.conf:/etc/nginx/conf.d/default.conf"`
-        `"D:/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
+        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`
         `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
 
 5. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path>` in **docker-compose.yml** file.
@@ -44,13 +44,15 @@ If you have an SSL certificate for your domain and need to configure the site wi
     
     ![ssl configuration](images/uncomment_docker.png)
 
-4. Replace certificate and key file paths from your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
+4. Replace certificate and key file paths which were stored in your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
 
-    Ex: `- "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"`
-        `- "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"`
+    Ex: 
 
-        `- "D:/certificates/boldbi.key:/etc/ssl/domain.crt"`
-        `- "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"`
+        - "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"
+        - "D:/certificates/boldbi.key:/etc/ssl/domain.crt"
+        
+        - "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"
+        - "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"
 
 > **NOTE:** If you are configuring the application with SSL, you need update the `<application_base_url>` in the **docker-compose.yml** with `HTTPS`.
 
