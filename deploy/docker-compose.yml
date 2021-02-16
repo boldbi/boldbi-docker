@@ -117,6 +117,8 @@ services:
     image: nginx
     volumes:
       - "<default_conf_path>:/etc/nginx/conf.d/default.conf"
+      # - "<ssl_cert_file_path>:/etc/ssl/domain.crt"
+      # - "<ssl_key_file_path>:/etc/ssl/domain.key"
     ports:
       - "80:80"
       # - "443:443"

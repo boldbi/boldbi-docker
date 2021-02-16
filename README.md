@@ -32,19 +32,25 @@ Download the configuration files [here](deploy/). This directory includes docker
 ## Configure SSL
 If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps or you can skip this.
 
-1. Uncomment the following marked lines in the Nginx config file.
+1. Uncomment the following marked lines in the **default.conf** file.
 
     ![ssl configuration](images/uncomment_lines.png)
 
-2. Comment the following marked line in the Nginx config file.
+2. Comment the following marked line in the **default.conf** file.
 
     ![ssl configuration](images/comment_lines.png)
 
-3. Replace the example.com with your domain name.
+3. Uncomment the following marked lines in the **docker-compose.yml** file.
+    
+    ![ssl configuration](images/uncomment_docker.png)
 
-4. Define the path of the SSL certificate: `ssl_certificate /etc/ssl/domain.crt`
+4. Replace certificate and key file paths from your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
 
-5. Specify the directory where the SSL certificate key is located: `ssl_certificate_key /etc/ssl/domain.key`
+    Ex: `- "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"`
+        `- "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"`
+
+        `- "D:/certificates/boldbi.key:/etc/ssl/domain.crt"`
+        `- "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"`
 
 > **NOTE:** If you are configuring the application with SSL, you need update the `<application_base_url>` in the **docker-compose.yml** with `HTTPS`.
 
