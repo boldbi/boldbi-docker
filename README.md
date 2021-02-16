@@ -50,7 +50,7 @@ If you have an SSL certificate for your domain and need to configure the site wi
 
         - "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"
         - "D:/certificates/boldbi.key:/etc/ssl/domain.crt"
-        
+
         - "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"
         - "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"
 
