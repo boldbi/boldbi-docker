@@ -1,12 +1,12 @@
 # Bold BI on Docker
 
-Bold BI can be deployed using docker-compose. We run nginx in a separate container as reverse proxy to route traffic to the other containers. Please follow the below steps to deploy Bold BI using docker-compose deployment.
+Bold BI can be deployed using docker-compose. Nginx will be running in a separate container as reverse proxy to route traffic to other containers. Please follow the below steps to deploy Bold BI using docker-compose deployment.
 
 Download the configuration files [here](deploy/). This directory includes docker-compose YML file and configuration file for nginx.
 
 ## docker-compose changes
 
-1. Open **docker-compose.yml** file from the downloaded files. Replace your DNS or IP address in `<application_base_url>` place.
+1. Open **docker-compose.yml** file from the downloaded files. Replace your DNS or IP address on which you are going to access the application in `<application_base_url>` place.
     
     Ex: `http://example.com`, `https://example.com`, `http://<ip_address>`
 
@@ -16,7 +16,7 @@ Download the configuration files [here](deploy/). This directory includes docker
 
 3. Note the optional client libraries from the above link as comma separated names and replace it in `<comma_separated_library_names>` place. Save the file after the required values has been replaced.
 
-![deployment.yaml](images/deployment_yaml.png) 
+![docker-compose.yml](images/baseurl_clientlibrary.png) 
 
 4. Provide **default.conf** file path in `<default_conf_path>` place.
 
@@ -34,11 +34,11 @@ If you have an SSL certificate for your domain and need to configure the site wi
 
 1. Uncomment the following marked lines in the Nginx config file.
 
-    ![ssl configuration](/static/assets/embedded/setup/images/linux-ssl-configuration-uncomment.png)
+    ![ssl configuration](images/uncomment_lines.png)
 
 2. Comment the following marked line in the Nginx config file.
 
-    ![ssl configuration](/static/assets/embedded/setup/images/linux-ssl-configuration-comment.png)
+    ![ssl configuration](images/comment_lines.png)
 
 3. Replace the example.com with your domain name.
 
