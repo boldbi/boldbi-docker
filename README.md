@@ -47,12 +47,11 @@ If you have an SSL certificate for your domain and need to configure the site wi
 4. Replace certificate and key file paths which were stored in your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
 
     Ex: 
+    `- "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"`
+    `- "D:/certificates/boldbi.key:/etc/ssl/domain.crt"`
 
-        - "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"
-        - "D:/certificates/boldbi.key:/etc/ssl/domain.crt"
-
-        - "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"
-        - "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"
+    `- "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"`
+    `- "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"`
 
 > **NOTE:** If you are configuring the application with SSL, you need update the `<application_base_url>` in the **docker-compose.yml** with `HTTPS`.
 
