@@ -24,10 +24,14 @@ Download the configuration files [here](deploy/). This directory includes docker
         `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`
         `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
 
+    ![docker-compose.yml](images/default_conf_path.png) 
+
 5. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path>` in **docker-compose.yml** file.
 
     Ex: `device: 'D:/boldbi/shared'`
         `device: '/var/boldbi/shared'`
+
+    ![docker-compose.yml](images/shared_location.png) 
 
 ## Configure SSL
 If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps or you can skip this.
