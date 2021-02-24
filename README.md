@@ -38,17 +38,21 @@ If you have an SSL certificate for your domain and need to configure the site wi
 
 1. Uncomment the following marked lines in the **default.conf** file.
 
+    ![ssl configuration](images/uncomment_ssl_redirect.png)
+
     ![ssl configuration](images/uncomment_lines.png)
 
 2. Comment the following marked line in the **default.conf** file.
 
     ![ssl configuration](images/comment_lines.png)
 
-3. Uncomment the following marked lines in the **docker-compose.yml** file.
+3. Replace the example.com with your domain name.
+
+4. Uncomment the following marked lines in the **docker-compose.yml** file.
     
     ![ssl configuration](images/uncomment_docker.png)
 
-4. Replace certificate and key file paths which were stored in your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
+5. Replace certificate and key file paths which were stored in your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
 
     Ex: 
     `- "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"`
