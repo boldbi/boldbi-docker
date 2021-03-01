@@ -3,7 +3,7 @@ version: '3.5'
 services:
   id-web:
     container_name: id_web_container
-    image: gcr.io/boldbi-294612/boldbi-identity:4.1.1
+    image: gcr.io/boldbi-294612/boldbi-identity:4.1.36
     environment:
       - APP_BASE_URL=<application_base_url>
       - INSTALL_OPTIONAL_LIBS=<comma_separated_library_names>
@@ -19,7 +19,7 @@ services:
         
   id-api:
     container_name: id_api_container
-    image: gcr.io/boldbi-294612/boldbi-identity-api:4.1.1
+    image: gcr.io/boldbi-294612/boldbi-identity-api:4.1.36
     volumes: 
       - shared:/boldbi/app_data
     networks:
@@ -35,7 +35,7 @@ services:
         
   id-ums:
     container_name: id_ums_container
-    image: gcr.io/boldbi-294612/boldbi-ums:4.1.1
+    image: gcr.io/boldbi-294612/boldbi-ums:4.1.36
     volumes: 
       - shared:/boldbi/app_data
     networks:
@@ -51,7 +51,7 @@ services:
         
   bi-web:
     container_name: bi_web_container
-    image: gcr.io/boldbi-294612/boldbi-server:4.1.1
+    image: gcr.io/boldbi-294612/boldbi-server:4.1.36
     volumes: 
       - shared:/boldbi/app_data
     networks:
@@ -66,7 +66,7 @@ services:
         
   bi-api:
     container_name: bi_api_container
-    image: gcr.io/boldbi-294612/boldbi-server-api:4.1.1
+    image: gcr.io/boldbi-294612/boldbi-server-api:4.1.36
     volumes: 
       - shared:/boldbi/app_data
     networks:
@@ -82,7 +82,7 @@ services:
       
   bi-jobs:
     container_name: bi_jobs_container
-    image: gcr.io/boldbi-294612/boldbi-server-jobs:4.1.1
+    image: gcr.io/boldbi-294612/boldbi-server-jobs:4.1.36
     volumes: 
       - shared:/boldbi/app_data
     networks:
@@ -98,7 +98,7 @@ services:
       
   bi-dataservice:
     container_name: bi_dataservice_container
-    image: gcr.io/boldbi-294612/boldbi-designer:4.1.1
+    image: gcr.io/boldbi-294612/boldbi-designer:4.1.36
     volumes: 
       - shared:/boldbi/app_data
     networks:
