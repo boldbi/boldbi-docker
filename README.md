@@ -61,6 +61,10 @@ If you have an SSL certificate for your domain and need to configure the site wi
     `- "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"`
     `- "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"`
 
+6. If you need to use **Bing Map** widget feature, enter value for `widget_bing_map_enable` environment variable as `true` and API key value for `widget_bing_map_api_key` on **docker-compose.yml** file.
+
+    ![Bing Map](images/bing_map_key.png) 
+
 > **NOTE:** If you are configuring the application with SSL, then you need to update the `<application_base_url>` in the **docker-compose.yml** with `HTTPS`.
 
 
