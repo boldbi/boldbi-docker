@@ -104,6 +104,9 @@ services:
     container_name: bi_dataservice_container
     image: gcr.io/boldbi-294612/boldbi-designer:4.1.36
     restart: on-failure
+    environment:
+      - widget_bing_map_enable=""
+      - widget_bing_map_api_key=""
     volumes: 
       - shared:/boldbi/app_data
     networks:
