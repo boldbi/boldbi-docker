@@ -33,6 +33,10 @@ Download the configuration files [here](deploy/). This directory includes docker
 
     ![docker-compose.yml](images/shared_location.png) 
 
+6. If you need to use **Bing Map** widget feature, enter value for `widget_bing_map_enable` environment variable as `true` and API key value for `widget_bing_map_api_key` on **docker-compose.yml** file.
+
+    ![Bing Map](images/bing_map_key.png) 
+
 ## Configure SSL
 If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps or you can skip this.
 
