@@ -1,4 +1,4 @@
-# Bold BI on Docker
+# Deploy Bold BI using Docker Compose
 
 Bold BI can be deployed using docker-compose. Nginx will run in a separate container as reverse proxy to route traffic to other containers. Please follow these steps to deploy Bold BI using the docker-compose deployment.
 
