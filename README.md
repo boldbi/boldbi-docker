@@ -73,11 +73,12 @@ By giving consent to install client libraries to connect with Oracle, PostgreSQL
 | InfluxData.Net            | InfluxDB | [MIT License](https://github.com/pootzko/InfluxData.Net/blob/master/LICENSE) | influxdb      |
 | [PhantomJS WebKit](https://phantomjs.org)          | phantomjs | [License](https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD) and [Third-Party](https://github.com/ariya/phantomjs/blob/master/third-party.txt) documents. | phantomjs     |
 
-<br/>
+
 Find the names of client libraries in the last column of the above table, which needs to be passed as a comma-separated string for the `OPTIONAL_LIBS` environment variable in place of `<optional_library_names>` on the docker run command.
+<br/><br/>
 
 If you want to use all client libraries in the Bold BI application, then pass the following string as a value for the `OPTIONAL_LIBS` environment variable. You need to add the names only for the libraries, which you are consenting to use with the Bold BI application.
-
+<br/><br/>
 `phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql`
 
 
