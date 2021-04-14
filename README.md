@@ -22,7 +22,7 @@ It is an end-to-end solution for creating, managing, and sharing interactive bus
 ## Start a Bold BI instance
 
 ```sh
-docker run --name boldbi -p 80:80 -e APP_URL=<app_base_url> -d syncfusion/boldbi:<tag>
+docker run --name boldbi -p 80:80 -e APP_URL=<app_base_url> -d syncfusion/boldbi
 ```
 
 Replace `<app_base_url>` with your DNS or IP address, by which you want to access the application.
