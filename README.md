@@ -37,7 +37,7 @@ For example, <br/>
 Note:
 * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other through public IP alone. Host machine IP will not be accessible inside the application container.
 
-* Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So docker desktop provides `host.docker.internal` & `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your host config file (C:\Windows\System32\drivers\etc\hosts).
+* Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So docker desktop provides `host.docker.internal` & `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
 
 * Make sure you provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 
