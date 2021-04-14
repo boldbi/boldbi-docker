@@ -4,15 +4,12 @@
 
 * Where to get help: [Bold BI Documentation](https://www.boldbi.com/documentation)
 
+* Where to file issues: https://www.syncfusion.com/support/directtrac/incidents/newincident
+
 # Supported tags and respective `Dockerfile` links
 
 * [4.1.36](https://github.com/boldbi/boldbi-docker/blob/v4.1.36/dockerfile)
 
-# Quick reference (cont.)
-
-* **Where to file issues:** https://github.com/boldbi/boldbi-docker/issues
-
-* **Supported architectures:** `amd64`
 
 # What is Bold BI?
 
