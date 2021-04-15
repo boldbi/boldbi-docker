@@ -4,15 +4,12 @@
 
 * Where to get help: [Bold BI Documentation](https://www.boldbi.com/documentation)
 
+* Where to file issues: https://www.syncfusion.com/support/directtrac/incidents/newincident
+
 # Supported tags and respective `Dockerfile` links
 
 * [4.1.36](https://github.com/boldbi/boldbi-docker/blob/v4.1.36/dockerfile)
 
-# Quick reference (cont.)
-
-* **Where to file issues:** https://github.com/boldbi/boldbi-docker/issues
-
-* **Supported architectures:** `amd64`
 
 # What is Bold BI
 
@@ -22,13 +19,13 @@ It is an end-to-end solution for creating, managing, and sharing interactive bus
 
 # How to use this image
 
-## Start a `Bold BI` instance
+## Start a Bold BI instance
 
 ```sh
-docker run --name boldbi -p 80:80 -e APP_URL=<app_base_url> -d syncfusion/boldbi:<tag>
+docker run --name boldbi -p 80:80 -e APP_URL=<app_base_url> -d syncfusion/boldbi
 ```
 
-Replace your DNS or IP address, on which you are going to access the application in the `app_base_url` place.
+Replace `<app_base_url>` with your DNS or IP address, by which you want to access the application.
     
 For example, <br/>
     `http://example.com` <br/>
@@ -40,7 +37,7 @@ For example, <br/>
 Note
 * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
 
-* Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your host config file (C:\Windows\System32\drivers\etc\hosts).
+* Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
 
 * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 
