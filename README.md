@@ -1,83 +1,138 @@
-# Bold BI on Docker
+# Quick reference
 
-Bold BI can be deployed using docker-compose. Nginx will run in a separate container as reverse proxy to route traffic to other containers. Please follow these steps to deploy Bold BI using the docker-compose deployment.
+* Maintained by: [Bold BI by Syncfusion](https://www.boldbi.com)
 
-Download the configuration files [here](deploy/). This directory includes docker-compose YML file and configuration file for Nginx.
+* Where to get help: [Bold BI Documentation](https://www.boldbi.com/documentation)
 
-## docker-compose changes
+* Where to file issues: https://www.syncfusion.com/support/directtrac/incidents/newincident
 
-1. Open **docker-compose.yml** file from the downloaded files. Replace your DNS or IP address, on which you are going to access the application in `<application_base_url>` place.
+# Supported tags and respective `Dockerfile` links
+
+* [4.1.36](https://github.com/boldbi/boldbi-docker/blob/v4.1.36/dockerfile)
+
+
+# What is Bold BI
+
+Bold BI is a powerful business intelligence dashboard software that helps you to get meaningful insights from your business data and make better decisions.
+
+It is an end-to-end solution for creating, managing, and sharing interactive business dashboards that includes a powerful dashboard designer for composing easily.
+
+# How to use this image
+
+## Start a Bold BI instance
+
+```sh
+docker run --name boldbi -p 80:80 -e APP_URL=<app_base_url> -d syncfusion/boldbi
+```
+
+Replace `<app_base_url>` with your DNS or IP address, by which you want to access the application.
     
-    For example, `http://example.com`, `https://example.com`, `http://<ip_address>`
+For example, <br/>
+    `http://example.com` <br/>
+    `https://example.com` <br/>
+    `http://<public_ip_address>` <br/>
+    `http://host.docker.internal` <br/>
 
-2. Read the optional client library license agreement from the following link.
 
-    [Consent to deploy client libraries](consent-to-deploy-client-libraries.md)
+Note
+* If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
 
-3. Note the optional client libraries from the above link as comma separated names and replace it in `<comma_separated_library_names>` place.
+* Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
 
-    ![docker-compose.yml](images/baseurl_clientlibrary.png) 
+* Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 
-4. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
 
-    For example, `"./default.conf:/etc/nginx/conf.d/default.conf"`
-        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`
-        `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
+## Advanced configuration
 
-    ![docker-compose.yml](images/default_conf_path.png) 
 
-5. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path>` in **docker-compose.yml** file.
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=<app_base_url> \
+     -e OPTIONAL_LIBS=<optional_library_names> \
+     -v <host_path_for_appdata_files>:/boldbi/app_data \
+     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:<tag>
+```
 
-    For example, `device: 'D:/boldbi/shared'`
-        `device: '/var/boldbi/shared'`
+### Consent to deploy client libraries
 
-    ![docker-compose.yml](images/shared_location.png) 
+By giving consent to install client libraries to connect with Oracle, PostgreSQL, MySQL, MongoDB, InfluxDB, and Snowflake.Data, you can use the following libraries in your docker container. Bold BI uses these client libraries to connect with their respective SQL database variants. Read about the licenses of each library to give consent for usage. 
 
-6. If you need to use **Bing Map** widget feature, enter value for `widget_bing_map_enable` environment variable as `true` and API key value for `widget_bing_map_api_key` on **docker-compose.yml** file.
+<br/>
 
-    ![Bing Map](images/bing_map_key.png) 
+| Library                   | DLLs           | License       | Name         |
+| -------------             | ------------- | ------------- |------------- |
+| mongo-csharp-driver       | MongoDB       | [Apache License, Version 2.0](https://github.com/mongodb/mongo-csharp-driver/blob/master/License.txt) | mongodb |
+| Snowflake.Data            | Snowflake.Data| [Apache License, Version 2.0](https://github.com/snowflakedb/snowflake-connector-net/blob/master/LICENSE) | snowflake |
+| Oracle.ManagedDataAccess  | Oracle        | [Oracle License](https://www.oracle.com/downloads/licenses/distribution-license.html) | oracle |
+| Npgsql 4.0.0              | PostgreSQL <br/> Amazon Redshift <br/>Google Cloud - PostgreSQL <br/> Amazon Aurora - PostgreSQL | [PostgreSQL License](https://github.com/npgsql/npgsql/blob/main/LICENSE) | npgsql        |
+| MySQLConnector 0.45.1     | MySQL <br/> MemSQL <br/> MariaDB <br/> Google Cloud – MySQL <br/> Amazon Aurora - MySQL <br/> CDATA | [MIT License](https://github.com/mysql-net/MySqlConnector/blob/master/LICENSE) | mysql         |
+| InfluxData.Net            | InfluxDB | [MIT License](https://github.com/pootzko/InfluxData.Net/blob/master/LICENSE) | influxdb      |
+| [PhantomJS WebKit](https://phantomjs.org)          | phantomjs | [License](https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD) and [Third-Party](https://github.com/ariya/phantomjs/blob/master/third-party.txt) documents. | phantomjs     |
 
-## Configure SSL
-If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps or you can skip this.
 
-1. Uncomment the following marked lines in the **default.conf** file.
+Find the names of client libraries in the last column of the above table, which needs to be passed as a comma-separated string for the `OPTIONAL_LIBS` environment variable in place of `<optional_library_names>` on the docker run command.
+<br/><br/>
+
+If you want to use all client libraries in the Bold BI application, then pass the following string as a value for the `OPTIONAL_LIBS` environment variable. You need to add the names only for the libraries, which you are consenting to use with the Bold BI application.
+<br/><br/>
+`phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql`
+
+
+### Persisting application data
+
+You can store the application data in your host machine to make the Bold BI container a stateful application. Existing containers can be deleted, and new ones can be created with the host machine directory attached to the container. Then, Bold BI application will read and write the data in your host machine.
+
+Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
+
+For example,<br/>
+Windows: `-v D:/boldbi/app_data:/boldbi/app_data`<br/>
+Linux: `-v /home/boldbi/app_data:/boldbi/app_data`
+<br/><br/>
+
+### Nginx configuration
+
+You can mount a host directory to Bold BI container for maintaining Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
+
+Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
+
+For example,<br/>
+Windows: `-v D:/boldbi/nginx:/etc/nginx/sites-available`<br/>
+Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
+
+Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
+
+
+### SSL configuration in Nginx
+
+If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps:
+
+1. Uncomment the following marked lines in the **boldbi-nginx-config** file.
 
     ![ssl configuration](images/uncomment_ssl_redirect.png)
 
     ![ssl configuration](images/uncomment_lines.png)
 
-2. Comment the following marked line in the **default.conf** file.
+2. Comment the following marked line in the **boldbi-nginx-config** file.
 
     ![ssl configuration](images/comment_lines.png)
 
 3. Replace the example.com with your domain name.
 
-4. Uncomment the following marked lines in the **docker-compose.yml** file.
-    
-    ![ssl configuration](images/uncomment_docker.png)
+4. Place the certificate and key file in your host directory, which you mounted on the Bold BI application to store Nginx configuration. i.e. The directory path replaced with `<host_path_for_nginx_config>` value in the advanced docker run command. You can update the certificate and key file names in **boldbi-nginx-config** file.
 
-5. Replace the certificate and key file paths, which were stored in your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
+    ![ssl configuration](images/ssl_certificate_name.png)
 
-    For example, 
-    `- "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"`
-    `- "D:/certificates/boldbi.key:/etc/ssl/domain.crt"`
-
-    `- "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"`
-    `- "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"`
-
-> **NOTE:** If you are configuring the application with SSL, then you need to update the `<application_base_url>` in the **docker-compose.yml** with `HTTPS`.
+> **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
 
 
-## Deploy Bold BI using docker-compose
-
-1. Run the **docker-compose.yml** file using the following docker command.
+### Example for Advanced docker run command
 
 ```sh
-docker-compose up
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -e OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql \
+     -v D:/boldbi/app_data:/boldbi/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:4.1.36
 ```
-
-2. Wait till you see the applications in running state. Then, use your DNS or IP address to access the application in the browser.
-
-3. Configure the Bold BI On-Premise application startup to use the application. For more details on configuring the application startup, please refer the following link.
-    
-    https://help.boldbi.com/embedded-bi/application-startup
