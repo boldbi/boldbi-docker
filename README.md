@@ -8,7 +8,7 @@
 
 # Supported tags and respective `Dockerfile` links
 
-* [4.1.36](https://github.com/boldbi/boldbi-docker/blob/v4.1.36/dockerfile)
+* [4.1.36](https://github.com/boldbi/boldbi-docker/blob/v4.1.36_docker_hub/dockerfile) [latest](https://github.com/boldbi/boldbi-docker/blob/v4.1.36_docker_hub/dockerfile)
 
 
 # What is Bold BI
