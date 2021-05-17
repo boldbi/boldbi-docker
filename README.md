@@ -11,8 +11,8 @@
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
 | `4.1.36`, `latest` | Debian 10     | 04/16/2021 |
-| `4.1.36-alpine`    | Alpine 3.13   | 05/08/2021 |
-| `4.1.36-focal`     | Ubuntu 20.04        | 05/08/2021 |
+| `4.1.36-alpine`    | Alpine 3.13   | 05/17/2021 |
+| `4.1.36-focal`     | Ubuntu 20.04        | 05/17/2021 |
 
 # What is Bold BI
 
