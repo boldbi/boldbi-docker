@@ -9,7 +9,7 @@ services:
       - APP_BASE_URL=<application_base_url>
       - INSTALL_OPTIONAL_LIBS=<comma_separated_library_names>
     volumes: 
-      - shared:/boldbi/app_data
+      - shared:/application/app_data
     networks:
       - boldbi
     healthcheck:
@@ -23,7 +23,7 @@ services:
     image: gcr.io/boldbi-294612/boldbi-identity-api:4.1.36
     restart: on-failure
     volumes: 
-      - shared:/boldbi/app_data
+      - shared:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -39,7 +39,7 @@ services:
     image: gcr.io/boldbi-294612/boldbi-ums:4.1.36
     restart: on-failure
     volumes: 
-      - shared:/boldbi/app_data
+      - shared:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -55,7 +55,7 @@ services:
     image: gcr.io/boldbi-294612/boldbi-server:4.1.36
     restart: on-failure
     volumes: 
-      - shared:/boldbi/app_data
+      - shared:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -71,7 +71,7 @@ services:
     image: gcr.io/boldbi-294612/boldbi-server-api:4.1.36
     restart: on-failure
     volumes: 
-      - shared:/boldbi/app_data
+      - shared:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -88,7 +88,7 @@ services:
     image: gcr.io/boldbi-294612/boldbi-server-jobs:4.1.36
     restart: on-failure
     volumes: 
-      - shared:/boldbi/app_data
+      - shared:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -108,7 +108,7 @@ services:
       - widget_bing_map_enable=""
       - widget_bing_map_api_key=""
     volumes: 
-      - shared:/boldbi/app_data
+      - shared:/application/app_data
     networks:
       - boldbi
     depends_on:
