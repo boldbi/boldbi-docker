@@ -1,3 +1,12 @@
+<a href="https://www.boldbi.com">
+  <img
+  src="https://www.boldbi.com/wp-content/uploads/2019/05/boldbi-header-menu-logo.svg"
+  alt="boldbi"
+  width="400"/>
+</a>
+<br/>
+<br/>
+
 # Quick reference
 
 * Maintained by: [Bold BI by Syncfusion](https://www.boldbi.com)
@@ -22,30 +31,15 @@ It is an end-to-end solution for creating, managing, and sharing interactive bus
 
 With deep embedding, you can interact more with your data and get insights right from your application.
 
+
 # How to use this image
 
 ## Start a Bold BI instance
 
 ```sh
-docker run --name boldbi -p 80:80 -e APP_URL=<app_base_url> -d syncfusion/boldbi
+docker run --name boldbi -p 80:80 -d syncfusion/boldbi
 ```
-
-Replace `<app_base_url>` with your DNS or IP address, by which you want to access the application.
-    
-For example, <br/>
-    `http://example.com` <br/>
-    `https://example.com` <br/>
-    `http://<public_ip_address>` <br/>
-    `http://host.docker.internal` <br/>
-
-
-Note
-* If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
-
-* Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
-
-* Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
-
+You can now access the site with `http://localhost`
 
 ## Advanced configuration
 
@@ -54,11 +48,27 @@ Note
 docker run --name boldbi -p 80:80 -p 443:443 \
      -e APP_URL=<app_base_url> \
      -e OPTIONAL_LIBS=<optional_library_names> \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -v <host_path_for_appdata_files>:/boldbi/app_data \
      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
      -d syncfusion/boldbi:<tag>
 ```
+Bold BI accepts the following  Environments.
+| Name                          | Description   | 
+| -------------                 | ------------- | 
+| `APP_URL`                     | Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/>The default APP_URL is `http://localhost`<br/> | 
+|`OPTIONAL_LIBS`|	These are the client libraries used in Bold BI by default.<br/>`'phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/>Please refer <a href='#consent-to-deploy-client-libraries'>Consent to deploy client libraries</a> Libraries section to know more.|
+| `widget_bing_map_enable`      | If you need to use Bing Map widget feature, enable this to `true`. By default this feature will be set to `false`. | 
+| `widget_bing_map_api_key`     | API key value for <widget_bing_map_api_key> |
+<br/>
 
+> **Note:**
+> * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
+> * Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
+> * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
+<br/>
+<br/>
 ### Consent to deploy client libraries
 
 By giving consent to install client libraries to connect with Oracle, PostgreSQL, MySQL, MongoDB, InfluxDB, and Snowflake.Data, you can use the following libraries in your docker container. Bold BI uses these client libraries to connect with their respective SQL database variants. Read about the licenses of each library to give consent for usage. 
@@ -137,7 +147,54 @@ If you have an SSL certificate for your domain and need to configure the site wi
 docker run --name boldbi -p 80:80 -p 443:443 \
      -e APP_URL=https://example.com \
      -e OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -v D:/boldbi/app_data:/boldbi/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:4.1.36
-```
+     -d syncfusion/boldbi:4.2.68
+``` 
+## Run `Bold Bi` via `docker-compose`
+
+Example `docker-compose.yml` for `Bold BI`:
+
+```sh
+version: '3.5'
+
+services:
+  boldbi:
+   image: syncfusion/boldbi
+   restart: always
+   ports:
+      - 80:80
+   environment:
+     - APP_BASE_URL=<app_base_url>
+   networks:
+     - boldbi
+   volumes:
+     - shared:/boldbi/app_data
+    
+  pgdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: <Password>
+    volumes:
+      - pgdb:/var/lib/postgresql
+    networks:
+      - boldbi
+
+networks:
+  boldbi:
+  
+volumes:
+  shared:
+  pgdb:
+  ```
+
+Run `docker-compose up`, wait for it to initialize completely, and visit `http://localhost`.
+
+# Application Startup
+
+Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
+
+https://help.boldbi.com/embedded-bi/application-startup
