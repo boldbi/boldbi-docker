@@ -65,7 +65,22 @@ Now, run `docker-compose up -d` from your project directory.
 <br />
 
 This runs `docker-compose up` in detached mode, pulls the needed Docker images, and starts the boldbi and database containers, as shown in the example below.
+```sh
+docker-compose up -d
 
+Creating network "my_boldbi_boldbi" with the default driver
+Creating volume "my_boldbi_boldbi_data" with local driver
+Creating volume "my_boldbi_db_data" with local driver
+Pulling db (postgres:)...
+latest: Pulling from library/postgres
+7d63c13d9b9b: Pull complete
+cad0f9d5f5fe: Pull complete
+<...>
+Digest:sha256:db927beee892dd02fbe963559f29a7867708747934812a80f83bff406a0d54fd
+Status: Downloaded newer image for postgres:latest
+Creating my_boldbi_boldbi_1 ... done
+Creating my_boldbi_db_1     ... done
+```
 ## Bring up BoldBI in a web browser
 
 At this point, BoldBI should be running in http://localhost:8080 or http://host-ip:8080 (as appropriate)
