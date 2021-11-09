@@ -1,7 +1,7 @@
 ## Run `Bold Bi` via `docker-compose`
-<br/>
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
 
+
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
 
 
 ## Define the Project
