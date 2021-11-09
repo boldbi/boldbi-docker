@@ -49,6 +49,7 @@ It is your decision to download Phantom JS, but you must accept all its terms an
   
 You can read the [License](https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD) and [Third-Party](https://github.com/ariya/phantomjs/blob/master/third-party.txt) documents.
 
+<br>
 
 # Client library names as arguments for Bold BI deployment in Docker
 
@@ -64,8 +65,14 @@ Find the names of client libraries, which needs to be passed as a comma separate
 | InfluxData.Net            | influxdb      |
 | PhantomJS WebKit          | phantomjs     |
 
+<br>
+
 > **Note :**
 By default all the client libraries will be installed in the Bold BI docker container and also you can still overwrite them mentioning the required libraries in the docker run command.
+
+<br>
+
+`Example command`
 
 ```sh
 docker run --name boldbi -p 8080:80 -e OPTIONAL_LIBS=phantomjs,mongodb,mysql -d syncfusion/boldbi

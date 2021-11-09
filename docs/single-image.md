@@ -5,20 +5,15 @@ You can use Docker Compose to easily run Bold BI in an isolated environment buil
 
 
 ## Define the Project
-  1. Create an empty project directory. 
-  <br/>
-  <br/>
-  You can name the directory something easy for you to remember. This directory is the context for your application image. The directory should only contain resources to build that image.
-  <br/></br>
+  1. Create an empty project directory.<br/>
+  You can name the directory something easy for you to remember. This directory is the context for your application image. The directory should only contain resources to build that image.<br/>
   This project directory contains a docker-compose.yml file which is complete in itself for a good starter BoldBI project.This project directory contains a `docker-compose.yml` file which is complete in itself for a good starter BoldBI project.
-  > **Note:**<br/>
+  
+  > **Tip:**
     You can use either a `.yml` or `.yaml` extension for this file. They both work.
   
-  2.  Change into your project directory.
-  <br/>
-  <br/>
+  2.  Change into your project directory.<br/>
   For example, if you named your directory `my_boldbi`:
-  <br/>
 
   ```sh
    $  cd my_boldbi/
@@ -36,12 +31,12 @@ services:
    restart: always
    ports:
       - 8080:80
-   environment:
-     - APP_BASE_URL=<app_base_url>
+   # environment:
+     # - APP_BASE_URL=<app_base_url>
    networks:
      - boldbi
    volumes:
-     - boldbi_data:/boldbi/app_data
+     - boldbi_data:/application/app_data
     
   pgdb:
     image: postgres

@@ -1,23 +1,22 @@
 ## Run `Bold Bi` via `docker-compose`
-<br/>
+
+<br>
+
+
 You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
 
-
+<br>
 
 ## Define the Project
-  1. Create an empty project directory. 
-  <br/><br/>
-  You can name the directory something easy for you to remember. This directory is the context for your application image. The directory should only contain resources to build that image.
-  <br/></br>
+  1. Create an empty project directory.<br/>
+  You can name the directory something easy for you to remember. This directory is the context for your application image. The directory should only contain resources to build that image.<br/>
   This project directory contains a docker-compose.yml file which is complete in itself for a good starter BoldBI project.This project directory contains a `docker-compose.yml` file which is complete in itself for a good starter BoldBI project.
-  > **Note:**<br/>
+  
+  > **Tip:**
     You can use either a `.yml` or `.yaml` extension for this file. They both work.
   
-  2.  Change into your project directory.
-  <br/>
-  <br/>
+  2.  Change into your project directory.<br/>
   For example, if you named your directory `my_boldbi`:
-  <br/>
 
   ```sh
    $  cd my_boldbi/
@@ -32,13 +31,13 @@ version: '3.5'
 services:
   id-web:
     container_name: id_web_container
-    image: gcr.io/boldbi-294612/boldbi-identity:4.1.36
+    image: gcr.io/boldbi-294612/bold-identity:4.2.69
     restart: on-failure
-    environment:
-      - APP_BASE_URL= <app_base_url>
-      - INSTALL_OPTIONAL_LIBS= phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql
+    # environment:
+      # - APP_BASE_URL= <app_base_url>
+      # - INSTALL_OPTIONAL_LIBS= phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql
     volumes: 
-      - boldbi_data:/boldbi/app_data
+      - boldbi_data:/application/app_data
     networks:
       - boldbi
     healthcheck:
@@ -49,10 +48,10 @@ services:
         
   id-api:
     container_name: id_api_container
-    image: gcr.io/boldbi-294612/boldbi-identity-api:4.1.36
+    image: gcr.io/boldbi-294612/bold-identity-api:4.2.69
     restart: on-failure
     volumes: 
-      - boldbi_data:/boldbi/app_data
+      - boldbi_data:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -65,10 +64,10 @@ services:
         
   id-ums:
     container_name: id_ums_container
-    image: gcr.io/boldbi-294612/boldbi-ums:4.1.36
+    image: gcr.io/boldbi-294612/bold-ums:4.2.69
     restart: on-failure
     volumes: 
-      - boldbi_data:/boldbi/app_data
+      - boldbi_data:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -81,10 +80,10 @@ services:
         
   bi-web:
     container_name: bi_web_container
-    image: gcr.io/boldbi-294612/boldbi-server:4.1.36
+    image: gcr.io/boldbi-294612/boldbi-server:4.2.69
     restart: on-failure
     volumes: 
-      - boldbi_data:/boldbi/app_data
+      - boldbi_data:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -97,10 +96,10 @@ services:
         
   bi-api:
     container_name: bi_api_container
-    image: gcr.io/boldbi-294612/boldbi-server-api:4.1.36
+    image: gcr.io/boldbi-294612/boldbi-server-api:4.2.69
     restart: on-failure
     volumes: 
-      - boldbi_data:/boldbi/app_data
+      - boldbi_data:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -114,10 +113,10 @@ services:
       
   bi-jobs:
     container_name: bi_jobs_container
-    image: gcr.io/boldbi-294612/boldbi-server-jobs:4.1.36
+    image: gcr.io/boldbi-294612/boldbi-server-jobs:4.2.69
     restart: on-failure
     volumes: 
-      - boldbi_data:/boldbi/app_data
+      - boldbi_data:/application/app_data
     networks:
       - boldbi
     depends_on:
@@ -131,13 +130,13 @@ services:
       
   bi-dataservice:
     container_name: bi_dataservice_container
-    image: gcr.io/boldbi-294612/boldbi-designer:4.1.36
+    image: gcr.io/boldbi-294612/boldbi-designer:4.2.69
     restart: on-failure
-    environment:
-      - widget_bing_map_enable=""
-      - widget_bing_map_api_key=""
+    # environment:
+      # - widget_bing_map_enable=""
+      # - widget_bing_map_api_key=""
     volumes: 
-      - boldbi_data:/boldbi/app_data
+      - boldbi_data:/application/app_data
     networks:
       - boldbi
     depends_on:
