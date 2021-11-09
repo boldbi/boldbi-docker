@@ -18,25 +18,22 @@ With deep embedding, you can interact more with your data and get insights right
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `4.1.36`, `latest` | Debian 10     | 04/16/2021 |
-| `4.1.36-alpine`    | Alpine 3.13   | 05/17/2021 |
-| `4.1.36-focal`     | Ubuntu 20.04        | 05/17/2021 |
+| `4.2.69`, `latest` | Debian 10     | 04/16/2021 |
+| `4.2.69-alpine`    | Alpine 3.13   | 05/17/2021 |
+| `4.2.69-focal`     | Ubuntu 20.04        | 05/17/2021 |
 
 # How to use this image
 
 ## Start a Bold BI instance
-
-```sh
-docker run --name boldbi -d syncfusion/boldbi
-```
-
-If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
+<br />
+If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:<br/><br/>
 
 ```sh
 docker run --name boldbi -p 8080:80 -d syncfusion/boldbi
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
+
 
 ## Advanced configuration
 
@@ -119,19 +116,19 @@ If you have an SSL certificate for your domain and need to configure the site wi
 
 1. Uncomment the following marked lines in the **boldbi-nginx-config** file.
 
-    ![ssl configuration](images/uncomment_ssl_redirect.png)
+    ![ssl configuration](docs/images/uncomment_ssl_redirect.png)
 
-    ![ssl configuration](images/uncomment_lines.png)
+    ![ssl configuration](docs/images/uncomment_lines.png)
 
 2. Comment the following marked line in the **boldbi-nginx-config** file.
 
-    ![ssl configuration](images/comment_lines.png)
+    ![ssl configuration](docs/images/comment_lines.png)
 
 3. Replace the example.com with your domain name.
 
 4. Place the certificate and key file in your host directory, which you mounted on the Bold BI application to store Nginx configuration. i.e. The directory path replaced with `<host_path_for_nginx_config>` value in the advanced docker run command. You can update the certificate and key file names in **boldbi-nginx-config** file.
 
-    ![ssl configuration](images/ssl_certificate_name.png)
+    ![ssl configuration](docs/images/ssl_certificate_name.png)
 
 > **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
 
