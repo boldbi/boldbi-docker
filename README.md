@@ -77,7 +77,6 @@ Bold BI accepts the following  Environments.
 > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
 > * Use `host.docker.internal` instead of `localhost` while accessing the database server in your host machine. Host machine localhost DNS will not be accessible inside the container. So, docker provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
 > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
-<br />
 
 ### Persisting application data
 

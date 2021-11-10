@@ -19,8 +19,6 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
    ```
    3. Create a docker-compose.yml file that starts your `BoldBI` blog and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
-<br/>
-
 ```sh
 version: '3.5'
 
