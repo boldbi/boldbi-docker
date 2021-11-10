@@ -79,6 +79,7 @@ Bold BI accepts the following  Environments.
 > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 <br />
 <br />
+
 ### Persisting application data
 
 You can store the application data in your host machine to make the Bold BI container a stateful application. Existing containers can be deleted, and new ones can be created with the host machine directory attached to the container. Then, Bold BI application will read and write the data in your host machine.
