@@ -1,4 +1,4 @@
-## Run `Bold Bi` via `docker-compose`
+## Run `Bold BI` via `docker-compose`
 
 This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
 
@@ -184,7 +184,7 @@ volumes:
   ```
 
 > **Note:**
-> The docker volumes boldbi_data and db_data persists updates made by B to the database, as well as the installed themes and plugins. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+> The docker volumes `boldbi_data` and `db_data` persists updates made by B to the database, as well as the installed themes and plugins. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
 
 ## Build the project
 
