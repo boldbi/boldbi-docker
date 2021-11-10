@@ -35,7 +35,7 @@ docker run --name boldbi -p 8080:80 -d syncfusion/boldbi
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
 
 ## ... via `docker-compose`
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/single-image.md) to delploy boldbi simplified docker compose environment.
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in a simplified docker compose environment.
 ## Advanced configuration
 
 
@@ -62,7 +62,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -d syncfusion/boldbi:4.2.68
 ``` 
 ## ... via `docker-compose`
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/Multi-image.md) to delploy boldbi Advanced docker compose environment.
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/Multi-image.md) to deploy Bold BI in an advanced docker compose environment.
 
 Bold BI accepts the following  Environments.
 | Name                          | Description   | 
