@@ -201,7 +201,6 @@ At this point, BoldBI should be running in http://localhost:8080 or http://host-
 
 > **Note:**
 > The BoldBI site is not immediately available on port 8080 because the containers are still being initialized and may take a couple of minutes before the first load.
-<br />
 
 ## Application Startup
 

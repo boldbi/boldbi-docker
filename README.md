@@ -78,7 +78,6 @@ Bold BI accepts the following  Environments.
 > * Use `host.docker.internal` instead of `localhost` while accessing the database server in your host machine. Host machine localhost DNS will not be accessible inside the container. So, docker provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
 > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 <br />
-<br />
 
 ### Persisting application data
 
@@ -89,7 +88,6 @@ Replace the `<host_path_for_appdata_files>` value with a directory path from you
 > **For example**<br/>
 > Windows: `-v D:/boldbi/app_data:/boldbi/app_data`<br/>
 > Linux: `-v /home/boldbi/app_data:/boldbi/app_data`
-<br/>
 
 ### Nginx configuration
 
