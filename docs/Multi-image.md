@@ -1,7 +1,6 @@
 ## Run `Bold Bi` via `docker-compose`
 
-
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
+This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
 
 
 ## Define the Project
@@ -202,7 +201,8 @@ At this point, BoldBI should be running in http://localhost:8080 or http://host-
 
 > **Note:**
 > The BoldBI site is not immediately available on port 8080 because the containers are still being initialized and may take a couple of minutes before the first load.
-<br /><br />
+<br />
+<br />
 ## Application Startup
 
 Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.

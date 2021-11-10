@@ -34,7 +34,8 @@ docker run --name boldbi -p 8080:80 -d syncfusion/boldbi
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
 
-
+## ... via `docker-compose`
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/single-image.md) to delploy boldbi simplified docker compose environment.
 ## Advanced configuration
 
 
@@ -48,11 +49,26 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
      -d syncfusion/boldbi:<tag>
 ```
+### Example for Advanced docker run command
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -e OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -v D:/boldbi/app_data:/boldbi/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:4.2.68
+``` 
+## ... via `docker-compose`
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/Multi-image.md) to delploy boldbi Advanced docker compose environment.
+
 Bold BI accepts the following  Environments.
 | Name                          | Description   | 
 | -------------                 | ------------- | 
 | `APP_URL`                     | Domain or IP address with http/https protocol.<br/><br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/> | 
-|`OPTIONAL_LIBS`|	These are the client libraries used in Bold BI by default.<br/><br/>`'phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer <a href='#consent-to-deploy-client-libraries'>Consent to deploy client libraries</a> Libraries section to know more.|
+|`OPTIONAL_LIBS`|	These are the client libraries used in Bold BI by default.<br/><br/>`'phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer [Consent to deploy client libraries](consent-to-deploy-client-libraries.md) Libraries section to know more.|
 | `widget_bing_map_enable`      | If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
 | `widget_bing_map_api_key`     | API key value for the Bing Map. |
 <br/>
@@ -61,31 +77,8 @@ Bold BI accepts the following  Environments.
 > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
 > * Use `host.docker.internal` instead of `localhost` while accessing the database server in your host machine. Host machine localhost DNS will not be accessible inside the container. So, docker provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
 > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
-
-## Consent to deploy client libraries
-
-By giving consent to install client libraries to connect with Oracle, PostgreSQL, MySQL, MongoDB, InfluxDB, and Snowflake.Data, you can use the following libraries in your docker container. Bold BI uses these client libraries to connect with their respective SQL database variants. Read about the licenses of each library to give consent for usage. 
-
-<br/>
-
-| Library                   | DLLs           | License       | Name         |
-| -------------             | ------------- | ------------- |------------- |
-| mongo-csharp-driver       | MongoDB       | [Apache License, Version 2.0](https://github.com/mongodb/mongo-csharp-driver/blob/master/License.txt) | mongodb |
-| Snowflake.Data            | Snowflake.Data| [Apache License, Version 2.0](https://github.com/snowflakedb/snowflake-connector-net/blob/master/LICENSE) | snowflake |
-| Oracle.ManagedDataAccess  | Oracle        | [Oracle License](https://www.oracle.com/downloads/licenses/distribution-license.html) | oracle |
-| Npgsql 4.0.0              | PostgreSQL <br/> Amazon Redshift <br/>Google Cloud - PostgreSQL <br/> Amazon Aurora - PostgreSQL | [PostgreSQL License](https://github.com/npgsql/npgsql/blob/main/LICENSE) | npgsql        |
-| MySQLConnector 0.45.1     | MySQL <br/> MemSQL <br/> MariaDB <br/> Google Cloud – MySQL <br/> Amazon Aurora - MySQL <br/> CDATA | [MIT License](https://github.com/mysql-net/MySqlConnector/blob/master/LICENSE) | mysql         |
-| InfluxData.Net            | InfluxDB | [MIT License](https://github.com/pootzko/InfluxData.Net/blob/master/LICENSE) | influxdb      |
-| [PhantomJS WebKit](https://phantomjs.org)          | phantomjs | [License](https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD) and [Third-Party](https://github.com/ariya/phantomjs/blob/master/third-party.txt) documents. | phantomjs     |
-
-Find the names of client libraries in the last column of the above table, which needs to be passed as a comma-separated string for the `OPTIONAL_LIBS` environment variable in place of `<optional_library_names>` on the docker run command.
-<br/>
-
-If you want to use all client libraries in the Bold BI application, then pass the following string as a value for the `OPTIONAL_LIBS` environment variable. You need to add the names only for the libraries, which you are consenting to use with the Bold BI application.
-<br/>
-
-`phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql`
-
+<br />
+<br />
 ### Persisting application data
 
 You can store the application data in your host machine to make the Bold BI container a stateful application. Existing containers can be deleted, and new ones can be created with the host machine directory attached to the container. Then, Bold BI application will read and write the data in your host machine.
@@ -131,59 +124,6 @@ If you have an SSL certificate for your domain and need to configure the site wi
     ![ssl configuration](docs/images/ssl_certificate_name.png)
 
 > **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
-
-
-### Example for Advanced docker run command
-
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=https://example.com \
-     -e OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql \
-     -e widget_bing_map_enable=true\
-     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -v D:/boldbi/app_data:/boldbi/app_data \
-     -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:4.2.68
-``` 
-## Run `Bold Bi` via `docker-compose`
-
-Example `docker-compose.yml` for `Bold BI`:
-
-```sh
-version: '3.5'
-
-services:
-  boldbi:
-   image: syncfusion/boldbi
-   restart: always
-   ports:
-      - 8080:80
-   environment:
-     - APP_BASE_URL=<app_base_url>
-   networks:
-     - boldbi
-   volumes:
-     - shared:/boldbi/app_data
-    
-  pgdb:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: <Password>
-    volumes:
-      - pgdb:/var/lib/postgresql
-    networks:
-      - boldbi
-
-networks:
-  boldbi:
-  
-volumes:
-  shared:
-  pgdb:
-  ```
-
-Run `docker-compose up`, wait for it to initialize completely, and visit http://localhost:8080, or http://host-ip:8080 (as appropriate).
 
 # Application Startup
 
