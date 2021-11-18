@@ -35,6 +35,11 @@ By giving consent to install client libraries to connect with Oracle, PostgreSQL
 
 [MIT License](https://github.com/mysql-net/MySqlConnector/blob/master/LICENSE)
 
+## Amazon Athena
+* Amazon Athena
+
+[Amazon Athena](http://aws.amazon.com/apache2.0/)
+
 ## InfluxData.Net
 * InfluxDB
 
@@ -64,6 +69,7 @@ Find the names of client libraries, which needs to be passed as a comma separate
 | MySQLConnector 0.45.1     | mysql         |
 | InfluxData.Net            | influxdb      |
 | PhantomJS WebKit          | phantomjs     |
+| Amazon Athena             | athena
 
 <br>
 
@@ -75,7 +81,7 @@ By default all the client libraries will be installed in the Bold BI docker cont
 `Example command`
 
 ```sh
-docker run --name boldbi -p 8080:80 -e OPTIONAL_LIBS=phantomjs,mongodb,mysql -d syncfusion/boldbi
+docker run --name boldbi -p 8085:80 -e OPTIONAL_LIBS=phantomjs,mongodb,mysql -d syncfusion/boldbi
 ```
 
 

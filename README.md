@@ -29,13 +29,13 @@ With deep embedding, you can interact more with your data and get insights right
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:<br/><br/>
 
 ```sh
-docker run --name boldbi -p 8080:80 -d syncfusion/boldbi
+docker run --name boldbi -p 80:80 -d syncfusion/boldbi
 ```
 
-Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
+Then, access it via `http://localhost` or `http://host-ip` in a browser.
 
-## ... via `docker-compose`
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in a simplified docker compose environment.
+## Start a single container Bold BI  using `docker-compose`
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in a simplified docker compose environment with single image.
 ## Advanced configuration
 
 
@@ -59,10 +59,10 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -v D:/boldbi/app_data:/boldbi/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:4.2.68
+     -d syncfusion/boldbi:4.2.69
 ``` 
-## ... via `docker-compose`
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/Multi-image.md) to deploy Bold BI in an advanced docker compose environment.
+## Start multiple services Bold BI with `docker-compose`
+Bold BI comes with multiple image to run on docker-compose which is mainly used to scale the particular services of Bold BI. You can use this Docker Compose to easily run Bold BI in an isolated environment built with Docker containers and also can scale the services as needed. Please refer to [this guide](docs/Multi-image.md) to deploy Bold BI in an advanced docker compose environment.
 
 Bold BI accepts the following  Environments.
 | Name                          | Description   | 
@@ -75,13 +75,12 @@ Bold BI accepts the following  Environments.
 
 > **Note:**
 > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
-> * Use `host.docker.internal` instead of `localhost` while accessing the database server in your host machine. Host machine localhost DNS will not be accessible inside the container. So, docker provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
-> * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
+> * You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 
 ### Persisting application data
 
-You can store the application data in your host machine to make the Bold BI container a stateful application. Existing containers can be deleted, and new ones can be created with the host machine directory attached to the container. Then, Bold BI application will read and write the data in your host machine.
-
+You can store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
+ 
 Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
 
 > **For example**<br/>

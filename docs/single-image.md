@@ -1,16 +1,16 @@
-## Run `Bold BI` via `docker-compose`
+## Run single container `Bold BI` via `docker-compose`
 
 
- This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
+ This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have installed [Compose](https://docs.docker.com/compose/install/)
 
 
 ## Define the Project
   1. Create an empty project directory.<br/>
-  You can name the directory something easy for you to remember. This directory is the context for your application image. The directory should only contain resources to build that image.<br/>
-  This project directory contains a docker-compose.yml file which is complete in itself for a good starter BoldBI project.This project directory contains a `docker-compose.yml` file which is complete in itself for a good starter BoldBI project.
+  You can name the directory something easy for you to remember. This directory is the context for your application image.<br/>
+  This project directory should contains a `docker-compose.yml` file which is complete in itself for a good starter BoldBI project.
   
   > **Tip:**
-    You can use either a `.yml` or `.yaml` extension for this file. They both work.
+    You can use either a `.yml` or `.yaml` extension for this file. They both works well.
   
   2.  Change into your project directory.<br/>
   For example, if you named your directory `my_boldbi`:
@@ -28,7 +28,7 @@ services:
    image: syncfusion/boldbi
    restart: always
    ports:
-      - 8080:80
+     - 8085:80
    # environment:
      # - APP_BASE_URL=<app_base_url>
    networks:
@@ -55,7 +55,7 @@ volumes:
   ```
 
 > **Note:**
-> The docker volumes `boldbi_data` and `db_data` persists updates made by B to the database, as well as the installed themes and plugins. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+> The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
 
 ## Build the project
 
@@ -79,12 +79,12 @@ Status: Downloaded newer image for postgres:latest
 Creating my_boldbi_boldbi_1 ... done
 Creating my_boldbi_db_1     ... done
 ```
-## Bring up BoldBI in a web browser
+## Bring up Bold BI in a web browser
 
-At this point, BoldBI should be running in http://localhost:8080 or http://host-ip:8080 (as appropriate)
+At this point, Bold BI should be running in http://localhost:8085 or http://host-ip:8085 (as appropriate)
 
 > **Note:**
-> The BoldBI site is not immediately available on port 8080 because the containers are still being initialized and may take a couple of minutes before the first load.
+> The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
 
 ## Application Startup
 
@@ -93,6 +93,6 @@ Configure the Bold BI On-Premise application startup to use the application. Ple
 https://help.boldbi.com/embedded-bi/application-startup
 
 ## Shutdown and cleanup
-The command `docker-compose down` removes the containers and default network, but preserves your BoldBI database. <br /><br />
-The command `docker-compose down --volumes` removes the containers, default network, and the BoldBI database.
+The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
+The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
 
