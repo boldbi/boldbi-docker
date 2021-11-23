@@ -118,9 +118,9 @@ If you have an SSL certificate for your domain and need to configure the site wi
 > **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
 <br/>
 
-Docker compose:<br/>
+### Docker compose:<br/>
 BoldBI in Single container image.
-<br/></br>
+<br/>
  BoldBI in multiple container image.
 ## Start single services Bold BI with `docker-compose`
 You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in an simplified docker compose environment with single image.
