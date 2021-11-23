@@ -27,7 +27,7 @@ With deep embedding, you can interact more with your data and get insights right
 
 ## Start a Bold BI instance
 <br />
-To quickly get started please run below command to run BolBI in your host machine. With this command, you would be able to access the instance from the host without the container’s IP and the standard port mappings.:<br/><br/>
+To quickly get started please run below command to run BolBI in your host machine. With this command, you would be able to access the instance from the host without the container’s IP and the standard port mappings.<br/><br/>
 
 ```sh
 docker run --name boldbi -p 80:80 -d syncfusion/boldbi
@@ -61,7 +61,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -d syncfusion/boldbi:4.2.69
 ``` 
 
-Bold BI accepts the following  environments.
+Bold BI accepts the following  environment variables from command line.
 | Name                          | Description   | 
 | -------------                 | ------------- | 
 | `APP_URL`                     | Domain or IP address with http/https protocol.<br/><br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>•	You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.| 
