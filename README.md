@@ -18,25 +18,24 @@ With deep embedding, you can interact more with your data and get insights right
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `4.2.69`, `latest` | Debian 10     | 04/16/2021 |
-| `4.2.69-alpine`    | Alpine 3.13   | 05/17/2021 |
-| `4.2.69-focal`     | Ubuntu 20.04        | 05/17/2021 |
+| `4.2.69`, `latest` | Debian 10  (arm64)    | 04/16/2021 |
+| `4.2.69-alpine`    | Alpine 3.13  (arm64)  | 05/17/2021 |
+| `4.2.69-focal`     | Ubuntu 20.04  (arm64)       | 05/17/2021 |
+|`4.2.69-arm64`|Debian 10 (arm64)|05/17/2021
 
 # How to use this image
 
 ## Start a Bold BI instance
 <br />
-If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:<br/><br/>
+To quickly get started please run below command to run BolBI in your host machine. With this command, you would be able to access the instance from the host without the container’s IP and the standard port mappings.:<br/><br/>
 
 ```sh
 docker run --name boldbi -p 80:80 -d syncfusion/boldbi
 ```
 
-Then, access it via `http://localhost` or `http://host-ip` in a browser.
+After running the command, you can access the BoldBI App  via `http://localhost` or `http://host-ip` in a browser. To know more about application startup, refer here.
 
-## Start a single container Bold BI  using `docker-compose`
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in a simplified docker compose environment with single image.
-## Advanced configuration
+## Advanced command
 
 
 ```sh
@@ -61,21 +60,17 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
      -d syncfusion/boldbi:4.2.69
 ``` 
-## Start multiple services Bold BI with `docker-compose`
-Bold BI comes with multiple image to run on docker-compose which is mainly used to scale the particular services of Bold BI. You can use this Docker Compose to easily run Bold BI in an isolated environment built with Docker containers and also can scale the services as needed. Please refer to [this guide](docs/Multi-image.md) to deploy Bold BI in an advanced docker compose environment.
 
-Bold BI accepts the following  Environments.
+Bold BI accepts the following  environments.
 | Name                          | Description   | 
 | -------------                 | ------------- | 
-| `APP_URL`                     | Domain or IP address with http/https protocol.<br/><br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/> | 
+| `APP_URL`                     | Domain or IP address with http/https protocol.<br/><br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>•	You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.| 
 |`OPTIONAL_LIBS`|	These are the client libraries used in Bold BI by default.<br/><br/>`'phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
 | `widget_bing_map_enable`      | If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
 | `widget_bing_map_api_key`     | API key value for the Bing Map. |
+|`<host_path_for_appdata_files>` |Persistent volume path for Bold BI application data|
+|`<host_path_for_nginx_config>` |Persistent volume path for Nginx configuration|
 <br/>
-
-> **Note:**
-> * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
-> * You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 
 ### Persisting application data
 
@@ -121,9 +116,21 @@ If you have an SSL certificate for your domain and need to configure the site wi
     ![ssl configuration](docs/images/ssl_certificate_name.png)
 
 > **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
+<br/>
 
+Docker compose:<br/>
+BoldBI in Single container image.
+<br/></br>
+ BoldBI in multiple container image.
+## Start single services Bold BI with `docker-compose`
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in an simplified docker compose environment with single image.
+## Start multiple services Bold BI with `docker-compose`
+Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/Multi-image.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
 # Application Startup
 
 Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
 
 https://help.boldbi.com/embedded-bi/application-startup
+
+# License
+
