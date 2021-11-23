@@ -64,7 +64,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
 Bold BI accepts the following  environment variables from command line.
 | Name                          | Description   | 
 | -------------                 | ------------- | 
-| `APP_URL`                     | Domain or IP address with http/https protocol.<br/><br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>•	You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.| 
+| `APP_URL`                     | Domain or IP address with http/https protocol.<br/><br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>•	You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/SSL-Termination).|
 |`OPTIONAL_LIBS`|	These are the client libraries used in Bold BI by default.<br/><br/>`'phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
 | `widget_bing_map_enable`      | If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
 | `widget_bing_map_api_key`     | API key value for the Bing Map. |
@@ -94,37 +94,14 @@ Replace the `<host_path_for_nginx_config>` value with a directory path from your
 
 Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
 
-
-### SSL configuration in Nginx
-
-If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps:
-
-1. Uncomment the following marked lines in the **boldbi-nginx-config** file.
-
-    ![ssl configuration](docs/images/uncomment_ssl_redirect.png)
-
-    ![ssl configuration](docs/images/uncomment_lines.png)
-
-2. Comment the following marked line in the **boldbi-nginx-config** file.
-
-    ![ssl configuration](docs/images/comment_lines.png)
-
-3. Replace the example.com with your domain name.
-
-4. Place the certificate and key file in your host directory, which you mounted on the Bold BI application to store Nginx configuration. i.e. The directory path replaced with `<host_path_for_nginx_config>` value in the advanced docker run command. You can update the certificate and key file names in **boldbi-nginx-config** file.
-
-    ![ssl configuration](docs/images/ssl_certificate_name.png)
-
-> **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
+# Docker compose:<br/>
+* [BoldBI in Single container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
 <br/>
 
-### Docker compose:<br/>
-BoldBI in Single container image.
-<br/>
- BoldBI in multiple container image.
-* ## Start single services Bold BI with `docker-compose`
+* [BoldBI in multiple container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
+## Start single services Bold BI with `docker-compose`
 You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in an simplified docker compose environment with single image.
-* ## Start multiple services Bold BI with `docker-compose`
+## Start multiple services Bold BI with `docker-compose`
 Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/Multi-image.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
 # Application Startup
 
