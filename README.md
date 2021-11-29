@@ -18,13 +18,12 @@ With deep embedding, you can interact more with your data and get insights right
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `4.2.69`, `latest` | Debian 10  (arm64)    | 04/16/2021 |
-| `4.2.69-alpine`    | Alpine 3.13  (arm64)  | 05/17/2021 |
-| `4.2.69-focal`     | Ubuntu 20.04  (arm64)       | 05/17/2021 |
+| `4.2.69`, `latest` | Debian 10  (amd64,arm64)    | 04/16/2021 |
+| `4.2.69-alpine`    | Alpine 3.13  (amd64)  | 05/17/2021 |
+| `4.2.69-focal`     | Ubuntu 20.04  (amd64)       | 05/17/2021 |
 |`4.2.69-arm64`|Debian 10 (arm64)|05/17/2021
 
 # How to use this image
-
 ## Start a Bold BI instance
 <br />
 To quickly get started please run below command to run BolBI in your host machine. With this command, you would be able to access the instance from the host without the container’s IP and the standard port mappings.<br/><br/>
@@ -92,7 +91,11 @@ Replace the `<host_path_for_nginx_config>` value with a directory path from your
 > Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
 
 Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
+# Application Startup
 
+Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
+
+https://help.boldbi.com/embedded-bi/application-startup
 # Docker compose:<br/>
 * [BoldBI in Single container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
 
@@ -101,11 +104,7 @@ Once, the Bold BI container started to run, you can check the directory in your 
 You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in an simplified docker compose environment with single image.
 ## Start multiple services Bold BI with `docker-compose`
 Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/Multi-image.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
-# Application Startup
 
-Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
-
-https://help.boldbi.com/embedded-bi/application-startup
 
 # License
 
