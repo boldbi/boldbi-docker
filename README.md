@@ -91,11 +91,13 @@ Replace the `<host_path_for_nginx_config>` value with a directory path from your
 > Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
 
 Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
-# Application Startup
+
+## Application Startup
 
 Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
 
 https://help.boldbi.com/embedded-bi/application-startup
+
 # Docker compose:<br/>
 * [BoldBI in Single container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
 
@@ -107,4 +109,4 @@ Bold BI also comes with multiple images for each of the services in it to run on
 
 
 # License
-
+Please go through the license for Bold BI in [this](https://www.boldbi.com/terms-of-use/embedded) link.
