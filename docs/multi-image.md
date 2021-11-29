@@ -2,8 +2,8 @@
 
 This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have [Compose installed](https://docs.docker.com/compose/install/)
 
+### Define the Project
 
-## Define the Project
   1. Create an empty project directory.<br/>
   You can name the directory something easy for you to remember. This directory is the context for your application image. This project directory should contains a `docker-compose.yml` file which is complete in itself for a good starter BoldBI project.
   
@@ -185,27 +185,28 @@ volumes:
 > **Note:**
 > The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
 
-## Build the project
+### Build the project
 
 Now, run `docker-compose up -d` from your project directory.
 <br />
 
 This runs `docker-compose up` in detached mode, pulls the needed Docker images, and starts the boldbi and database containers, as shown in the example below.
 
-## Bring up BoldBI in a web browser
+### Bring up BoldBI in a web browser
 
 At this point, BoldBI should be running in http://localhost:8085 or http://host-ip:8085 (as appropriate)
 
 > **Note:**
 > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes before the first load.
 
-## Application Startup
+### Application Startup
 
 Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
 
 https://help.boldbi.com/embedded-bi/application-startup
 
-## Shutdown and cleanup
+### Shutdown and cleanup
+
 The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
 The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
 

@@ -1,4 +1,4 @@
-### SSL configuration in Nginx
+## SSL configuration in Nginx
 
 If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps:
 
