@@ -205,6 +205,9 @@ Configure the Bold BI On-Premise application startup to use the application. Ple
 
 https://help.boldbi.com/embedded-bi/application-startup
 
+> **Note:**
+> To use the above configured PostgreSQL server in Bold BI please use `pgdb` as the PostgreSQL server name.
+
 ### Shutdown and cleanup
 
 The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
