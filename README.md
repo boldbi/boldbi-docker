@@ -99,14 +99,64 @@ Configure the Bold BI On-Premise application startup to use the application. Ple
 https://help.boldbi.com/embedded-bi/application-startup
 
 # Docker compose:<br/>
-* [BoldBI in Single container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
+* [BoldBI in single container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
 
 * [BoldBI in multiple container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
-## Start single services Bold BI with `docker-compose`
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases. Please refer to [this guide](docs/single-image.md) to deploy Bold BI in an simplified docker compose environment with single image.
-## Start multiple services Bold BI with `docker-compose`
+## Start single container Bold BI with `docker-compose`
+You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases.
+<br/>
+Create a docker-compose.yml file that starts your `BoldBI` blog and a separate `PostgreSQL` instance with volume mounts for data persistence:
+
+```sh
+version: '3.5'
+
+services:
+  boldbi:
+   image: syncfusion/boldbi
+   restart: always
+   ports:
+     - 8085:80
+   # environment:
+     # - APP_BASE_URL=<app_base_url>
+   networks:
+     - boldbi
+   volumes:
+     - boldbi_data:/application/app_data
+    
+  pgdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: <Password>
+    volumes:
+      - db_data:/var/lib/postgresql
+    networks:
+      - boldbi
+
+networks:
+  boldbi:
+  
+volumes:
+  boldbi_data:
+  db_data:
+  ```
+
+> **Note:**
+> The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+
+Now, run `docker-compose up -d` from your project directory.<br/>
+ Please refer to [this guide](docs/single-image.md) to deploy Bold BI in an simplified docker compose environment with single image.
+## Start multiple container Bold BI with `docker-compose`
 Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/multi-image.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
 
 
-# License
-Please go through the license for Bold BI in [this](https://www.boldbi.com/terms-of-use/embedded) link.
+# License for the Syncfusion Bold BI product installed within the images:
+https://www.boldbi.com/terms-of-use/embedded<br />
+
+The images are provided for convenience, and contain other software which may be under other licenses (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
+
+These pre-built images are provided for convenience and include all optional/additional libraries by default. Such libraries maybe subject to different licenses than the Bold BI product.
+
+If you would like to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. Contact the Bold BI team if there are any questions (https://www.boldbi.com/support).
+
+It is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
