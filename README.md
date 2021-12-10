@@ -105,7 +105,7 @@ https://help.boldbi.com/embedded-bi/application-startup
 ## Start single container Bold BI with `docker-compose`
 You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases.
 <br/>
-Create a docker-compose.yml file that starts your `BoldBI` blog and a separate `PostgreSQL` instance with volume mounts for data persistence:
+Create a docker-compose.yml file that starts your `BoldBI` and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
 ```sh
 version: '3.5'
@@ -150,7 +150,7 @@ Now, run `docker-compose up -d` from your project directory.<br/>
 Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/multi-image.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
 
 
-# License for the Syncfusion Bold BI product installed within the images:
+# License 
 https://www.boldbi.com/terms-of-use/embedded<br />
 
 The images are provided for convenience, and contain other software which may be under other licenses (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).

@@ -17,7 +17,7 @@
   ```sh
    $  cd my_boldbi/
    ```
-   3. Create a docker-compose.yml file that starts your `BoldBI` blog and a separate `PostgreSQL` instance with volume mounts for data persistence:
+   3. Create a docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
 ```sh
 version: '3.5'
