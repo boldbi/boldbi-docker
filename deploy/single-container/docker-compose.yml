@@ -1,0 +1,41 @@
+version: '3.5'
+
+services:
+  boldbi:
+   image: syncfusion/boldbi
+   restart: always
+   ports:
+     - 8085:80
+   # environment:
+     # - APP_BASE_URL=<app_base_url>
+   networks:
+     - boldbi
+   volumes:
+     - boldbi_data:/application/app_data
+    
+  pgdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: <Password>
+    volumes:
+      - db_data:/var/lib/postgresql
+    networks:
+      - boldbi
+
+networks:
+  boldbi:
+  
+volumes:
+  boldbi_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path>'
+  db_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path>'
