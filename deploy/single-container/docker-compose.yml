@@ -32,10 +32,10 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '<host_path>'
+      device: '<host_path_boldbi_data>'
   db_data:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '<host_path>'
+      device: '<host_path_db_data>'

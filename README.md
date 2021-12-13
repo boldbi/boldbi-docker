@@ -142,25 +142,27 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '<host_path>'
+      device: '<host_path_boldbi_data>'
   db_data:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '<host_path>'
+      device: '<host_path_db_data>'
   ```
 
 > **Note:**
 > The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
 
 Now, run `docker-compose up -d` from your project directory.<br/>
- Please refer to [this guide](docs/single-image.md) to deploy Bold BI in an simplified docker compose environment with single image.
+ Please refer to [this guide](docs/single-container.md) to deploy Bold BI in an simplified docker compose environment with single image.
+
 ## Start multiple container Bold BI with `docker-compose`
-Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/multi-image.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
 
+Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/multiple-container.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
 
-# License 
+# License
+
 https://www.boldbi.com/terms-of-use/embedded<br />
 
 The images are provided for convenience, and contain other software which may be under other licenses (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
