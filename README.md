@@ -99,9 +99,9 @@ Configure the Bold BI On-Premise application startup to use the application. Ple
 https://help.boldbi.com/embedded-bi/application-startup
 
 # Docker compose:<br/>
-* [BoldBI in single container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
+* [BoldBI in single container image](#start-single-container-bold-bi-with-docker-compose).
 
-* [BoldBI in multiple container image](https://github.com/boldbi/boldbi-docker/tree/v4.2.68_docker_hub_dev#start-single-services-bold-bi-with-docker-compose).
+* [BoldBI in multiple container image](#start-multiple-container-bold-bi-with-docker-compose).
 ## Start single container Bold BI with `docker-compose`
 You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases.
 <br/>
