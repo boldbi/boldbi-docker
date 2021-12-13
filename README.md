@@ -138,7 +138,17 @@ networks:
   
 volumes:
   boldbi_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path>'
   db_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path>'
   ```
 
 > **Note:**

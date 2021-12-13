@@ -146,7 +146,7 @@ services:
     image: nginx
     restart: on-failure
     volumes:
-      -  "D:/Devop/boldbi-docker-main/boldbi-docker-main/deploy/default.conf:/etc/nginx/conf.d/default.conf"
+      -  "<default_conf_path>:/etc/nginx/conf.d/default.conf"
       # - "<ssl_cert_file_path>:/etc/ssl/domain.crt"
       # - "<ssl_key_file_path>:/etc/ssl/domain.key"
     ports:
@@ -178,8 +178,19 @@ networks:
   boldbi:
   
 volumes:
+volumes:
   boldbi_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path>'
   db_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path>'
   ```
 
 > **Note:**
