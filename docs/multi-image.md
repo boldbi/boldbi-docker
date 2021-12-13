@@ -10,13 +10,16 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
   > **Tip:**
     You can use either a `.yml` or `.yaml` extension for this file. They both works well.
   
-  2.  Change into your project directory.<br/>
+  2. Download the configuration files [here](/deploy/multi-container/). This directory includes docker-compose YML file and configuration file for Nginx.
+  
+  
+  3.  Change into your project directory.<br/>
   For example, if you named your directory `my_boldbi`:
 
   ```sh
    $  cd my_boldbi/
    ```
-   3. Create a docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
+   4. Create a docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
 ```sh
 version: '3.5'
@@ -192,6 +195,13 @@ volumes:
       o: 'bind'
       device: '<host_path>'
   ```
+ Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
+
+    For example, `"./default.conf:/etc/nginx/conf.d/default.conf"`
+        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`
+        `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
+
+    ![docker-compose.yml](/docs/images/default_conf_path.png) 
 
 > **Note:**
 > The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
