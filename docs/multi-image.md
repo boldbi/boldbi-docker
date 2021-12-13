@@ -195,13 +195,13 @@ volumes:
       o: 'bind'
       device: '<host_path>'
   ```
- Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
+  Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
 
-    For example, `"./default.conf:/etc/nginx/conf.d/default.conf"`
-        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`
+  For example, `"./default.conf:/etc/nginx/conf.d/default.conf"`<br>
+        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`<br>
         `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
 
-    ![docker-compose.yml](/docs/images/default_conf_path.png) 
+  ![docker-compose.yml](images/default_conf_path.png) 
 
 > **Note:**
 > The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
