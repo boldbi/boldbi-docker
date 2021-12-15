@@ -66,8 +66,18 @@
             o: 'bind'
             device: '<host_path_db_data>'
         ```
+  5. Replace `<app_base_url>` with your DNS or IP address, by which you want to access the application.
+    
+      For example, <br/>
+          `http://example.com` <br/>
+          `https://example.com` <br/>
+          `http://<public_ip_address>` <br/>
 
-  5. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldbi_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
+      > **Note:**
+      > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
+      > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
+
+  6. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldbi_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
        For example, <br><b>Windows:</b> `device: 'D:/boldbi/boldbi_data'` and `device: 'D:/boldbi/db_data'` <br><b>Linux:</b> `device: '/var/boldbi/boldbi_data'` and `device: '/var/boldbi/db_data'`
 
