@@ -5,9 +5,9 @@ services:
     container_name: id_web_container
     image: gcr.io/boldbi-294612/bold-identity:4.2.69
     restart: on-failure
-    # environment:
-      # - APP_BASE_URL= <app_base_url>
-      # - INSTALL_OPTIONAL_LIBS= phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql
+    environment:
+      - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
+      - INSTALL_OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql
     volumes: 
       - boldservices_data:/application/app_data
     networks:

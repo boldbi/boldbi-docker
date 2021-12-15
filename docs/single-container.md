@@ -10,69 +10,69 @@
   
   2. Download the configuration files [here](/deploy/single-container/). This directory includes docker-compose YML file and configuration file for Nginx.
 
-  > **Tip:**
-    You can use either a `.yml` or `.yaml` extension for this file. They both works well.
-  
-  3.  Change into your project directory.<br/>
-  For example, if you named your directory `my_boldbi`:
+      > **Tip:**
+        You can use either a `.yml` or `.yaml` extension for this file. They both works well.
+      
+  3.  Change into your project directory.
+  For example, if you named your directory `my_boldbi`
 
-  ```sh
-   $  cd my_boldbi/
-   ```
+      ```sh
+      $  cd my_boldbi/
+      ```
 
   4. Create a docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
-```sh
-version: '3.5'
+      ```sh
+      version: '3.5'
 
-services:
-  boldbi:
-   image: syncfusion/boldbi
-   restart: always
-   ports:
-     - 8085:80
-   # environment:
-     # - APP_BASE_URL=<app_base_url>
-   networks:
-     - boldbi
-   volumes:
-     - boldbi_data:/application/app_data
-    
-  pgdb:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: <Password>
-    volumes:
-      - db_data:/var/lib/postgresql
-    networks:
-      - boldbi
+      services:
+        boldbi:
+        image: syncfusion/boldbi
+        restart: always
+        ports:
+          - 8085:80
+        # environment:
+          # - APP_BASE_URL=<app_base_url>
+        networks:
+          - boldbi
+        volumes:
+          - boldbi_data:/application/app_data
+          
+        pgdb:
+          image: postgres
+          restart: always
+          environment:
+            POSTGRES_PASSWORD: <Password>
+          volumes:
+            - db_data:/var/lib/postgresql
+          networks:
+            - boldbi
 
-networks:
-  boldbi:
-  
-volumes:
-volumes:
-  boldbi_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '<host_path_boldbi_data>'
-  db_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '<host_path_db_data>'
-  ```
+      networks:
+        boldbi:
+        
+      volumes:
+      volumes:
+        boldbi_data:
+          driver: local
+          driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '<host_path_boldbi_data>'
+        db_data:
+          driver: local
+          driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '<host_path_db_data>'
+        ```
 
   5. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldbi_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
-       <b>For example</b> <br><b>Windows:</b> `device: 'D:/boldbi/boldbi_data'` and `device: 'D:/boldbi/db_data'` <br><b>Linux:</b> `device: '/var/boldbi/boldbi_data'` and `device: '/var/boldbi/db_data'`
+       For example, <br><b>Windows:</b> `device: 'D:/boldbi/boldbi_data'` and `device: 'D:/boldbi/db_data'` <br><b>Linux:</b> `device: '/var/boldbi/boldbi_data'` and `device: '/var/boldbi/db_data'`
 
-> **Note:**
-> The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+      > **Note:**
+      > The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
 
 ### Build the project
 

@@ -17,5 +17,4 @@ If you have an SSL certificate for your domain and need to configure the site wi
 
     ![ssl configuration](images/ssl_certificate_name.png)
 
-> **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
-<br/>
+    > **NOTE:** If you are configuring the application with SSL, then you need to update the `<app_base_url>` in docker run command with `HTTPS`.
