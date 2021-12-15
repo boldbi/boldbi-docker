@@ -10,9 +10,9 @@
 
 Bold BI is a powerful business intelligence dashboard software that helps you to get meaningful insights from your business data and make better decisions.
 
-It is an end-to-end solution for creating, managing, and sharing interactive business dashboards that includes a powerful dashboard designer for composing easily.
+It is an end-to-end solution for creating, managing, and sharing interactive business dashboards that include a powerful dashboard designer for composing easily.
 
-With deep embedding, you can interact more with your data and get insights right from your application.
+With deep embedding, you can interact more with your data and get insights directly from your application.
 
 # Supported tags
 
@@ -26,13 +26,13 @@ With deep embedding, you can interact more with your data and get insights right
 # How to use this image
 ## Start a Bold BI instance
 <br />
-To quickly get started please run below command to run BolBI in your host machine. With this command, you would be able to access the instance from the host without the container’s IP and the standard port mappings.<br/><br/>
+To quickly get started, run the following command to run Bold BI on your host machine. With this command, you would be able to access the instance from the host without the container’s IP address and the standard port mappings.<br/><br/>
 
 ```sh
 docker run --name boldbi -p 80:80 -d syncfusion/boldbi
 ```
 
-After running the command, you can access the BoldBI App  via `http://localhost` or `http://host-ip` in a browser. To know more about application startup, refer here.
+After running the command, you can access the Bold BI App by entering `http://localhost` or `http://host-ip` in a browser. To know more about application startups, refer here.
 
 ## Advanced command
 
@@ -60,7 +60,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -d syncfusion/boldbi:4.2.69
 ``` 
 
-Bold BI accepts the following  environment variables from command line.
+Bold BI accepts the following environment variables from the command line.
 | Name                          | Description   | 
 | -------------                 | ------------- | 
 | `APP_URL`                     | Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>•	You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/SSL-Termination).|
@@ -82,7 +82,7 @@ Replace the `<host_path_for_appdata_files>` value with a directory path from you
 
 ### Nginx configuration
 
-You can mount a host directory to Bold BI container for maintaining Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
+You can mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
 
 Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
 
@@ -94,7 +94,7 @@ Once, the Bold BI container started to run, you can check the directory in your 
 
 ## Application Startup
 
-Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
+Configure the Bold BI On-Premise application startup to use the application. Please refer to the following link, for more details on configuring the application startup.
 
 https://help.boldbi.com/embedded-bi/application-startup
 
@@ -103,9 +103,9 @@ https://help.boldbi.com/embedded-bi/application-startup
 
 * [BoldBI in multiple container image](#start-multiple-container-bold-bi-with-docker-compose).
 ## Start single container Bold BI with `docker-compose`
-You can use Docker Compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple BoldBi services targeted for simplifying evaluation and minimalistic production use cases.
+You can use docker-compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple Bold BI services targeted for simplifying evaluation and minimalistic production use cases.
 <br/>
-Create a docker-compose.yml file that starts your `BoldBI` and a separate `PostgreSQL` instance with volume mounts for data persistence:
+Create a docker-compose.yml file that starts your `Bold BI` as well as a separate `PostgreSQL` instance with volume mounts for data persistence:
 
 ```sh
 version: '3.5'
@@ -152,23 +152,23 @@ volumes:
   ```
 
 > **Note:**
-> The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+> The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL, respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
 
 Now, run `docker-compose up -d` from your project directory.<br/>
- Please refer to [this guide](docs/single-container.md) to deploy Bold BI in an simplified docker compose environment with single image.
+ Please refer to [this guide](docs/single-container.md) to deploy Bold BI in a simplified docker-compose environment with single image.
 
-## Start multiple container Bold BI with `docker-compose`
+## Start multiple containers Bold BI with `docker-compose`
 
-Bold BI also comes with multiple images for each of the services in it to run on docker-compose which is mainly for the purpose of production environment to scale services within Bold BI.  Please refer to [this guide](docs/multiple-container.md) to get know about the multiple images and compose details to deploy Bold BI in an advanced docker compose environment.
+Bold BI also comes with multiple images for each of the services in it to run on docker-compose, which is mainly for the production environment to scale services within Bold BI. Please refer to [this guide](docs/multiple-container.md) to get to know about the multiple images and compose details to deploy Bold BI in an advanced docker-compose environment.
 
 # License
 
 https://www.boldbi.com/terms-of-use/embedded<br />
 
-The images are provided for convenience, and contain other software which may be under other licenses (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
+The images are provided for your convenience and may contain other software that is licensed differently (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
 
-These pre-built images are provided for convenience and include all optional/additional libraries by default. Such libraries maybe subject to different licenses than the Bold BI product.
+These pre-built images are provided for convenience and include all optional and additional libraries by default. These libraries may be subject to different licenses than the Bold BI product.
 
-If you would like to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. Contact the Bold BI team if there are any questions (https://www.boldbi.com/support).
+If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team (https://www.boldbi.com/support).
 
 It is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
