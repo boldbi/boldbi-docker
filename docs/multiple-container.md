@@ -167,7 +167,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             - bi-api
             - bi-jobs
             - bi-dataservice
-        db:
+        pgdb:
           image: postgres
           restart: always
           environment:
