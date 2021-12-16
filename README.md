@@ -1,83 +1,174 @@
-# Bold BI on Docker
+<a href="https://www.boldbi.com"><img alt="boldbi" width="400" src="https://www.boldbi.com/wp-content/uploads/2019/05/boldbi-header-menu-logo.svg"></a>
+<br/>
+<br/>
 
-Bold BI can be deployed using docker-compose. Nginx will run in a separate container as reverse proxy to route traffic to other containers. Please follow these steps to deploy Bold BI using the docker-compose deployment.
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/boldbi/boldbi-docker?sort=semver)](https://github.com/boldbi/boldbi-docker/releases/latest)
+[![Documentation](https://img.shields.io/badge/docs-help.boldbi.com-blue.svg)](https://help.boldbi.com/embedded-bi)
+[![File Issues](https://img.shields.io/badge/file_issues-boldbi_support-blue.svg)](https://www.boldbi.com/support)
 
-Download the configuration files [here](deploy/). This directory includes docker-compose YML file and configuration file for Nginx.
+# What is Bold BI
 
-## docker-compose changes
+Bold BI is a powerful business intelligence dashboard software that helps you to get meaningful insights from your business data and make better decisions.
 
-1. Open **docker-compose.yml** file from the downloaded files. Replace your DNS or IP address, on which you are going to access the application in `<application_base_url>` place.
-    
-    For example, `http://example.com`, `https://example.com`, `http://<ip_address>`
+It is an end-to-end solution for creating, managing, and sharing interactive business dashboards that include a powerful dashboard designer for composing easily.
 
-2. Read the optional client library license agreement from the following link.
+With deep embedding, you can interact more with your data and get insights directly from your application.
 
-    [Consent to deploy client libraries](consent-to-deploy-client-libraries.md)
+# Supported tags
 
-3. Note the optional client libraries from the above link as comma separated names and replace it in `<comma_separated_library_names>` place.
+| Tags               | OS Version    | Last Modified |
+| -------------      | ------------- | ------------- |
+| `4.2.69`, `latest` | Debian 10  (amd64,arm64)    | 04/16/2021 |
+| `4.2.69-alpine`    | Alpine 3.13  (amd64)  | 05/17/2021 |
+| `4.2.69-focal`     | Ubuntu 20.04  (amd64)       | 05/17/2021 |
+|`4.2.69-arm64`|Debian 10 (arm64)|05/17/2021
 
-    ![docker-compose.yml](images/baseurl_clientlibrary.png) 
-
-4. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
-
-    For example, `"./default.conf:/etc/nginx/conf.d/default.conf"`
-        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`
-        `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
-
-    ![docker-compose.yml](images/default_conf_path.png) 
-
-5. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path>` in **docker-compose.yml** file.
-
-    For example, `device: 'D:/boldbi/shared'`
-        `device: '/var/boldbi/shared'`
-
-    ![docker-compose.yml](images/shared_location.png) 
-
-6. If you need to use **Bing Map** widget feature, enter value for `widget_bing_map_enable` environment variable as `true` and API key value for `widget_bing_map_api_key` on **docker-compose.yml** file.
-
-    ![Bing Map](images/bing_map_key.png) 
-
-## Configure SSL
-If you have an SSL certificate for your domain and need to configure the site with your SSL certificate, follow these steps or you can skip this.
-
-1. Uncomment the following marked lines in the **default.conf** file.
-
-    ![ssl configuration](images/uncomment_ssl_redirect.png)
-
-    ![ssl configuration](images/uncomment_lines.png)
-
-2. Comment the following marked line in the **default.conf** file.
-
-    ![ssl configuration](images/comment_lines.png)
-
-3. Replace the example.com with your domain name.
-
-4. Uncomment the following marked lines in the **docker-compose.yml** file.
-    
-    ![ssl configuration](images/uncomment_docker.png)
-
-5. Replace the certificate and key file paths, which were stored in your host machine in `<ssl_cert_file_path>` and `<ssl_key_file_path>` places on **docker-compose.yml** file.
-
-    For example, 
-    `- "D:/certificates/boldbi.crt:/etc/ssl/domain.crt"`
-    `- "D:/certificates/boldbi.key:/etc/ssl/domain.crt"`
-
-    `- "/var/mycertificates/boldbi.crt:/etc/ssl/domain.crt"`
-    `- "/var/mycertificates/boldbi.key:/etc/ssl/domain.crt"`
-
-> **NOTE:** If you are configuring the application with SSL, then you need to update the `<application_base_url>` in the **docker-compose.yml** with `HTTPS`.
-
-
-## Deploy Bold BI using docker-compose
-
-1. Run the **docker-compose.yml** file using the following docker command.
+# How to use this image
+## Start a Bold BI instance
+<br />
+To quickly get started, run the following command to run Bold BI on your host machine. With this command, you would be able to access the instance from the host without the container’s IP address and the standard port mappings.<br/><br/>
 
 ```sh
-docker-compose up
+docker run --name boldbi -p 80:80 -d syncfusion/boldbi
 ```
 
-2. Wait till you see the applications in running state. Then, use your DNS or IP address to access the application in the browser.
+After running the command, you can access the Bold BI App by entering `http://localhost` or `http://host-ip` in a browser. To know more about application startups, refer [here](#application-startup).
 
-3. Configure the Bold BI On-Premise application startup to use the application. For more details on configuring the application startup, please refer the following link.
+## Advanced command
+
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=<app_base_url> \
+     -e OPTIONAL_LIBS=<optional_library_names> \
+     -e widget_bing_map_enable=<true/false>\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -v <host_path_for_appdata_files>:/boldbi/app_data \
+     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:<tag>
+```
+### Example for Advanced docker run command
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -e OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -v D:/boldbi/app_data:/boldbi/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:4.2.69
+``` 
+
+Bold BI accepts the following environment variables from the command line.
+| Name                          | Description   | 
+| -------------                 | ------------- | 
+| `APP_URL`                     | Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>•	You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/SSL-Termination).|
+|`OPTIONAL_LIBS`|	These are the client libraries used in Bold BI by default.<br/><br/>`'phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
+| `widget_bing_map_enable`      | If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
+| `widget_bing_map_api_key`     | API key value for the Bing Map. |
+|`<host_path_for_appdata_files>` |Persistent volume path for Bold BI application data|
+|`<host_path_for_nginx_config>` |Persistent volume path for Nginx configuration|
+
+### Persisting application data
+
+You can store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
+ 
+Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
+
+> **For example**<br/>
+> Windows: `-v D:/boldbi/app_data:/boldbi/app_data`<br/>
+> Linux: `-v /home/boldbi/app_data:/boldbi/app_data`
+
+### Nginx configuration
+
+You can mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
+
+Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
+
+> **For example**<br/>
+> Windows: `-v D:/boldbi/nginx:/etc/nginx/sites-available`<br/>
+> Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
+
+Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
+
+## Application Startup
+
+Configure the Bold BI On-Premise application startup to use the application. Please refer to the following link, for more details on configuring the application startup.
+
+https://help.boldbi.com/embedded-bi/application-startup
+
+# Docker compose:<br/>
+* [BoldBI in single container image](#start-single-container-bold-bi-with-docker-compose).
+
+* [BoldBI in multiple container image](#start-multiple-container-bold-bi-with-docker-compose).
+## Start single container Bold BI with `docker-compose`
+You can use docker-compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple Bold BI services targeted for simplifying evaluation and minimalistic production use cases.
+<br/>
+Create a docker-compose.yml file that starts your `Bold BI` as well as a separate `PostgreSQL` instance with volume mounts for data persistence:
+
+```sh
+version: '3.5'
+
+services:
+  boldbi:
+   image: syncfusion/boldbi
+   restart: always
+   ports:
+     - 8085:80
+   # environment:
+     # - APP_BASE_URL=<app_base_url>
+   networks:
+     - boldbi
+   volumes:
+     - boldbi_data:/application/app_data
     
-    https://help.boldbi.com/embedded-bi/application-startup
+  pgdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: <Password>
+    volumes:
+      - db_data:/var/lib/postgresql
+    networks:
+      - boldbi
+
+networks:
+  boldbi:
+  
+volumes:
+  boldbi_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path_boldbi_data>'
+  db_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path_db_data>'
+  ```
+
+> **Note:**
+> The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL, respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+
+Now, run `docker-compose up -d` from your project directory.<br/>
+ Please refer to [this guide](docs/single-container.md) to deploy Bold BI in a simplified docker-compose environment with single image.
+
+## Start multiple containers Bold BI with `docker-compose`
+
+Bold BI also comes with multiple images for each of the services in it to run on docker-compose, which is mainly for the production environment to scale services within Bold BI. Please refer to [this guide](docs/multiple-container.md) to get to know about the multiple images and compose details to deploy Bold BI in an advanced docker-compose environment.
+
+# License
+
+https://www.boldbi.com/terms-of-use/embedded<br />
+
+The images are provided for your convenience and may contain other software that is licensed differently (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
+
+These pre-built images are provided for convenience and include all optional and additional libraries by default. These libraries may be subject to different licenses than the Bold BI product.
+
+If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team (https://www.boldbi.com/support).
+
+It is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
