@@ -108,7 +108,7 @@ Creating my_boldbi_db_1     ... done
 ```
 ### Bring up Bold BI in a web browser
 
-At this point, Bold BI should be running in http://localhost:8085 or http://host-ip:8085 (as appropriate)
+At this point, Bold BI should be running in <app_base_url>:8085 (as appropriate)
 
 > **Note:**
 > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.

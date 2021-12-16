@@ -232,7 +232,7 @@ This runs `docker-compose up` in detached mode, pulls the needed Docker images, 
 
 ### Bring up BoldBI in a web browser
 
-At this point, BoldBI should be running in http://localhost:8085 or http://host-ip:8085 (as appropriate)
+At this point, BoldBI should be running in <app_base_url>:8085 (as appropriate)
 
 > **Note:**
 > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes before the first load.

@@ -32,7 +32,7 @@ To quickly get started, run the following command to run Bold BI on your host ma
 docker run --name boldbi -p 80:80 -d syncfusion/boldbi
 ```
 
-After running the command, you can access the Bold BI App by entering `http://localhost` or `http://host-ip` in a browser. To know more about application startups, refer here.
+After running the command, you can access the Bold BI App by entering `http://localhost` or `http://host-ip` in a browser. To know more about application startups, refer [here](#application-startup).
 
 ## Advanced command
 
