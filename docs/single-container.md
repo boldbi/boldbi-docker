@@ -77,7 +77,9 @@
       > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
       > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 
-  6. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldbi_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
+  6. You can also change the Port number other than `8085`
+
+  7. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldbi_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
        For example, <br><b>Windows:</b> `device: 'D:/boldbi/boldbi_data'` and `device: 'D:/boldbi/db_data'` <br><b>Linux:</b> `device: '/var/boldbi/boldbi_data'` and `device: '/var/boldbi/db_data'`
 
@@ -108,7 +110,7 @@ Creating my_boldbi_db_1     ... done
 ```
 ### Bring up Bold BI in a web browser
 
-At this point, Bold BI should be running in <app_base_url>:8085 (as appropriate)
+At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
 
 > **Note:**
 > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.

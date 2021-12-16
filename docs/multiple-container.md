@@ -208,7 +208,9 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
       > * Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
       > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
 
-  6. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
+  6. You can also change the Port number other than `8085`
+
+  7. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
 
        For example, <br>`"./default.conf:/etc/nginx/conf.d/default.conf"`<br>
         `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`<br>
@@ -216,7 +218,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
 
      ![docker-compose.yml](images/default_conf_path.png)
 
-  7. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldservices_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
+  8. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldservices_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
        For example, <br><b>Windows:</b> `device: 'D:/boldbi/boldservices_data'` and `device: 'D:/boldbi/db_data'` <br><b>Linux:</b> `device: '/var/boldbi/boldservices_data'` and `device: '/var/boldbi/db_data'`
 
@@ -232,7 +234,7 @@ This runs `docker-compose up` in detached mode, pulls the needed Docker images, 
 
 ### Bring up BoldBI in a web browser
 
-At this point, BoldBI should be running in <app_base_url>:8085 (as appropriate)
+At this point, BoldBI should be running in `<app_base_url>:8085` (as appropriate)
 
 > **Note:**
 > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes before the first load.
