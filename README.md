@@ -18,10 +18,10 @@ With deep embedding, you can interact more with your data and get insights direc
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `4.2.69`, `latest` | Debian 10  (amd64,arm64)    | 04/16/2021 |
-| `4.2.69-alpine`    | Alpine 3.13  (amd64)  | 05/17/2021 |
-| `4.2.69-focal`     | Ubuntu 20.04  (amd64)       | 05/17/2021 |
-|`4.2.69-arm64`|Debian 10 (arm64)|05/17/2021
+| `4.2.69`, `latest` | Debian 10  (amd64,arm64)    | 12/16/2021 |
+| `4.2.69-alpine`    | Alpine 3.13  (amd64)  | 12/16/2021 |
+| `4.2.69-focal`     | Ubuntu 20.04  (amd64)       | 12/16/2021 |
+|`4.2.69-arm64`|Debian 10 (arm64)|12/16/2021
 
 # How to use this image
 ## Start a Bold BI instance
