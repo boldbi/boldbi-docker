@@ -43,7 +43,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e OPTIONAL_LIBS=<optional_library_names> \
      -e widget_bing_map_enable=<true/false>\
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -v <host_path_for_appdata_files>:/boldbi/app_data \
+     -v <host_path_for_appdata_files>:/application/app_data \
      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
      -d syncfusion/boldbi:<tag>
 ```
@@ -55,7 +55,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql \
      -e widget_bing_map_enable=true\
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -v D:/boldbi/app_data:/boldbi/app_data \
+     -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
      -d syncfusion/boldbi:4.2.69
 ``` 
@@ -77,8 +77,8 @@ You can store the application data in your host machine to make the Bold BI cont
 Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
 
 > **For example**<br/>
-> Windows: `-v D:/boldbi/app_data:/boldbi/app_data`<br/>
-> Linux: `-v /home/boldbi/app_data:/boldbi/app_data`
+> Windows: `-v D:/boldbi/app_data:/application/app_data`<br/>
+> Linux: `-v /home/boldbi/app_data:/application/app_data`
 
 ### Nginx configuration
 
