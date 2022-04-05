@@ -86,8 +86,8 @@ The below Environment variables are optional. If not provided a manual Applicati
 |`BOLD_SERVICES_DB_NAME`|No|If the database name is not specified, the system will create a new database called bold services.<br /><br />If you specify a database name, it should already exist on the server.|
 |`BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB`|No|For PostgreSQL DB Servers, this is an optional parameter.<br />The system will use the database name `postgres` by default.<br />If your database server uses a different default database, please provide it here.|
 |`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
-|`BOLD_SERVICES_USER_EMAIL`|Yes||
-|`BOLD_SERVICES_USER_PASSWORD`|Yes||
+|`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
+|`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.|
 
 ### Persisting application data
 
