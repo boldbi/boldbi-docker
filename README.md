@@ -18,10 +18,10 @@ With deep embedding, you can interact more with your data and get insights direc
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `4.2.69`, `latest` | Debian 10  (amd64,arm64)    | 12/16/2021 |
-| `4.2.69-alpine`    | Alpine 3.13  (amd64)  | 12/16/2021 |
-| `4.2.69-focal`     | Ubuntu 20.04  (amd64)       | 12/16/2021 |
-|`4.2.69-arm64`|Debian 10 (arm64)|12/16/2021
+| `5.1.55`, `latest` | Debian 10  (amd64,arm64)    | 04/16/2022 |
+| `5.1.55-alpine`    | Alpine 3.13  (amd64)  | 04/16/2022 |
+| `5.1.55-focal`     | Ubuntu 20.04  (amd64)       | 04/16/2022 |
+|`5.1.55-arm64`|Debian 10 (arm64)|04/16/2022
 
 # How to use this image
 ## Start a Bold BI instance
@@ -52,23 +52,42 @@ docker run --name boldbi -p 80:80 -p 443:443 \
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
      -e APP_URL=https://example.com \
-     -e OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql \
+     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,npgsql \
      -e widget_bing_map_enable=true\
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:4.2.69
+     -d syncfusion/boldbi:5.1.55
 ``` 
 
 Bold BI accepts the following environment variables from the command line.
-| Name                          | Description   | 
-| -------------                 | ------------- | 
-| `APP_URL`                     | Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>• For linux depoyment the default APP_URL is http://localhost or http://172.17.0.1<br/>• You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/SSL-Termination).|
-|`OPTIONAL_LIBS`|	These are the client libraries used in Bold BI by default.<br/><br/>`'phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
-| `widget_bing_map_enable`      | If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
-| `widget_bing_map_api_key`     | API key value for the Bing Map. |
-|`<host_path_for_appdata_files>` |Persistent volume path for Bold BI application data|
-|`<host_path_for_nginx_config>` |Persistent volume path for Nginx configuration|
+| Name                          |Required| Description   | 
+| -------------                 |----------| ------------- | 
+| `APP_URL`                     |No <br /><br /><br /> Needed when configuring with domain or IP| Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>• For linux depoyment the default APP_URL is http://localhost or http://172.17.0.1<br/>• You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/SSL-Termination).|
+|`OPTIONAL_LIBS`|No|	These are the client libraries used in Bold BI by default.<br/><br/>`'mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
+| `widget_bing_map_enable`      |No| If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
+| `widget_bing_map_api_key`     |No| API key value for the Bing Map. |
+|`<host_path_for_appdata_files>` |No|Persistent volume path for Bold BI application data|
+|`<host_path_for_nginx_config>` |No|Persistent volume path for Nginx configuration|
+
+<br />
+
+## Environment variables for configuring `Application Startup` in backend
+
+The below Environment variables are optional. If not provided a manual Application Startup configuration is needed.
+
+| Name                          |Required| Description   | 
+| -------------                 |----------| ------------- | 
+|`BOLD_SERVICES_DB_TYPE`|Yes|Type of database server can be used for configuring the Bold BI.<br/><br />The following DB types are accepted:<br />1. mssql – Microsoft SQL Server/Azure SQL Database<br />2. postgresql – PostgreSQL Server<br />3. mysql – MySQL/MariaDB Server|
+|`BOLD_SERVICES_DB_HOST`|Yes|Name of the Database Server|
+|`BOLD_SERVICES_DB_PORT`|No|The system will use the following default port numbers based on the database server type.<br />PostgrSQL – 5234<br />MySQL -3306<br /><br />Please specify the port number for your database server if it is configured on a different port.<br /><br />For MS SQL Server, this parameter is not necessary.|
+|`BOLD_SERVICES_DB_USER`|Yes|Username for the database server<br /><br />Please refer to [this documentation](https://help.boldbi.com/embedded-bi/faq/what-are-the-database-permissions-required-to-set-up-bold-bi-embedded/) for information on the user's permissions.|
+|`BOLD_SERVICES_DB_PASSWORD`|Yes|The database user's password|
+|`BOLD_SERVICES_DB_NAME`|No|If the database name is not specified, the system will create a new database called bold services.<br /><br />If you specify a database name, it should already exist on the server.|
+|`BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB`|No|For PostgreSQL DB Servers, this is an optional parameter.<br />The system will use the database name `postgres` by default.<br />If your database server uses a different default database, please provide it here.|
+|`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
+|`BOLD_SERVICES_USER_EMAIL`|Yes||
+|`BOLD_SERVICES_USER_PASSWORD`|Yes||
 
 ### Persisting application data
 
@@ -117,7 +136,7 @@ services:
    ports:
      - 8085:80
    # environment:
-     # - APP_BASE_URL=<app_base_url>
+     # - APP_URL=<app_base_url>
    networks:
      - boldbi
    volumes:

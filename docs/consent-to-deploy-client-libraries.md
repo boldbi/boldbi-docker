@@ -45,16 +45,6 @@ By giving consent to install client libraries to connect with Oracle, PostgreSQL
 
 [MIT License](https://github.com/pootzko/InfluxData.Net/blob/master/LICENSE)
 
-### PhantomJS WebKit
-
-PhantomJS is a headless WebKit scriptable with JavaScript. It is a free software or open source that may contain MIT, BSD, LGPL, GPL, or other similar licenses. 
-It contains third-party code. This executable file is necessary to achieve the Image and PDF export functionalities in dashboard, widgets, and schedules. 
-Without this file, the Image and PDF export options in dashboard, widgets, and schedules will no longer be available. 
-It is your decision to download Phantom JS, but you must accept all its terms and conditions, if you want to use it with Syncfusion’s products.
-  
-You can read the [License](https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD) and [Third-Party](https://github.com/ariya/phantomjs/blob/master/third-party.txt) documents.
-
-
 ### Client library names as arguments for Bold BI deployment in Docker
 
 Find the names of client libraries, which needs to be passed as a comma separated string for an environment variable in **docker run command** file.
@@ -67,7 +57,6 @@ Find the names of client libraries, which needs to be passed as a comma separate
 | Npgsql 4.0.0              | npgsql        |
 | MySQLConnector 0.45.1     | mysql         |
 | InfluxData.Net            | influxdb      |
-| PhantomJS WebKit          | phantomjs     |
 | Amazon Athena             | athena
 
 
@@ -78,7 +67,7 @@ By default all the client libraries will be installed in the Bold BI docker cont
 ### Example command for using optional libraries in Bold BI
 
 ```sh
-docker run --name boldbi -p 8085:80 -e OPTIONAL_LIBS=phantomjs,mongodb,mysql -d syncfusion/boldbi
+docker run --name boldbi -p 8085:80 -e OPTIONAL_LIBS=mongodb,mysql -d syncfusion/boldbi
 ```
 
 

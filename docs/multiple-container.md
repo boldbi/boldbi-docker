@@ -27,11 +27,11 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
       services:
         id-web:
           container_name: id_web_container
-          image: gcr.io/boldbi-294612/bold-identity:4.2.69
+          image: gcr.io/boldbi-294612/bold-identity:5.1.55
           restart: on-failure
           environment:
             - APP_BASE_URL=<app_base_url>
-            - INSTALL_OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql
+            - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,npgsql
           volumes: 
             - boldservices_data:/application/app_data
           networks:
@@ -44,7 +44,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-api:
           container_name: id_api_container
-          image: gcr.io/boldbi-294612/bold-identity-api:4.2.69
+          image: gcr.io/boldbi-294612/bold-identity-api:5.1.55
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -60,7 +60,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-ums:
           container_name: id_ums_container
-          image: gcr.io/boldbi-294612/bold-ums:4.2.69
+          image: gcr.io/boldbi-294612/bold-ums:5.1.55
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -76,7 +76,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-web:
           container_name: bi_web_container
-          image: gcr.io/boldbi-294612/boldbi-server:4.2.69
+          image: gcr.io/boldbi-294612/boldbi-server:5.1.55
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -92,9 +92,9 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-api:
           container_name: bi_api_container
-          image: gcr.io/boldbi-294612/boldbi-server-api:4.2.69
+          image: gcr.io/boldbi-294612/boldbi-server-api:5.1.55
           restart: on-failure
-          volumes: 
+          volumes:
             - boldservices_data:/application/app_data
           networks:
             - boldservices
@@ -109,7 +109,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-jobs:
           container_name: bi_jobs_container
-          image: gcr.io/boldbi-294612/boldbi-server-jobs:4.2.69
+          image: gcr.io/boldbi-294612/boldbi-server-jobs:5.1.55
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -126,7 +126,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-dataservice:
           container_name: bi_dataservice_container
-          image: gcr.io/boldbi-294612/boldbi-designer:4.2.69
+          image: gcr.io/boldbi-294612/boldbi-designer:5.1.55
           restart: on-failure
           environment:
             - widget_bing_map_enable=""
@@ -207,6 +207,8 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
       > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
       > * Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
       > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
+
+<br />
 
   6. You can also change the Port number other than `8085`
 
