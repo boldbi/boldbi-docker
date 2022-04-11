@@ -7,7 +7,7 @@ services:
     restart: on-failure
     environment:
       - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
-      - INSTALL_OPTIONAL_LIBS=phantomjs,mongodb,mysql,influxdb,snowflake,oracle,npgsql
+      - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,npgsql
     volumes: 
       - boldservices_data:/application/app_data
     networks:
@@ -38,7 +38,7 @@ services:
     container_name: id_ums_container
     image: gcr.io/boldbi-294612/bold-ums:4.2.69
     restart: on-failure
-    volumes: 
+    volumes:
       - boldservices_data:/application/app_data
     networks:
       - boldservices
@@ -104,10 +104,11 @@ services:
     container_name: bi_dataservice_container
     image: gcr.io/boldbi-294612/boldbi-designer:4.2.69
     restart: on-failure
-    environment:
-      - widget_bing_map_enable=""
-      - widget_bing_map_api_key=""
-    volumes: 
+    # environment:                         ## Refer README.md for available environment variables.
+    #   - widget_bing_map_enable=""
+    #   - widget_bing_map_api_key=""
+    #   - AppSettings__locale-path=""
+    volumes:
       - boldservices_data:/application/app_data
     networks:
       - boldservices
