@@ -44,7 +44,7 @@
           environment:
             POSTGRES_PASSWORD: <Password>
           volumes:
-            - db_data:/var/lib/postgresql
+            - db_data:/var/lib/postgresql/data/
           networks:
             - boldbi
 
