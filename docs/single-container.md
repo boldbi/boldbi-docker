@@ -43,7 +43,6 @@
           restart: always
           environment:
             POSTGRES_PASSWORD: <Password>
-            PGDATA: /var/lib/postgresql/data/
           volumes:
             - db_data:/var/lib/postgresql/data/
           networks:

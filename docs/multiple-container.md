@@ -172,7 +172,6 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
           restart: always
           environment:
             POSTGRES_PASSWORD: <Password>
-            PGDATA: /var/lib/postgresql/data/
           volumes:
             - db_data:/var/lib/postgresql/data/
           networks:
