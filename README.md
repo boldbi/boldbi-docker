@@ -18,10 +18,10 @@ With deep embedding, you can interact more with your data and get insights direc
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `5.1.55`, `latest` | Debian 10  (amd64,arm64)    | 04/11/2022 |
-| `5.1.55-alpine`    | Alpine 3.13  (amd64)  | 04/11/2022 |
-| `5.1.55-focal`     | Ubuntu 20.04  (amd64)       | 04/11/2022 |
-|`5.1.55-arm64`|Debian 10 (arm64)|04/11/2022
+| `5.2.48`, `latest` | Debian 10  (amd64,arm64)    | 04/11/2022 |
+| `5.2.48-alpine`    | Alpine 3.13  (amd64)  | 04/11/2022 |
+| `5.2.48-focal`     | Ubuntu 20.04  (amd64)       | 04/11/2022 |
+|`5.2.48-arm64`|Debian 10 (arm64)|04/11/2022
 
 # How to use this image
 ## Start a Bold BI instance
@@ -57,7 +57,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:5.1.55
+     -d syncfusion/boldbi:5.2.48
 ``` 
 
 Bold BI accepts the following environment variables from the command line.
