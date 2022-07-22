@@ -14,6 +14,30 @@ It is an end-to-end solution for creating, managing, and sharing interactive bus
 
 With deep embedding, you can interact more with your data and get insights directly from your application.
 
+## Deployment Prerequisites
+
+### Hardware requirements
+
+The following hardware requirements are necessary to run the Bold BI solution:
+
+* Operating System: You can use the Bold BI Docker on the following operating systems:
+  
+  * Windows
+  * Ubuntu 20.04 LTS
+  * Cent OS 7
+  * Mac
+* CPU: 4-core.
+* Memory: 16 GB RAM.
+* Disk Space: 8 GB or more.
+
+### Software requirements
+
+* The following software requirements are necessary to run the Bold BI Enterprise edition:
+
+* Database: Microsoft SQL Server 2012+ | PostgreSQL
+* Application: Docker
+* Web Browser: Microsoft Edge, Mozilla Firefox, and Chrome
+
 # Supported tags
 
 | Tags               | OS Version    | Last Modified |
