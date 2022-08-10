@@ -52,7 +52,6 @@
         boldbi:
         
       volumes:
-      volumes:
         boldbi_data:
           driver: local
           driver_opts:
