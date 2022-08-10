@@ -22,49 +22,49 @@
 
   4. Create a docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
-      ```sh
-      version: '3.5'
+```sh
+version: '3.5'
 
-      services:
-        boldbi:
-        image: syncfusion/boldbi
-        restart: always
-        ports:
-          - 8085:80
-        # environment:
-          # - APP_BASE_URL=<app_base_url>
-        networks:
-          - boldbi
-        volumes:
-          - boldbi_data:/application/app_data
-          
-        pgdb:
-          image: postgres
-          restart: always
-          environment:
-            POSTGRES_PASSWORD: <Password>
-          volumes:
-            - db_data:/var/lib/postgresql/data/
-          networks:
-            - boldbi
+services:
+  boldbi:
+   image: syncfusion/boldbi
+   restart: always
+   ports:
+     - 8085:80
+   # environment:
+     # - APP_URL=<app_base_url>
+   networks:
+     - boldbi
+   volumes:
+     - boldbi_data:/application/app_data
+    
+  pgdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: <Password>
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    networks:
+      - boldbi
 
-      networks:
-        boldbi:
-        
-      volumes:
-        boldbi_data:
-          driver: local
-          driver_opts:
-            type: 'none'
-            o: 'bind'
-            device: '<host_path_boldbi_data>'
-        db_data:
-          driver: local
-          driver_opts:
-            type: 'none'
-            o: 'bind'
-            device: '<host_path_db_data>'
-        ```
+networks:
+  boldbi:
+  
+volumes:
+  boldbi_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path_boldbi_data>'
+  db_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path_db_data>'
+  ```
   5. Replace `<app_base_url>` with your DNS or IP address, by which you want to access the application.
     
       For example, <br/>
