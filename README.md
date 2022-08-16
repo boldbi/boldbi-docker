@@ -20,8 +20,7 @@ With deep embedding, you can interact more with your data and get insights direc
 
 The following hardware requirements are necessary to run the Bold BI solution:
 
-* Operating System: You can use the Bold BI Docker on the following operating systems:
-  
+* Operating System: You can use the Bold BI Docker on the following operating systems: 
   * Windows
   * Ubuntu 20.04 LTS
   * Cent OS 7
