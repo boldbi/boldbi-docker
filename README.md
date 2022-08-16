@@ -31,7 +31,7 @@ The following hardware requirements are necessary to run the Bold BI solution:
 
 ### Software requirements
 
-* The following software requirements are necessary to run the Bold BI Enterprise edition:
+The following software requirements are necessary to run the Bold BI Enterprise edition:
 
 * Database: Microsoft SQL Server 2012+ | PostgreSQL
 * Application: Docker
