@@ -57,9 +57,11 @@ docker run --name boldbi -p 80:80 -d syncfusion/boldbi
 
 After running the command, you can access the Bold BI App by entering `http://localhost` or `http://host-ip` in a browser. To know more about application startups, refer [here](#application-startup).
 
-## Advanced command
+## Advanced command 
 
+This advanced command is used to configured a Bold BI application with `http` protocol. If you want to configure a Bold BI with `https` protocol then refer [this](README.md#advanced-command-for-https-protocol) command. 
 
+### Advanced command for http protocol
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
      -e APP_URL=<app_base_url> \
@@ -70,7 +72,8 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
      -d syncfusion/boldbi:<tag>
 ```
-### Example for Advanced docker run command
+
+### Example for Advanced docker run command for http protocol
 
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
@@ -82,7 +85,34 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
      -d syncfusion/boldbi:5.2.48
 ``` 
+### Advanced command for https protocol
 
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=<app_base_url> \
+     -e OPTIONAL_LIBS=<optional_library_names> \
+     -e widget_bing_map_enable=<true/false>\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -v <host_path_for_appdata_files>:/application/app_data \
+     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+     -v <host_file_path_for_ssl_.crt>:/etc/nginx/sites-available/domain.crt \
+     -v <host_file_path_for_ssl_.key>:/etc/nginx/sites-available/domain.key \
+     -d syncfusion/boldbi:<tag>
+```
+### Example for Advanced docker run command for https protocol
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,npgsql \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -v D:/boldbi/app_data:/application/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -v D:/boldbi/boldbi.crt:/etc/nginx/sites-available/domain.crt \
+     -v D:/boldbi/boldbi.key:/etc/nginx/sites-available/domain.key \
+     -d syncfusion/boldbi:5.2.48
+```
 Bold BI accepts the following environment variables from the command line.
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- | 
@@ -92,6 +122,9 @@ Bold BI accepts the following environment variables from the command line.
 | `widget_bing_map_api_key`     |No| API key value for the Bing Map. |
 |`<host_path_for_appdata_files>` |No|Persistent volume path for Bold BI application data|
 |`<host_path_for_nginx_config>` |No|Persistent volume path for Nginx configuration|
+|`<host_path_for_nginx_config>` |No|Persistent volume path for Nginx configuration|
+|`<host_file_path_for_ssl_.crt>` |Needed when configuring APP_URL with https protocol|Persistent file path for SSL .crt certificate file|
+|`<host_file_path_for_ssl_.key>` |Needed when configuring APP_URL with https protocol|Persistent file path for SSL .key certificate file|
 
 <br />
 
