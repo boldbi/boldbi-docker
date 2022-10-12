@@ -129,7 +129,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
           image: gcr.io/boldbi-294612/boldbi-designer:5.2.48
           restart: on-failure
           environment:
-            - widget_bing_map_enable=""
+            - widget_bing_map_enable=false
             - widget_bing_map_api_key=""
           volumes: 
             - boldservices_data:/application/app_data
@@ -226,6 +226,10 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
 
       > **Note:**
       > The docker volumes `boldservices_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+      
+   9. If you need to use Bing Map widget feature, enable this to true and enter the API key value for `- widget_bing_map_api_key`. By default this feature will be set to false.
+   
+      !![docker-compose-bingmap](images/bingmap.png)
 
 ### Build the project
 
