@@ -105,7 +105,7 @@ services:
     image: gcr.io/boldbi-294612/boldbi-designer:5.2.48
     restart: on-failure
     # environment:                         ## Refer README.md for available environment variables.
-    #   - widget_bing_map_enable=""
+    #   - widget_bing_map_enable=false
     #   - widget_bing_map_api_key=""
     #   - AppSettings__locale-path=""
     volumes:
