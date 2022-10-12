@@ -229,7 +229,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
       
    9. If you need to use Bing Map widget feature, enable this to true and enter the API key value for `- widget_bing_map_api_key`. By default this feature will be set to false.
    
-      !![docker-compose-bingmap](images/bingmap.png)
+      ![docker-compose-bingmap](images/bingmap.png)
 
 ### Build the project
 
