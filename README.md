@@ -41,10 +41,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `5.2.48`, `latest` | Debian 10  (amd64,arm64)    | 07/18/2022 |
-| `5.2.48-alpine`    | Alpine 3.13  (amd64)  | 07/18/2022 |
-| `5.2.48-focal`     | Ubuntu 20.04  (amd64)       | 07/18/2022 |
-|`5.2.48-arm64`|Debian 10 (arm64)|07/18/2022
+| `5.3.53`, `latest` | Debian 10  (amd64,arm64)    | 07/18/2022 |
+| `5.3.53-alpine`    | Alpine 3.13  (amd64)  | 07/18/2022 |
+| `5.3.53-focal`     | Ubuntu 20.04  (amd64)       | 07/18/2022 |
+|`5.3.53-arm64`|Debian 10 (arm64)|07/18/2022
 
 # How to use this image
 ## Start a Bold BI instance
@@ -80,7 +80,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:5.2.48
+     -d syncfusion/boldbi:5.3.53
 ``` 
 
 Bold BI accepts the following environment variables from the command line.
