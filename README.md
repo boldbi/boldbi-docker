@@ -41,10 +41,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `5.2.48`, `latest` | Debian 10  (amd64,arm64)    | 07/18/2022 |
-| `5.2.48-alpine`    | Alpine 3.13  (amd64)  | 07/18/2022 |
-| `5.2.48-focal`     | Ubuntu 20.04  (amd64)       | 07/18/2022 |
-|`5.2.48-arm64`|Debian 10 (arm64)|07/18/2022
+| `5.3.53`, `latest` | Debian 10  (amd64,arm64)    | 11/24/2022 |
+| `5.3.53-alpine`    | Alpine 3.13  (amd64)  | 11/24/2022 |
+| `5.3.53-focal`     | Ubuntu 20.04  (amd64)       | 11/24/2022 |
+|`5.3.53-arm64`      | Debian 10 (arm64)|11/24/2022
 
 # How to use this image
 ## Start a Bold BI instance
@@ -75,19 +75,19 @@ docker run --name boldbi -p 80:80 -p 443:443 \
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
      -e APP_URL=https://example.com \
-     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,npgsql \
+     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
      -e widget_bing_map_enable=true\
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:5.2.48
+     -d syncfusion/boldbi:5.3.53
 ``` 
 
 Bold BI accepts the following environment variables from the command line.
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- | 
 | `APP_URL`                     |No <br /><br /><br /> Needed when configuring with domain or IP| Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>• For linux depoyment the default APP_URL is http://localhost or http://172.17.0.1<br/>• You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/SSL-Termination).|
-|`OPTIONAL_LIBS`|No|	These are the client libraries used in Bold BI by default.<br/><br/>`'mongodb,mysql,influxdb,snowflake,oracle,npgsql'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
+|`OPTIONAL_LIBS`|No|	These are the client libraries used in Bold BI by default.<br/><br/>`'mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
 | `widget_bing_map_enable`      |No| If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
 | `widget_bing_map_api_key`     |No| API key value for the Bing Map. |
 |`<host_path_for_appdata_files>` |No|Persistent volume path for Bold BI application data|
