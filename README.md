@@ -113,8 +113,8 @@ The below Environment variables are optional. If not provided a manual Applicati
 |`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
 |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.|
 | `BOLD_SERVICES_BRANDING_MAIN_LOGO`<br /> `BOLD_SERVICES_BRANDING_LOGIN_LOGO`<br /> `BOLD_SERVICES_BRANDING_EMAIL_LOGO`<br /> `BOLD_SERVICES_BRANDING_FAVICON`<br /> `BOLD_SERVICES_BRANDING_FOOTER_LOGO`<br /> |No | If you want to upload the custom image as a logo of the site you can use these environment variables. If this environment variable is not present, Bold BI will use its default logo.<br /><br /> Type : URL <br /> <br /> Example : https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg <br /> <br /> Format : png, svg, jpg, jpeg <br /> <br /> **Note:** Enter the image URL for all the variables. If the value is given to anyone of the variable you must consider other variables also a required field.|
-|`BOLD_SERVICES_SITE_NAME`|No | If you want to customize the site name enter the site name as value. |
-|`BOLD_SERVICES_SITE_IDENTIFIER`|No| If you want to customize the identifier name enter the identifier name as value. |
+|`BOLD_SERVICES_SITE_NAME`|No | If you want to customize the site name enter the site name as value. The default site name is `Bold BI Enterprise Dashboards` |
+|`BOLD_SERVICES_SITE_IDENTIFIER`|No| If you want to customize the identifier name enter the identifier name as value. The default identifier name is `site1` |
 
 ### Auto deployment docker run command
 ```sh
