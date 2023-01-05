@@ -133,11 +133,11 @@ docker run --name boldbi -p 80:80 -p 443:443 \
       -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
       -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
       -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
-      -e BOLD_SERVICES_BRANDING_MAIN_LOGO= <branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_LOGIN_LOGO= <branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_EMAIL_LOGO= <branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_FAVICON= <branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_FOOTER_LOGO= <branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_MAIN_LOGO=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_LOGIN_LOGO=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_EMAIL_LOGO=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_FAVICON=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_FOOTER_LOGO=<branding_image_url> \
       -e BOLD_SERVICES_SITE_NAME=<site_name> \
       -e BOLD_SERVICES_SITE_IDENTIFIER=<site_identifier_name> \
       -v <host_path_for_appdata_files>:/application/app_data \
