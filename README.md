@@ -112,9 +112,85 @@ The below Environment variables are optional. If not provided a manual Applicati
 |`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
 |`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
 |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.|
-| `BOLD_SERVICES_BRANDING_MAIN_LOGO`<br /> `BOLD_SERVICES_BRANDING_LOGIN_LOGO`<br /> `BOLD_SERVICES_BRANDING_EMAIL_LOGO`<br /> `BOLD_SERVICES_BRANDING_FAVICON`<br /> `BOLD_SERVICES_BRANDING_FOOTER_LOGO`<br /> |No | If you want to upload the custom image as a logo of the site you can use these environment variables. If this environment variable is not present, Bold BI will use its default logo.<br /><br /> Type : URL <br /> <br /> Example : https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg <br /> <br /> Format : png, svg, jpg, jpeg <br /> <br /> **Note:** Enter the image URL for all the variables. If the value is given to anyone of the variable you must consider other variables also a required field.|
-|`BOLD_SERVICES_SITE_NAME`|No | If you want to customize the site name enter the site name as value. The default site name is `Bold BI Enterprise Dashboards` |
-|`BOLD_SERVICES_SITE_IDENTIFIER`|No| If you want to customize the identifier name enter the identifier name as value. The default identifier name is `site1` |
+
+## Environment variables for configuring `Branding` in backend
+The below Environment variables are optional. If not provided Bold BI will take the default configured values.
+
+<table>
+   <tr>
+      <td>
+       <b>Name</b>
+      </td>
+      <td>
+       <b>Description</b>
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_MAIN_LOGO
+      </td>
+      <td>   
+       This is header logo for the applicationand the preferred image size is 40 x 40 pixels.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_LOGIN_LOGO
+      </td>
+      <td>     
+       This is login logo for the application and the preferred image size is 200 x 40 pixels.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_EMAIL_LOGO
+      </td>
+      <td>     
+       This is email logo, and the preferred image size is 200 x 40 pixels.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_FAVICON
+      </td>
+      <td>     
+       This is favicon and the preferred image size is 40 x 40 pixels. 
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_FOOTER_LOGO
+      </td>
+      <td>     
+       This is powered by logo and the preferred size is 100 x 25 pixels.
+       <br />
+       <br />
+       <b>Note:</b><br/>• All the branding variables are accepted as URL.<br/>• <b>Ex:</b> https://example.com/loginlogo.jpg <br/>• <b>Image type:</b> png, svg, jpg, jpeg.<br/>• If you want to use the custom branding, provide the value for all branding variables If all variable values are given, application will use the branding images, otherwise it will take the default logos. 
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_SITE_NAME
+      </td>
+      <td>
+      This is organization name.     
+      <br />
+       If the value is not given, the site will be deployed using the default name.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_SITE_IDENTIFIER
+      </td>
+      <td>     
+       This is site identifier, and it will be the part of the application URL.
+      <br />
+      If the value is not given, the site will be deployed using the default value.
+      </td>
+    </tr>
+</table>
+<br/>
+
 
 ### Auto deployment docker run command
 ```sh
@@ -171,7 +247,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e BOLD_SERVICES_SITE_IDENTIFIER=branding \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:5.3.53
+     -d syncfusion/boldbi:5.3.83
 ```
 
 
