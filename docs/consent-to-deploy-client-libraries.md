@@ -57,7 +57,9 @@ Find the names of client libraries, which needs to be passed as a comma separate
 | Npgsql 4.0.0              | npgsql        |
 | MySQLConnector 0.45.1     | mysql         |
 | InfluxData.Net            | influxdb      |
-| Amazon Athena             | athena
+| Amazon Athena             | athena        |
+|Google.Cloud.BigQuery.V2	| google        |
+|ClickHouse.Client          | clickhouse    |
 
 
 > **Note :**
@@ -67,7 +69,7 @@ By default all the client libraries will be installed in the Bold BI docker cont
 ### Example command for using optional libraries in Bold BI
 
 ```sh
-docker run --name boldbi -p 8085:80 -e OPTIONAL_LIBS=mongodb,mysql -d syncfusion/boldbi
+docker run --name boldbi -p 8085:80 -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google -d syncfusion/boldbi
 ```
 
 
