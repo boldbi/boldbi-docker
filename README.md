@@ -192,7 +192,30 @@ The below Environment variables are optional. If not provided Bold BI will take 
 <br/>
 
 
-### Auto deployment docker run command
+### Auto deployment docker run command without branding variables.
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+      -e APP_URL=<app_base_url> \
+      -e OPTIONAL_LIBS=<optional_library_names> \
+      -e widget_bing_map_enable=<true/false>\
+      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+      -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
+      -e BOLD_SERVICES_DB_TYPE=<data_base_server_type>  \
+      -e BOLD_SERVICES_DB_HOST=<data_base_server_host> \
+      -e BOLD_SERVICES_DB_PORT=<data_base_server_port> \
+      -e BOLD_SERVICES_DB_USER=<data_base_user_name> \
+      -e BOLD_SERVICES_DB_PASSWORD=<data_base_server_password> \ 
+      -e BOLD_SERVICES_DB_NAME=<excisting_data_base_name> \
+      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
+      -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
+      -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
+      -v <host_path_for_appdata_files>:/application/app_data \
+      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+      -d syncfusion/boldbi:<tag>
+```
+
+### Auto deployment docker run command with branding variables.
+
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
       -e APP_URL=<app_base_url> \
@@ -220,7 +243,30 @@ docker run --name boldbi -p 80:80 -p 443:443 \
       -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
       -d syncfusion/boldbi:<tag>
 ```
-## Example for Auto deployment docker run command
+### Example for Auto deployment docker run command without branding variable
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
+     -e BOLD_SERVICES_DB_TYPE=<data_base_server_type_Eg: mssql, mysql and postgresql>  \
+     -e BOLD_SERVICES_DB_HOST=localhost \
+     -e BOLD_SERVICES_DB_PORT=5432 \
+     -e BOLD_SERVICES_DB_USER=boldbi-user \
+     -e BOLD_SERVICES_DB_PASSWORD=boldbi@123 \ 
+     -e BOLD_SERVICES_DB_NAME=bold-services \
+     -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
+     -e BOLD_SERVICES_USER_EMAIL=admin@boldbi.com \
+     -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
+     -v D:/boldbi/app_data:/application/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:5.3.83
+```
+
+### Example for Auto deployment docker run command with branding variable
 
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
