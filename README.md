@@ -246,7 +246,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
       -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
       -d syncfusion/boldbi:<tag>
 ```
-## Example for Auto deployment docker run command.
+## Example for auto deployment docker run command.
 
 ### Without branding
 
