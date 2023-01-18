@@ -194,7 +194,7 @@ The below Environment variables are optional. If not provided Bold BI will take 
 
 ## Auto deployment docker run command.
 
-### without branding variables.
+### Without branding variables.
 
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
@@ -217,7 +217,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
       -d syncfusion/boldbi:<tag>
 ```
 
-### with branding variables.
+### With branding variables.
 
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
@@ -248,7 +248,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
 ```
 ## Example for Auto deployment docker run command.
 
-### without branding variable
+### Without branding variable
 
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
@@ -271,7 +271,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -d syncfusion/boldbi:5.3.83
 ```
 
-### with branding variable
+### With branding variable
 
 ```sh
 docker run --name boldbi -p 80:80 -p 443:443 \
