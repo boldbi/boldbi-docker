@@ -215,3 +215,9 @@ These pre-built images are provided for convenience and include all optional and
 If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team (https://www.boldbi.com/support).
 
 It is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
+
+## FAQ
+
+[How to configure SSL for Bold BI application in single container and multiple container](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-configure-ssl-for-docker-compose.md)
+
+[How to reset the database for Bold BI application in docker environment](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-configure-ssl-for-docker-compose.md)
