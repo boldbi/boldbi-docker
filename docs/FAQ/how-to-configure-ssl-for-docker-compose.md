@@ -29,7 +29,7 @@
 
 4. Refer below document for SSL changes in `nginx` file .
 
-   https://github.com/boldbi/boldbi-docker/blob/FAQ/docs/ssl-termination.md
+   https://github.com/boldbi/boldbi-docker/blob/main/docs/ssl-termination.md
    
 5. Restart the Bold BI container using below command.
    ~~~sh
@@ -43,7 +43,7 @@
 
 2. Refer below document for SSL changes in `nginx` file .
 
-   https://github.com/boldbi/boldbi-docker/blob/FAQ/docs/ssl-termination.md
+   https://github.com/boldbi/boldbi-docker/blob/main/docs/ssl-termination.md
 
 3. Restart the Nginx container using below command.
    ~~~sh
