@@ -1,4 +1,4 @@
-# How to configure SSL for Bold BI application in single container and multiple container.
+# How to configure SSL for Bold BI application.
 
 * [Single container deployment](#single-container-deployment)
 * [Multi container deployment](#multi-container-deployment)
