@@ -114,7 +114,7 @@ The below Environment variables are optional. If not provided a manual Applicati
 |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.|
 
 ## Environment variables for configuring `Branding` in backend
-The below Environment variables are optional. If not provided Bold BI will take the default configured values.
+The following environment variables are optional. If they are not provided, Bold BI will use the default configured values.
 
 <table>
    <tr>
@@ -130,7 +130,7 @@ The below Environment variables are optional. If not provided Bold BI will take 
        BOLD_SERVICES_BRANDING_MAIN_LOGO
       </td>
       <td>   
-       This is header logo for the applicationand the preferred image size is 40 x 40 pixels.
+       This is the header logo for the application, and the preferred image size is 40 x 40 pixels.
       </td>
     </tr>
     <tr>
@@ -138,7 +138,7 @@ The below Environment variables are optional. If not provided Bold BI will take 
        BOLD_SERVICES_BRANDING_LOGIN_LOGO
       </td>
       <td>     
-       This is login logo for the application and the preferred image size is 200 x 40 pixels.
+       This is the login logo for the application, and the preferred image size is 200 x 40 pixels.
       </td>
     </tr>
     <tr>
@@ -146,7 +146,7 @@ The below Environment variables are optional. If not provided Bold BI will take 
        BOLD_SERVICES_BRANDING_EMAIL_LOGO
       </td>
       <td>     
-       This is email logo, and the preferred image size is 200 x 40 pixels.
+       This is an email logo, and the preferred image size is 200 x 40 pixels.
       </td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@ The below Environment variables are optional. If not provided Bold BI will take 
        BOLD_SERVICES_BRANDING_FAVICON
       </td>
       <td>     
-       This is favicon and the preferred image size is 40 x 40 pixels. 
+       This is a favicon, and the preferred image size is 40 x 40 pixels. 
       </td>
     </tr>
     <tr>
@@ -162,10 +162,10 @@ The below Environment variables are optional. If not provided Bold BI will take 
        BOLD_SERVICES_BRANDING_FOOTER_LOGO
       </td>
       <td>     
-       This is powered by logo and the preferred size is 100 x 25 pixels.
+       This is powered by the logo, and the preferred size is 100 x 25 pixels.
        <br />
        <br />
-       <b>Note:</b><br/>• All the branding variables are accepted as URL.<br/>• <b>Ex:</b> https://example.com/loginlogo.jpg <br/>• <b>Image type:</b> png, svg, jpg, jpeg.<br/>• If you want to use the custom branding, provide the value for all branding variables If all variable values are given, application will use the branding images, otherwise it will take the default logos. 
+       <b>Note:</b><br/>• All branding variables are accepted as URL.<br/>• <b>Ex:</b> https://example.com/loginlogo.jpg <br/>• <b>Image type:</b> png, svg, jpg, jpeg.<br/>• If you want to use custom branding, provide the value for all branding variables. If all variable values are given, the application will use the branding images, otherwise, it will take the default logos. 
       </td>
     </tr>
     <tr>
