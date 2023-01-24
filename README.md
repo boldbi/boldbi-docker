@@ -221,3 +221,12 @@ It is the image user's responsibility to ensure that any use of this image compl
 [How to configure SSL for Bold BI application in single container and multiple container](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-configure-ssl-for-docker-compose.md)
 
 [How to reset the database for Bold BI application in docker environment](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-configure-ssl-for-docker-compose.md)
+
+[How to configure ssl for single command deployment](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-configure-ssl-for-single-command.md)
+
+[How to upgrade a new image using docker command](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-upgrade-new-image-in-docker-command.md)
+
+[How to upgrade a new image in docker environment using docker environment](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/.mdhow-to-upgrade-new-image-in-docker-compose)
+
+
+
