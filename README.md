@@ -101,7 +101,7 @@ The below Environment variables are optional. If not provided a manual Applicati
 
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- |
-|`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key of Bold BI|
+|`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key for activating the Bold BI. Please refer to [this document](https://help.boldbi.com/embedded-bi/faq/how-to-get-offline-unlock-key/) to download the key. <br/> If you don't have the download key option, please create a support ticket [here](https://support.boldbi.com/create). |
 |`BOLD_SERVICES_DB_TYPE`|Yes|Type of database server can be used for configuring the Bold BI.<br/><br />The following DB types are accepted:<br />1. mssql – Microsoft SQL Server/Azure SQL Database<br />2. postgresql – PostgreSQL Server<br />3. mysql – MySQL/MariaDB Server|
 |`BOLD_SERVICES_DB_HOST`|Yes|Name of the Database Server|
 |`BOLD_SERVICES_DB_PORT`|No|The system will use the following default port numbers based on the database server type.<br />PostgrSQL – 5234<br />MySQL -3306<br /><br />Please specify the port number for your database server if it is configured on a different port.<br /><br />For MS SQL Server, this parameter is not necessary.|
@@ -112,6 +112,196 @@ The below Environment variables are optional. If not provided a manual Applicati
 |`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
 |`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
 |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.|
+
+## Environment variables for configuring `Branding` in backend
+The following environment variables are optional. If they are not provided, Bold BI will use the default configured values.
+
+<table>
+   <tr>
+      <td>
+       <b>Name</b>
+      </td>
+      <td>
+       <b>Description</b>
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_MAIN_LOGO
+      </td>
+      <td>   
+       This is the header logo for the application, and the preferred image size is 40 x 40 pixels.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_LOGIN_LOGO
+      </td>
+      <td>     
+       This is the login logo for the application, and the preferred image size is 200 x 40 pixels.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_EMAIL_LOGO
+      </td>
+      <td>     
+       This is an email logo, and the preferred image size is 200 x 40 pixels.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_FAVICON
+      </td>
+      <td>     
+       This is a favicon, and the preferred image size is 40 x 40 pixels. 
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_BRANDING_FOOTER_LOGO
+      </td>
+      <td>     
+       This is powered by the logo, and the preferred size is 100 x 25 pixels.
+       <br />
+       <br />
+       <b>Note:</b><br/>• All branding variables are accepted as URL.<br/>• <b>Ex:</b> https://example.com/loginlogo.jpg.<br/>• <b>Image type:</b> png, svg, jpg, jpeg.<br/>• If you want to use custom branding, provide the value for all branding variables. If all variable values are given, the application will use the branding images, otherwise, it will take the default logos. 
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_SITE_NAME
+      </td>
+      <td>
+      This is organization name.     
+      <br />
+       If the value is not given, the site will be deployed using the default name.
+      </td>
+    </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_SITE_IDENTIFIER
+      </td>
+      <td>     
+       This is site identifier, and it will be the part of the application URL.
+      <br />
+      If the value is not given, the site will be deployed using the default value.
+      </td>
+    </tr>
+</table>
+<br/>
+
+
+## Auto deployment docker run command.
+
+### Without branding
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+      -e APP_URL=<app_base_url> \
+      -e OPTIONAL_LIBS=<optional_library_names> \
+      -e widget_bing_map_enable=<true/false>\
+      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+      -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
+      -e BOLD_SERVICES_DB_TYPE=<data_base_server_type>  \
+      -e BOLD_SERVICES_DB_HOST=<data_base_server_host> \
+      -e BOLD_SERVICES_DB_PORT=<data_base_server_port> \
+      -e BOLD_SERVICES_DB_USER=<data_base_user_name> \
+      -e BOLD_SERVICES_DB_PASSWORD=<data_base_server_password> \ 
+      -e BOLD_SERVICES_DB_NAME=<excisting_data_base_name> \
+      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
+      -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
+      -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
+      -v <host_path_for_appdata_files>:/application/app_data \
+      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+      -d syncfusion/boldbi:<tag>
+```
+
+### With branding
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+      -e APP_URL=<app_base_url> \
+      -e OPTIONAL_LIBS=<optional_library_names> \
+      -e widget_bing_map_enable=<true/false>\
+      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+      -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
+      -e BOLD_SERVICES_DB_TYPE=<data_base_server_type>  \
+      -e BOLD_SERVICES_DB_HOST=<data_base_server_host> \
+      -e BOLD_SERVICES_DB_PORT=<data_base_server_port> \
+      -e BOLD_SERVICES_DB_USER=<data_base_user_name> \
+      -e BOLD_SERVICES_DB_PASSWORD=<data_base_server_password> \ 
+      -e BOLD_SERVICES_DB_NAME=<excisting_data_base_name> \
+      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
+      -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
+      -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
+      -e BOLD_SERVICES_BRANDING_MAIN_LOGO=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_LOGIN_LOGO=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_EMAIL_LOGO=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_FAVICON=<branding_image_url> \
+      -e BOLD_SERVICES_BRANDING_FOOTER_LOGO=<branding_image_url> \
+      -e BOLD_SERVICES_SITE_NAME=<site_name> \
+      -e BOLD_SERVICES_SITE_IDENTIFIER=<site_identifier_name> \
+      -v <host_path_for_appdata_files>:/application/app_data \
+      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+      -d syncfusion/boldbi:<tag>
+```
+## Example for auto deployment docker run command.
+
+### Without branding
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
+     -e BOLD_SERVICES_DB_TYPE=<data_base_server_type_Eg: mssql, mysql and postgresql>  \
+     -e BOLD_SERVICES_DB_HOST=localhost \
+     -e BOLD_SERVICES_DB_PORT=5432 \
+     -e BOLD_SERVICES_DB_USER=boldbi-user \
+     -e BOLD_SERVICES_DB_PASSWORD=boldbi@123 \ 
+     -e BOLD_SERVICES_DB_NAME=bold-services \
+     -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
+     -e BOLD_SERVICES_USER_EMAIL=admin@boldbi.com \
+     -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
+     -v D:/boldbi/app_data:/application/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:5.3.83
+```
+
+### With branding
+
+```sh
+docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
+     -e widget_bing_map_enable=true\
+     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
+     -e BOLD_SERVICES_DB_TYPE=<data_base_server_type_Eg: mssql, mysql and postgresql>  \
+     -e BOLD_SERVICES_DB_HOST=localhost \
+     -e BOLD_SERVICES_DB_PORT=5432 \
+     -e BOLD_SERVICES_DB_USER=boldbi-user \
+     -e BOLD_SERVICES_DB_PASSWORD=boldbi@123 \ 
+     -e BOLD_SERVICES_DB_NAME=bold-services \
+     -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
+     -e BOLD_SERVICES_USER_EMAIL=admin@boldbi.com \
+     -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
+     -e BOLD_SERVICES_BRANDING_MAIN_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
+     -e BOLD_SERVICES_BRANDING_LOGIN_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
+     -e BOLD_SERVICES_BRANDING_EMAIL_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
+     -e BOLD_SERVICES_BRANDING_FAVICON=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
+     -e BOLD_SERVICES_BRANDING_FOOTER_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
+     -e BOLD_SERVICES_SITE_NAME=bold-dashboards \
+     -e BOLD_SERVICES_SITE_IDENTIFIER=branding \
+     -v D:/boldbi/app_data:/application/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:5.3.83
+```
+
+
 
 ### Persisting application data
 
@@ -227,6 +417,4 @@ It is the image user's responsibility to ensure that any use of this image compl
 [How to upgrade a new image using docker command](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-upgrade-new-image-in-docker-command.md)
 
 [How to upgrade a new image in docker environment using docker environment](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/.mdhow-to-upgrade-new-image-in-docker-compose)
-
-
 
