@@ -82,7 +82,6 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
      -d syncfusion/boldbi:5.3.83
 ``` 
-**Note**: We request you to use online Postgres SQL or Postgres SQL as service using docker compose. Since, the IP address of Postgres server(which is created using docker run command) changed whenever you restart the machine.
 
 Bold BI accepts the following environment variables from the command line.
 | Name                          |Required| Description   | 
