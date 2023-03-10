@@ -225,7 +225,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 <br />
 
   6. Enter the variable information needed to complete the auto-deployment.
-     ss ```
+     ```sh
         environment:
           - BOLD_SERVICES_HOSTING_ENVIRONMENT=docker
          # - BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>
