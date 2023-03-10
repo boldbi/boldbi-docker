@@ -7,7 +7,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
   1. Create an empty project directory.<br/>
   You can name the directory something easy for you to remember. This directory is the context for your application image. This project directory should contains a `docker-compose.yml` file which is complete in itself for a good starter BoldBI project.
 
-  2. Download the configuration files [here](/deploy/multiple-container/). This directory includes docker-compose YML file and configuration file for Nginx.
+  2. Download the configuration files [here](/deploy/multiple-container/auto-deploy/). This directory includes docker-compose YML file and configuration file for Nginx.
   
       > **Tip:**
         You can use either a `.yml` or `.yaml` extension for this file. They both works well.
