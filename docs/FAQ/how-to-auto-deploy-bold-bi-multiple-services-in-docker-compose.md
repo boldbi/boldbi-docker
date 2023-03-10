@@ -225,10 +225,22 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 <br />
 
   6. Enter the variable information needed to complete the auto-deployment.
-
-     ![auto-deploy-env](../images/auto-deploy-env.png)
+     ss ```
+        environment:
+          - BOLD_SERVICES_HOSTING_ENVIRONMENT=docker
+         # - BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>
+         # - BOLD_SERVICES_DB_TYPE=<data_base_server_type>
+         # - BOLD_SERVICES_DB_HOST=<data_base_server_host>
+         # - BOLD_SERVICES_DB_PORT=<data_base_server_port>
+         # - BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name>
+         # - BOLD_SERVICES_DB_USER=<data_base_user_name>
+         # - BOLD_SERVICES_DB_PASSWORD=<data_base_server_password>
+         # - BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email>
+         # - BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password>
+     ```
      
      ### Environment variables details for configuring Application Startup in the backend.
+     
       | Name                          |Required| Description   | 
       | -------------                 |----------| ------------- |
       |`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key for activating the Bold BI. Please refer to [this document](https://help.boldbi.com/embedded-bi/faq/how-to-get-offline-unlock-key/) to download the key. <br/> If you don't have the download key option, please create a support ticket [here](https://support.boldbi.com/create). |
@@ -242,6 +254,10 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
       |`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
       |`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
       |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.<br /> <br />**Note:** <br />Password must meet the following requirements. It must contain,At least 6 characters, 1 uppercase character, 1 lowercase character, 1 numeric character, 1 special character |
+      
+      EX:
+ 
+      ![auto-deploy-env](../images/auto-deploy-env.png)
  
   7. You can also change the Port number other than `8085`
 
