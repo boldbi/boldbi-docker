@@ -7,7 +7,7 @@ services:
     restart: on-failure
     environment:
       - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
-      - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,npgsql
+      - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
     volumes: 
       - boldservices_data:/application/app_data
     networks:
