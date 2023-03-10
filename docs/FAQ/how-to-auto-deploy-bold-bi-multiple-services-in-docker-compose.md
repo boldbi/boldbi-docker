@@ -224,7 +224,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
 <br />
 
-  6. Enter the variable information needed to complete the auto-deployment.
+  6. Uncommand and enter the variable information needed to complete the auto-deployment.
      ```sh
         environment:
           - BOLD_SERVICES_HOSTING_ENVIRONMENT=docker
