@@ -6,7 +6,7 @@ services:
     image: gcr.io/boldbi-294612/bold-identity:6.1.8
     restart: on-failure
     environment:
-      - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
+      - APP_BASE_URL=<app_base_url>
       - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
     volumes: 
       - boldservices_data:/application/app_data
@@ -38,6 +38,17 @@ services:
     container_name: id_ums_container
     image: gcr.io/boldbi-294612/bold-ums:6.1.8
     restart: on-failure
+    environment:
+      - BOLD_SERVICES_HOSTING_ENVIRONMENT=docker
+     # - BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>
+     # - BOLD_SERVICES_DB_TYPE=<data_base_server_type>
+     # - BOLD_SERVICES_DB_HOST=<data_base_server_host>
+     # - BOLD_SERVICES_DB_PORT=<data_base_server_port>
+     # - BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name>
+     # - BOLD_SERVICES_DB_USER=<data_base_user_name>
+     # - BOLD_SERVICES_DB_PASSWORD=<data_base_server_password>
+     # - BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email>
+     # - BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password>
     volumes:
       - boldservices_data:/application/app_data
     networks:
