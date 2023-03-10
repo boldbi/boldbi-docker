@@ -256,6 +256,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
       |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.<br /> <br />**Note:** <br />Password must meet the following requirements. It must contain,At least 6 characters, 1 uppercase character, 1 lowercase character, 1 numeric character, 1 special character |
       
       **Example:**
+
       ![auto-deploy-env](../images/auto-deploy-env.png)
  
   7. You can also change the Port number other than `8085`
