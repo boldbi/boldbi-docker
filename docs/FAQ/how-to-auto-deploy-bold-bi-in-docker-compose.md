@@ -225,8 +225,9 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 <br />
 
   6. You can also change the Port number other than `8085`
+  7. 
 
-  7. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
+  8. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
 
        For example, <br>`"./default.conf:/etc/nginx/conf.d/default.conf"`<br>
         `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`<br>
@@ -234,14 +235,14 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
      ![docker-compose.yml](images/default_conf_path.png)
 
-  8. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldservices_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
+  9. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldservices_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
        For example, <br><b>Windows:</b> `device: 'D:/boldbi/boldservices_data'` and `device: 'D:/boldbi/db_data'` <br><b>Linux:</b> `device: '/var/boldbi/boldservices_data'` and `device: '/var/boldbi/db_data'`
 
       > **Note:**
       > The docker volumes `boldservices_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
       
-   9. If you need to use Bing Map widget feature, enable this to true and enter the API key value for `- widget_bing_map_api_key`. By default this feature will be set to false.
+  10. If you need to use Bing Map widget feature, enable this to true and enter the API key value for `- widget_bing_map_api_key`. By default this feature will be set to false.
    
       ![docker-compose-bingmap](images/bingmap.png)
 
@@ -272,4 +273,3 @@ https://help.boldbi.com/embedded-bi/application-startup
 
 The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
 The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
-
