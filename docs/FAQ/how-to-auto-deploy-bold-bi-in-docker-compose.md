@@ -238,7 +238,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
         `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`<br>
         `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
 
-     ![docker-compose.yml](images/default_conf_path.png)
+     ![docker-compose.yml](../images/default_conf_path.png)
 
   9. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldservices_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
@@ -249,7 +249,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
       
   10. If you need to use Bing Map widget feature, enable this to true and enter the API key value for `- widget_bing_map_api_key`. By default this feature will be set to false.
    
-      ![docker-compose-bingmap](images/bingmap.png)
+      ![docker-compose-bingmap](../images/bingmap.png)
 
 ### Build the project
 
