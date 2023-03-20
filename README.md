@@ -396,7 +396,7 @@ Bold BI also comes with multiple images for each of the services in it to run on
 
 # License
 
-https://www.boldbi.com/terms-of-use/embedded<br />
+https://www.boldbi.com/terms-of-use#embedded<br />
 
 The images are provided for your convenience and may contain other software that is licensed differently (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
 
