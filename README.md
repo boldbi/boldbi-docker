@@ -25,8 +25,8 @@ The following hardware requirements are necessary to run the Bold BI solution:
   * Ubuntu 20.04 LTS
   * Cent OS 7
   * Mac
-* CPU: 2-core.
-* Memory: 4 GB RAM.
+* CPU: 4-core.
+* Memory: 16 GB RAM.
 * Disk Space: 8 GB or more.
 
 ### Software requirements
