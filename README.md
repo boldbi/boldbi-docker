@@ -41,10 +41,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags               | OS Version    | Last Modified |
 | -------------      | ------------- | ------------- |
-| `6.2.7`, `latest` | Debian 10  (amd64,arm64)    | 03/09/2023 |
-| `6.2.7-alpine`    | Alpine 3.13  (amd64)  | 03/09/2023 |
-| `6.2.7-focal`     | Ubuntu 20.04  (amd64)       | 03/09/2023 |
-|`6.2.7-arm64`      | Debian 10 (arm64)|03/09/2023
+| `6.2.7`, `latest` | Debian 10  (amd64,arm64)    | 04/10/2023 |
+| `6.2.7-alpine`    | Alpine 3.13  (amd64)  | 04/10/2023 |
+| `6.2.7-focal`     | Ubuntu 20.04  (amd64)       | 04/10/2023 |
+|`6.2.7-arm64`      | Debian 10 (arm64)|04/10/2023
 
 # How to use this image
 ## Start a Bold BI instance
