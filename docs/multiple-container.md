@@ -27,7 +27,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
       services:
         id-web:
           container_name: id_web_container
-          image: gcr.io/boldbi-294612/bold-identity:6.2.7
+          image: gcr.io/boldbi-294612/bold-identity:6.3.3
           restart: on-failure
           environment:
             - APP_BASE_URL=<app_base_url>
@@ -44,7 +44,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-api:
           container_name: id_api_container
-          image: gcr.io/boldbi-294612/bold-identity-api:6.2.7
+          image: gcr.io/boldbi-294612/bold-identity-api:6.3.3
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -60,7 +60,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-ums:
           container_name: id_ums_container
-          image: gcr.io/boldbi-294612/bold-ums:6.2.7
+          image: gcr.io/boldbi-294612/bold-ums:6.3.3
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -76,7 +76,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-web:
           container_name: bi_web_container
-          image: gcr.io/boldbi-294612/boldbi-server:6.2.7
+          image: gcr.io/boldbi-294612/boldbi-server:6.3.3
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -92,7 +92,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-api:
           container_name: bi_api_container
-          image: gcr.io/boldbi-294612/boldbi-server-api:6.2.7
+          image: gcr.io/boldbi-294612/boldbi-server-api:6.3.3
           restart: on-failure
           volumes:
             - boldservices_data:/application/app_data
@@ -109,7 +109,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-jobs:
           container_name: bi_jobs_container
-          image: gcr.io/boldbi-294612/boldbi-server-jobs:6.2.7
+          image: gcr.io/boldbi-294612/boldbi-server-jobs:6.3.3
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -126,7 +126,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-dataservice:
           container_name: bi_dataservice_container
-          image: gcr.io/boldbi-294612/boldbi-designer:6.2.7
+          image: gcr.io/boldbi-294612/boldbi-designer:6.3.3
           restart: on-failure
           environment:
             - widget_bing_map_enable=false
