@@ -66,6 +66,8 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e OPTIONAL_LIBS=<optional_library_names> \
      -e widget_bing_map_enable=<true/false>\
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -e AppSettings__CustomSizePDFExport=<true/false> \
+     -e AppSettings__BrowserTimezone=<true/false> \
      -v <host_path_for_appdata_files>:/application/app_data \
      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
      -d syncfusion/boldbi:<tag>
@@ -78,6 +80,8 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
      -e widget_bing_map_enable=true\
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
+     -e AppSettings__CustomSizePDFExport=false \
+     -e AppSettings__BrowserTimezone=false \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
      -d syncfusion/boldbi:6.6.12
@@ -90,6 +94,7 @@ Bold BI accepts the following environment variables from the command line.
 |`OPTIONAL_LIBS`|No|	These are the client libraries used in Bold BI by default.<br/><br/>`'mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
 | `widget_bing_map_enable`      |No| If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
 | `widget_bing_map_api_key`     |No| API key value for the Bing Map. |
+| `AppSettings__CustomSizePDFExport`|No|To utilize a customized page size for A4 PDF export, set this feature to true. By default, this feature is set to false.|
 |`<host_path_for_appdata_files>` |No|Persistent volume path for Bold BI application data|
 |`<host_path_for_nginx_config>` |No|Persistent volume path for Nginx configuration|
 
