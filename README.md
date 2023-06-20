@@ -41,10 +41,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags               | OS Version    | Last Modified(MM/DD/YYYY)|
 | -------------      | ------------- | ------------- |
-| `6.6.12`, `latest` | Debian 10  (amd64,arm64)    | 06/05/2023 |
-| `6.6.12-alpine`    | Alpine 3.13  (amd64)  | 06/05/2023 |
-| `6.6.12-focal`     | Ubuntu 20.04  (amd64)       | 06/05/2023 |
-|`6.6.12-arm64`      | Debian 10 (arm64)|06/05/2023
+| `6.7.11`, `latest` | Debian 10  (amd64,arm64)    | 06/20/2023 |
+| `6.7.11-alpine`    | Alpine 3.13  (amd64)  | 06/20/2023 |
+| `6.7.11-focal`     | Ubuntu 20.04  (amd64)       | 06/20/2023 |
+|`6.7.11-arm64`      | Debian 10 (arm64)|06/20/2023
 
 # How to use this image
 ## Start a Bold BI instance
@@ -84,7 +84,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e AppSettings__BrowserTimezone=false \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:6.6.12
+     -d syncfusion/boldbi:6.7.11
 ``` 
 
 Bold BI accepts the following environment variables from the command line.
@@ -274,7 +274,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:6.6.12
+     -d syncfusion/boldbi:6.7.11
 ```
 
 ### With branding
@@ -304,7 +304,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e BOLD_SERVICES_SITE_IDENTIFIER=branding \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:6.6.12
+     -d syncfusion/boldbi:6.7.11
 ```
 
 
