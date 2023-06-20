@@ -95,6 +95,7 @@ Bold BI accepts the following environment variables from the command line.
 | `widget_bing_map_enable`      |No| If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
 | `widget_bing_map_api_key`     |No| API key value for the Bing Map. |
 | `AppSettings__CustomSizePDFExport`|No|To utilize a customized page size for A4 PDF export, set this feature to true. By default, this feature is set to false.|
+| `AppSettings__BrowserTimezone`|No|If you need to use Browser time zone feature , enable this to true. By default this feature will be set to false.|
 |`<host_path_for_appdata_files>` |No|Persistent volume path for Bold BI application data|
 |`<host_path_for_nginx_config>` |No|Persistent volume path for Nginx configuration|
 
