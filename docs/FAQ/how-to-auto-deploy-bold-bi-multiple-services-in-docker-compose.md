@@ -144,6 +144,8 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
           #   - widget_bing_map_enable=false
           #   - widget_bing_map_api_key=""
           #   - AppSettings__locale-path=""
+          #   - AppSettings__BrowserTimezone=fasle
+          #   - AppSettings__CustomSizePDFExport=fasle
           volumes:
             - boldservices_data:/application/app_data
           networks:
