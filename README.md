@@ -22,8 +22,7 @@ The following hardware requirements are necessary to run the Bold BI solution:
 
 * Operating System: You can use the Bold BI Docker on the following operating systems: 
   * Windows
-  * Ubuntu 20.04 LTS
-  * Cent OS 7
+  * Linux
   * Mac
 * CPU: 2-core.
 * Memory: 4 GB RAM.
@@ -34,7 +33,7 @@ The following hardware requirements are necessary to run the Bold BI solution:
 The following software requirements are necessary to run the Bold BI Enterprise edition:
 
 * Database: Microsoft SQL Server 2012+ | PostgreSQL | MySQL
-* Application: Docker
+* Application: [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) 
 * Web Browser: Microsoft Edge, Mozilla Firefox, and Chrome
 
 # Supported tags
@@ -47,47 +46,53 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 |`6.8.9-arm64`      | Debian 10 (arm64)|07/05/2023
 
 # How to use this image
-## Start a Bold BI instance
-<br />
-To quickly get started, run the following command to run Bold BI on your host machine. With this command, you would be able to access the instance from the host without the container’s IP address and the standard port mappings.<br/><br/>
 
-```sh
-docker run --name boldbi -p 80:80 -d syncfusion/boldbi
-```
+The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to starts the BoldBI and a separate PostgreSQL instance with volume mounts for data persistence.
 
-After running the command, you can access the Bold BI App by entering `http://localhost` or `http://host-ip` in a browser. To know more about application startups, refer [here](#application-startup).
+## Using Docker Compose 
 
-## Advanced command
+1. Download docker compose file using the below command.
+   ```sh
+   docker run --name boldbi -p 80:80 -d syncfusion/boldbi
+   ```
+2. Run docker compose up command along with unlock license key details like below:
+  ```sh
+  docker run --name boldbi -p 80:80 -d syncfusion/boldbi
+  ```
+   Refer [this](https://support.boldbi.com/kb/article/12983/how-to-get-offline-license-key-for-bold-bi) KB article to get Bold BI unlock key. 
+
+4. After running the command, you can access the Bold BI App by entering `http://localhost:8085` or `http://host-ip:8085` in a browser.
 
 
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=<app_base_url> \
-     -e OPTIONAL_LIBS=<optional_library_names> \
-     -e widget_bing_map_enable=<true/false>\
-     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -e AppSettings__CustomSizePDFExport=<true/false> \
-     -e AppSettings__BrowserTimezone=<true/false> \
-     -v <host_path_for_appdata_files>:/application/app_data \
-     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:<tag>
-```
-### Example for Advanced docker run command
+## Using Docker 
 
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=https://example.com \
-     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
-     -e widget_bing_map_enable=true\
-     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -e AppSettings__CustomSizePDFExport=false \
-     -e AppSettings__BrowserTimezone=false \
-     -v D:/boldbi/app_data:/application/app_data \
-     -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:6.8.9
-``` 
+1. Run the below command to run Postgres SQL container.
+2. Run the below command to run Bold BI along with unlock license key details like below:
+   ```sh
+   docker run --name boldbi -p 8085:80 -p 443:443 \   
+      -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
+      -e BOLD_SERVICES_DB_TYPE=<data_base_server_type>  \
+      -e BOLD_SERVICES_DB_HOST=<data_base_server_host> \
+      -e BOLD_SERVICES_DB_PORT=<data_base_server_port> \
+      -e BOLD_SERVICES_DB_USER=<data_base_user_name> \
+      -e BOLD_SERVICES_DB_PASSWORD=<data_base_server_password> \ 
+      -e BOLD_SERVICES_DB_NAME=<excisting_data_base_name> \
+      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
+      -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
+      -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
+      -v <host_path_for_appdata_files>:/application/app_data \
+      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+      -d syncfusion/boldbi
+   ```
+   Refer this document to get Bold BI unlock key.
+   You need to pass the same credentials that you passed in the first command as arugument here. 
+4. After running the command, you can access the Bold BI App by entering `http://localhost:8085` or `http://host-ip:8085` in a browser.
+
+
+# Environment Variables 
 
 Bold BI accepts the following environment variables from the command line.
+
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- | 
 | `APP_URL`                     |No <br /><br /><br /> Needed when configuring with domain or IP| Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>• For linux depoyment the default APP_URL is http://localhost or http://172.17.0.1<br/>• You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/ssl-termination.md).|
@@ -197,119 +202,9 @@ The following environment variables are optional. If they are not provided, Bold
 </table>
 <br/>
 
+# Persistent Volume
 
-## Auto deployment docker run command.
-
-### Without branding
-
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-      -e APP_URL=<app_base_url> \
-      -e OPTIONAL_LIBS=<optional_library_names> \
-      -e widget_bing_map_enable=<true/false>\
-      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-      -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
-      -e BOLD_SERVICES_DB_TYPE=<data_base_server_type>  \
-      -e BOLD_SERVICES_DB_HOST=<data_base_server_host> \
-      -e BOLD_SERVICES_DB_PORT=<data_base_server_port> \
-      -e BOLD_SERVICES_DB_USER=<data_base_user_name> \
-      -e BOLD_SERVICES_DB_PASSWORD=<data_base_server_password> \ 
-      -e BOLD_SERVICES_DB_NAME=<excisting_data_base_name> \
-      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
-      -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
-      -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
-      -v <host_path_for_appdata_files>:/application/app_data \
-      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
-      -d syncfusion/boldbi:<tag>
-```
-
-### With branding
-
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-      -e APP_URL=<app_base_url> \
-      -e OPTIONAL_LIBS=<optional_library_names> \
-      -e widget_bing_map_enable=<true/false>\
-      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-      -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
-      -e BOLD_SERVICES_DB_TYPE=<data_base_server_type>  \
-      -e BOLD_SERVICES_DB_HOST=<data_base_server_host> \
-      -e BOLD_SERVICES_DB_PORT=<data_base_server_port> \
-      -e BOLD_SERVICES_DB_USER=<data_base_user_name> \
-      -e BOLD_SERVICES_DB_PASSWORD=<data_base_server_password> \ 
-      -e BOLD_SERVICES_DB_NAME=<excisting_data_base_name> \
-      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
-      -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
-      -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
-      -e BOLD_SERVICES_BRANDING_MAIN_LOGO=<branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_LOGIN_LOGO=<branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_EMAIL_LOGO=<branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_FAVICON=<branding_image_url> \
-      -e BOLD_SERVICES_BRANDING_FOOTER_LOGO=<branding_image_url> \
-      -e BOLD_SERVICES_SITE_NAME=<site_name> \
-      -e BOLD_SERVICES_SITE_IDENTIFIER=<site_identifier_name> \
-      -v <host_path_for_appdata_files>:/application/app_data \
-      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
-      -d syncfusion/boldbi:<tag>
-```
-## Example for auto deployment docker run command.
-
-### Without branding
-
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=https://example.com \
-     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
-     -e widget_bing_map_enable=true\
-     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
-     -e BOLD_SERVICES_DB_TYPE=<data_base_server_type_Eg: mssql, mysql and postgresql>  \
-     -e BOLD_SERVICES_DB_HOST=localhost \
-     -e BOLD_SERVICES_DB_PORT=5432 \
-     -e BOLD_SERVICES_DB_USER=boldbi-user \
-     -e BOLD_SERVICES_DB_PASSWORD=boldbi@123 \ 
-     -e BOLD_SERVICES_DB_NAME=bold-services \
-     -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
-     -e BOLD_SERVICES_USER_EMAIL=admin@boldbi.com \
-     -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
-     -v D:/boldbi/app_data:/application/app_data \
-     -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:6.8.9
-```
-
-### With branding
-
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=https://example.com \
-     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
-     -e widget_bing_map_enable=true\
-     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
-     -e BOLD_SERVICES_DB_TYPE=<data_base_server_type_Eg: mssql, mysql and postgresql>  \
-     -e BOLD_SERVICES_DB_HOST=localhost \
-     -e BOLD_SERVICES_DB_PORT=5432 \
-     -e BOLD_SERVICES_DB_USER=boldbi-user \
-     -e BOLD_SERVICES_DB_PASSWORD=boldbi@123 \ 
-     -e BOLD_SERVICES_DB_NAME=bold-services \
-     -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
-     -e BOLD_SERVICES_USER_EMAIL=admin@boldbi.com \
-     -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
-     -e BOLD_SERVICES_BRANDING_MAIN_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
-     -e BOLD_SERVICES_BRANDING_LOGIN_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
-     -e BOLD_SERVICES_BRANDING_EMAIL_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
-     -e BOLD_SERVICES_BRANDING_FAVICON=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
-     -e BOLD_SERVICES_BRANDING_FOOTER_LOGO=https://cdn.boldbi.com/wp/pages/boldbi-header-menu-logo.svg \
-     -e BOLD_SERVICES_SITE_NAME=bold-dashboards \
-     -e BOLD_SERVICES_SITE_IDENTIFIER=branding \
-     -v D:/boldbi/app_data:/application/app_data \
-     -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:6.8.9
-```
-
-
-
-### Persisting application data
+## Persisting application data
 
 You can store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
  
@@ -319,7 +214,7 @@ Replace the `<host_path_for_appdata_files>` value with a directory path from you
 > Windows: `-v D:/boldbi/app_data:/application/app_data`<br/>
 > Linux: `-v /home/boldbi/app_data:/application/app_data`
 
-### Nginx configuration
+## Nginx configuration
 
 You can mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
 
@@ -337,64 +232,14 @@ Configure the Bold BI On-Premise application startup to use the application. Ple
 
 https://help.boldbi.com/embedded-bi/application-startup
 
-# Docker compose:<br/>
-* [BoldBI in single container image](#start-single-container-bold-bi-with-docker-compose).
+# How to deploy Bold BI using advanced configuration
+In this section, we will see how to run Bold BI application using advanced configuration like persistence volumne and configure auto deployment using existing DB servers and run multi containers Bold BI. 
 
-* [BoldBI in multiple container image](#start-multiple-containers-bold-bi-with-docker-compose).
-## Start single container Bold BI with `docker-compose`
-You can use docker-compose to easily run Bold BI in an isolated environment built with Docker containers. The image shown here is a single image containing multiple Bold BI services targeted for simplifying evaluation and minimalistic production use cases.
-<br/>
-Create a docker-compose.yml file that starts your `Bold BI` as well as a separate `PostgreSQL` instance with volume mounts for data persistence:
+## Application Startup
 
-```sh
-version: '3.5'
+Configure the Bold BI On-Premise application startup to use the application. Please refer to the following link, for more details on configuring the application startup.
 
-services:
-  boldbi:
-   image: syncfusion/boldbi
-   restart: always
-   ports:
-     - 8085:80
-   # environment:
-     # - APP_URL=<app_base_url>
-   networks:
-     - boldbi
-   volumes:
-     - boldbi_data:/application/app_data
-    
-  pgdb:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: <Password>
-    volumes:
-      - db_data:/var/lib/postgresql/data/
-    networks:
-      - boldbi
-
-networks:
-  boldbi:
-  
-volumes:
-  boldbi_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '<host_path_boldbi_data>'
-  db_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '<host_path_db_data>'
-  ```
-
-> **Note:**
-> The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL, respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
-
-Now, run `docker-compose up -d` from your project directory.<br/>
- Please refer to [this guide](docs/single-container.md) to deploy Bold BI in a simplified docker-compose environment with single image.
+https://help.boldbi.com/embedded-bi/application-startup
 
 ## Start multiple containers Bold BI with `docker-compose`
 
