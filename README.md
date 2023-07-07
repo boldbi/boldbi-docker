@@ -56,9 +56,9 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    docker run --name boldbi -p 80:80 -d syncfusion/boldbi
    ```
 2. Run docker compose up command along with unlock license key details like below:
-  ```sh
-  docker run --name boldbi -p 80:80 -d syncfusion/boldbi
-  ```
+   ```sh
+   docker run --name boldbi -p 80:80 -d syncfusion/boldbi
+   ```
    Refer [this](https://support.boldbi.com/kb/article/12983/how-to-get-offline-license-key-for-bold-bi) KB article to get Bold BI unlock key. 
 
 4. After running the command, you can access the Bold BI App by entering `http://localhost:8085` or `http://host-ip:8085` in a browser.
