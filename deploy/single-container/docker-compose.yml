@@ -6,8 +6,16 @@ services:
    restart: always
    ports:
      - 8085:80
-   # environment:
-     # - APP_URL=<app_base_url>
+   environment:
+     - APP_URL=${APP_URL}
+     - BOLD_SERVICES_UNLOCK_KEY=${BOLD_SERVICES_UNLOCK_KEY}
+     - BOLD_SERVICES_DB_TYPE=postgresql
+     - BOLD_SERVICES_DB_HOST=pgdb
+     - BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres
+     - BOLD_SERVICES_DB_USER=postgres
+     - BOLD_SERVICES_DB_PASSWORD=Admin@123
+     - BOLD_SERVICES_USER_EMAIL=demo@boldbi.com
+     - BOLD_SERVICES_USER_PASSWORD=Admin@123
    networks:
      - boldbi
    volumes:
@@ -17,7 +25,7 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: <Password>
+      POSTGRES_PASSWORD: Admin@123
     volumes:
       - db_data:/var/lib/postgresql/data/
     networks:
@@ -28,14 +36,4 @@ networks:
   
 volumes:
   boldbi_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '<host_path_boldbi_data>'
   db_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '<host_path_db_data>'
