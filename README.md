@@ -55,41 +55,43 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container/docker-compose.yml"
    ```
-2. Run docker compose up command along with unlock license key details like below:
-   ```sh
-   APP_URL=<APP_URL> BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key> docker-compose up -d
-   ```
-   Refer [this](https://support.boldbi.com/kb/article/12983/how-to-get-offline-license-key-for-bold-bi) KB article to get Bold BI unlock key. 
+2.Open the docker compose file and fill the mandatory fields - App_URL and Unlock Key.
 
-4. After running the command, you can access the Bold BI App by entering `http://localhost:8085` or `http://host-ip:8085` in a browser.
+3. Run docker compose up command
+   ```sh
+  docker-compose up -d
+   ```
+4. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
 
 
 ### Using Docker 
 
 1. Run the below command to run Postgres SQL container.
-2. Run the below command to run Bold BI along with unlock license key details like below:
+2. Run the below command to run Bold BI after replacing mandatory fields -App_URL and Unlock Key.
    ```sh
-   docker run --name boldbi -p 8085:80 -p 443:443 \   
+   docker run --name boldbi -p 8085:80 -p 443:443 \
+      -e APP_URL=http://localhostORhost-ip:8085 \   
       -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
-      -e BOLD_SERVICES_DB_TYPE=<data_base_server_type>  \
-      -e BOLD_SERVICES_DB_HOST=<data_base_server_host> \
-      -e BOLD_SERVICES_DB_PORT=<data_base_server_port> \
-      -e BOLD_SERVICES_DB_USER=<data_base_user_name> \
-      -e BOLD_SERVICES_DB_PASSWORD=<data_base_server_password> \ 
-      -e BOLD_SERVICES_DB_NAME=<excisting_data_base_name> \
-      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name> \
-      -e BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email> \
-      -e BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password> \ 
-      -v <host_path_for_appdata_files>:/application/app_data \
-      -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+      -e BOLD_SERVICES_DB_TYPE=postgresql  \
+      -e BOLD_SERVICES_DB_HOST=pgdb \
+      -e BOLD_SERVICES_DB_USER=postgres \
+      -e BOLD_SERVICES_DB_PASSWORD=Admin@123 \
+      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres \
+      -e BOLD_SERVICES_USER_EMAIL=adminuser@boldbi.com \
+      -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
+      -v boldbidata:/application/app_data \
+      -v postgresdata:/etc/nginx/sites-available \
       -d syncfusion/boldbi
    ```
    Refer this document to get Bold BI unlock key.
    You need to pass the same credentials that you passed in the first command as arugument here. 
-4. After running the command, you can access the Bold BI App by entering `http://localhost:8085` or `http://host-ip:8085` in a browser.
+4. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
 
+# How to deploy Bold BI using advanced configuration
 
-# Persistent Volume
+In this section, we will see how to run Bold BI application using advanced configuration like persistence volumne and configure auto deployment using existing DB servers and run multi containers Bold BI. 
+
+## Persistent Volume
 
 Volumes are the preferred way to persist data in Docker containers and services. While bind mounts are dependent on the directory structure and OS of the host machine, volumes are completely managed by Docker.
 
@@ -115,13 +117,9 @@ Replace the `<host_path_for_nginx_config>` value with a directory path from your
 
 Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
 
-# How to deploy Bold BI using advanced configuration
-
-In this section, we will see how to run Bold BI application using advanced configuration like persistence volumne and configure auto deployment using existing DB servers and run multi containers Bold BI. 
-
 ## Application Startup
 
-Configure the Bold BI On-Premise application startup to use the application. Please refer to the following link, for more details on configuring the application startup.
+Bold BI application startup can be configured manually if you don't wish to configure application startup automatically. Please refer to the following link, for more details on configuring the application startup.
 
 https://help.boldbi.com/embedded-bi/application-startup
 
