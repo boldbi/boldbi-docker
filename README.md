@@ -70,7 +70,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    docker-compose up -d
    ```
-   ![docker-compose-command](doc/images/docker-compose-up.png)
+   ![docker-compose-command](docs/images/docker-compose-up.png)
 5. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
    ![docker-compose-startup](docs/images/docker-startup.png)
 
