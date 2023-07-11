@@ -87,8 +87,8 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
       -e BOLD_SERVICES_DB_TYPE=postgresql  \
       -e BOLD_SERVICES_DB_HOST=host.docker.internal \
+      -e BOLD_SERVICES_DB_PORT=5433 \
       -e BOLD_SERVICES_DB_USER=postgres \
-	   -e BOLD_SERVICES_DB_PORT=5433 \
       -e BOLD_SERVICES_DB_PASSWORD=Admin@123 \
       -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres \
       -e BOLD_SERVICES_USER_EMAIL=adminuser@boldbi.com \
