@@ -55,14 +55,14 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container/docker-compose.yml"
    ```
-2. Open the docker compose file and fill the mandatory fields - App_URL and Unlock Key.
+2. Open the docker compose file and fill the mandatory fields - APP_URL and Unlock Key.
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
       > **APP_URL Guidance:**
       > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
       > * Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
-      > * Provide the HTTP scheme for APP_BASE_URL value.
+      > * Provide the HTTP scheme for APP_URL value.
    For example, <br/>
           `http://example.com` <br/>
           `http://<public_ip_address>` <br/>
@@ -70,38 +70,40 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    docker-compose up -d
    ```
+   ![docker-compose-command](doc/images/docker-compose-up.png)
 5. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
-
+   ![docker-compose-startup](docs/images/docker-startup.png)
 
 ### Using Docker 
 
 1. Run the below command to run Postgres SQL container.
    ```sh
-   docker run --name postgres -e POSTGRES_PASSWORD=Admin@123 -p 5433:5432 -d postgres
+   docker run --name postgres -e POSTGRES_PASSWORD=Admin@123 -p 5433:5432 -v postgres_data:/var/lib/postgresql/data/ -d postgres
    ```
-2. Run the below command to run Bold BI after replacing mandatory fields -App_URL and Unlock Key.
+2. Run the below command to run Bold BI after replacing mandatory fields App_URL and Unlock Key.
    ```sh
    docker run --name boldbi -p 8085:80 -p 443:443 \
       -e APP_URL=<APP_URL> \   
       -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
       -e BOLD_SERVICES_DB_TYPE=postgresql  \
-      -e BOLD_SERVICES_DB_HOST=pgdb \
+      -e BOLD_SERVICES_DB_HOST=host.docker.internal \
       -e BOLD_SERVICES_DB_USER=postgres \
+	   -e BOLD_SERVICES_DB_PORT=5433 \
       -e BOLD_SERVICES_DB_PASSWORD=Admin@123 \
       -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres \
       -e BOLD_SERVICES_USER_EMAIL=adminuser@boldbi.com \
       -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
-      -v boldbidata:/application/app_data \
-      -v postgresdata:/etc/nginx/sites-available \
+      -v boldbi_data:/application/app_data \
+      -v nginx_data:/etc/nginx/sites-available \
       -d syncfusion/boldbi
    ```
-   Refer this document to get Bold BI unlock key.
+   Refer [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
    You need to pass the same credentials that you passed in the first command as arugument here. 
 4. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
-
+   ![docker-compose-startup](docs/images/docker-startup.png)
 # How to deploy Bold BI using advanced configuration
 
-In this section, we will see how to run Bold BI application using advanced configuration like persistence volumne and configure auto deployment using existing DB servers and run multi containers Bold BI. 
+In this section, we will see how to run Bold BI application using advanced configuration like persistence volume and configure auto deployment using existing DB servers and run multi containers Bold BI. 
 
 ## Persistent Volume
 
@@ -110,24 +112,22 @@ Volumes are the preferred way to persist data in Docker containers and services.
 ### Persisting application data
 
 You can store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
- 
-Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
 
 > **For example**<br/>
-> Windows: `-v D:/boldbi/app_data:/application/app_data`<br/>
-> Linux: `-v /home/boldbi/app_data:/application/app_data`
+> Windows: `-v boldbi_data:/application/app_data`<br/>
+> Linux: `-v boldbi_data:/application/app_data`
 
 ### Nginx configuration
 
-You can mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
+You can mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this volume and can configure Nginx with them.
 
 Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
 
 > **For example**<br/>
-> Windows: `-v D:/boldbi/nginx:/etc/nginx/sites-available`<br/>
-> Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
+> Windows: `-v nginx_data:/etc/nginx/sites-available`<br/>
+> Linux: `-v nginx_data:/etc/nginx/sites-available`
 
-Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
+Once, the Bold BI container started to run, you can check the volumr in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
 
 ## Application Startup
 
