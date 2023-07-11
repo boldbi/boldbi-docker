@@ -57,11 +57,13 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```
 2. Open the docker compose file and fill the mandatory fields - App_URL and Unlock Key.
 
-3. Run docker compose up command
+    ![docker-compose-variable](docs/images/docker-compose-variable.png)
+
+4. Run docker compose up command
    ```sh
    docker-compose up -d
    ```
-4. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
+5. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
 
 
 ### Using Docker 
