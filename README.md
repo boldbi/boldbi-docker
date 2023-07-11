@@ -55,7 +55,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container/docker-compose.yml"
    ```
-2.Open the docker compose file and fill the mandatory fields - App_URL and Unlock Key.
+2. Open the docker compose file and fill the mandatory fields - App_URL and Unlock Key.
 
 3. Run docker compose up command
    ```sh
@@ -67,6 +67,9 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 ### Using Docker 
 
 1. Run the below command to run Postgres SQL container.
+   ```sh
+   docker run --name postgres -e POSTGRES_PASSWORD=Admin@123 -p 5433:5432 -d postgres
+   ```
 2. Run the below command to run Bold BI after replacing mandatory fields -App_URL and Unlock Key.
    ```sh
    docker run --name boldbi -p 8085:80 -p 443:443 \
