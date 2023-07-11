@@ -59,6 +59,13 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
+      > **APP_URL Guidance:**
+      > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
+      > * Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
+      > * Provide the HTTP scheme for APP_BASE_URL value.
+   For example, <br/>
+          `http://example.com` <br/>
+          `http://<public_ip_address>` <br/>
 4. Run docker compose up command
    ```sh
    docker-compose up -d
@@ -75,7 +82,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 2. Run the below command to run Bold BI after replacing mandatory fields -App_URL and Unlock Key.
    ```sh
    docker run --name boldbi -p 8085:80 -p 443:443 \
-      -e APP_URL=http://localhostORhost-ip:8085 \   
+      -e APP_URL=<APP_URL> \   
       -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
       -e BOLD_SERVICES_DB_TYPE=postgresql  \
       -e BOLD_SERVICES_DB_HOST=pgdb \
