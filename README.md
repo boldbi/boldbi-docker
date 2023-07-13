@@ -55,7 +55,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container/docker-compose.yml"
    ```
-2. Open the docker compose file and fill the mandatory fields - APP_URL and Unlock Key.
+2. Open the docker compose file and fill the mandatory fields - <b>APP_URL</b> and <b>Unlock Key</b>.
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
@@ -70,7 +70,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    docker-compose up -d
    ```
-   ![docker-compose-command](doc/images/docker-compose-up.png)
+   ![docker-compose-command](docs/images/docker-compose-up.png)
 5. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
    ![docker-compose-startup](docs/images/docker-startup.png)
 
@@ -87,8 +87,8 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
       -e BOLD_SERVICES_DB_TYPE=postgresql  \
       -e BOLD_SERVICES_DB_HOST=host.docker.internal \
+      -e BOLD_SERVICES_DB_PORT=5433 \
       -e BOLD_SERVICES_DB_USER=postgres \
-	   -e BOLD_SERVICES_DB_PORT=5433 \
       -e BOLD_SERVICES_DB_PASSWORD=Admin@123 \
       -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres \
       -e BOLD_SERVICES_USER_EMAIL=adminuser@boldbi.com \
