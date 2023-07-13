@@ -99,6 +99,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```
    Refer [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
    You need to pass the same credentials that you passed in the first command as arugument here. 
+   > Note: If `host.docker.internal` is not supported as the `BOLD_SERVICES_DB_HOST` postgres server name in a Linux environment, you can pass the IP address instead.
 4. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
    ![docker-compose-startup](docs/images/docker-startup.png)
 # How to deploy Bold BI using advanced configuration
