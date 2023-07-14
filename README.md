@@ -104,7 +104,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ![docker-compose-startup](docs/images/docker-startup.png)
 # How to deploy Bold BI using advanced configuration
 
-In this section, we will see how to run Bold BI application using advanced configuration like persistence volume path, environment variables, configure auto deployment using existing DB servers and run multi containers Bold BI. 
+In this section, we will learn how to run the Bold BI application using advanced configurations such as persistence volume, environment variables, manually configuring the startup of Bold BI, and running multiple containers for Bold BI.
 
 ## Persistent Volume
 
@@ -160,7 +160,8 @@ Bold BI accepts the following environment variables from the command line.
 |`<host_path_for_appdata_files>` |No|Persistent volume path for Bold BI application data|
 |`<host_path_for_nginx_config>` |No|Persistent volume path for Nginx configuration|
 
-<br />
+<br/>
+
 ## Environment variables for configuring `Application Startup` in backend
 
 The below Environment variables are optional. If not provided a manual Application Startup configuration is needed.
