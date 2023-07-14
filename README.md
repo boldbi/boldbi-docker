@@ -59,7 +59,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
-      ##### **APP_URL Guidance:**
+      #### **APP_URL Guidance:**
       * Provide the HTTP scheme for APP_URL value.
       For example, <br/>
           `http://example.com` <br/>
