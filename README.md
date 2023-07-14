@@ -59,14 +59,15 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
-      > **APP_URL Guidance:**
-      > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
-      > * Use http://host.docker.internal instead of http://localhost. Host machine localhost DNS will not be accessible inside the container. So, docker desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts) or Linux (/etc/hosts).
-      > * Provide the HTTP scheme for APP_URL value.
-   For example, <br/>
+      ##### **APP_URL Guidance:**
+      * Provide the HTTP scheme for APP_URL value.
+      For example, <br/>
           `http://example.com` <br/>
           `http://<public_ip_address>` <br/>
-4. Run docker compose up command
+      * For Windows and MacOS use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
+      * For Linux use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
+
+4. Run docker compose up command.
    ```sh
    docker-compose up -d
    ```
@@ -97,9 +98,11 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       -v nginx_data:/etc/nginx/sites-available \
       -d syncfusion/boldbi
    ```
-   Refer [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
+   * Refer [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
    You need to pass the same credentials that you passed in the first command as arugument here. 
-   > Note: If `host.docker.internal` is not supported as the `BOLD_SERVICES_DB_HOST` postgres server name in a Linux environment, you can pass the IP address instead.
+
+   * Refer [this](#app_url-guidance) steps for APP_URL guidance.
+
 4. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
    ![docker-compose-startup](docs/images/docker-startup.png)
 # How to deploy Bold BI using advanced configuration
@@ -118,8 +121,8 @@ docker run --name boldbi -p 80:80 -p 443:443 \
      -e widget_bing_map_api_key=<widget_bing_map_api_key> \
      -e AppSettings__CustomSizePDFExport=false \
      -e AppSettings__BrowserTimezone=false \
-     -v D:/boldbi/app_data:/application/app_data \
-     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -v <host_path_for_appdata_files>:/application/app_data \
+     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
      -d syncfusion/boldbi:6.8.9
 ``` 
 
