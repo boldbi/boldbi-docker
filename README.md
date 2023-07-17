@@ -20,7 +20,7 @@ With deep embedding, you can interact more with your data and get insights direc
 
 The following hardware requirements are necessary to run the Bold BI solution:
 
-* Operating System: You can use the Bold BI Docker on the following operating systems: 
+* Operating System: Use the Bold BI Docker on the following operating systems: 
   * Windows
   * Linux
   * Mac
@@ -33,8 +33,8 @@ The following hardware requirements are necessary to run the Bold BI solution:
 The following software requirements are necessary to run the Bold BI Enterprise edition:
 
 * Database: Microsoft SQL Server 2012+ | PostgreSQL | MySQL
-* Application: [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) 
-* Web Browser: Microsoft Edge, Mozilla Firefox, and Chrome
+* Application: [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/). 
+* Web Browser: Microsoft Edge, Mozilla Firefox, and Chrome.
 
 # Supported tags
 
@@ -47,11 +47,11 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 # How to use this image
 
-The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to starts the BoldBI and a separate PostgreSQL instance with volume mounts for data persistence.
+The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, starts BoldBI and a separate PostgreSQL instance with volume mounts for data persistence.
 
 ### Using Docker Compose 
 
-1. Download docker compose file using the below command.
+1. Download docker compose file using the following command.
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container/docker-compose.yml"
    ```
@@ -72,16 +72,16 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    docker-compose up -d
    ```
    ![docker-compose-command](docs/images/docker-compose-up.png)
-5. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
+5. After running the command, access the Bold BI App by entering APP_URL in a browser.
    ![docker-compose-startup](docs/images/docker-startup.png)
 
 ### Using Docker 
 
-1. Run the below command to run Postgres SQL container.
+1. Run the following command to run Postgres SQL container.
    ```sh
    docker run --name postgres -e POSTGRES_PASSWORD=Admin@123 -p 5433:5432 -v postgres_data:/var/lib/postgresql/data/ -d postgres
    ```
-2. Run the below command to run Bold BI after replacing mandatory fields App_URL and Unlock Key.
+2. Run the following command to run Bold BI after replacing mandatory fields App_URL and Unlock Key.
    ```sh
    docker run --name boldbi -p 8085:80 -p 443:443 \
       -e APP_URL=<APP_URL> \   
@@ -98,15 +98,16 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       -v nginx_data:/etc/nginx/sites-available \
       -d syncfusion/boldbi
    ```
-   * Refer [this](#app_url-guidance) steps for APP_URL guidance.
-   * Refer [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
+   * Refer to [this](#app_url-guidance) steps for APP_URL guidance.
+   * Refer to [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
    You need to pass the same credentials that you passed in the first command as arugument here. 
 
-4. After running the command, you can access the Bold BI App by entering APP_URL in a browser.
+4. After running the command, access the Bold BI App by entering APP_URL in a browser.
    ![docker-compose-startup](docs/images/docker-startup.png)
+
 # How to deploy Bold BI using advanced configuration
 
-In this section, we will learn how to run the Bold BI application using advanced configurations such as persistence volume, environment variables, manually configuring the startup of Bold BI, and running multiple containers for Bold BI.
+In this section, you will learn how to run the Bold BI application using advanced configurations such as persistence volume, environment variables, manually configuring the startup of Bold BI, and running multiple containers for Bold BI.
 
 ## Persistent Volume
 
@@ -127,7 +128,7 @@ docker run --name boldbi -p 80:80 -p 443:443 \
 
 ### Persisting application data
 
-You can store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
+Store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
  
 Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
 
@@ -137,7 +138,7 @@ Replace the `<host_path_for_appdata_files>` value with a directory path from you
 
 ### Nginx configuration
 
-You can mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
+Mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
 
 Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
 
@@ -145,7 +146,7 @@ Replace the `<host_path_for_nginx_config>` value with a directory path from your
 > Windows: `-v D:/boldbi/nginx:/etc/nginx/sites-available`<br/>
 > Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
 
-Once, the Bold BI container started to run, you can check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
+Once the Bold BI container has started to run, check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
 
 ## Environment Variable
 
@@ -153,25 +154,25 @@ Bold BI accepts the following environment variables from the command line.
 
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- | 
-| `APP_URL`                     |No <br /><br /><br /> Needed when configuring with domain or IP| Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>• For linux depoyment the default APP_URL is http://localhost or http://172.17.0.1<br/>• You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/ssl-termination.md).|
+| `APP_URL`                     |No <br /><br /><br /> Needed when configuring with domain or IP| Domain or IP address with http/https protocol.<br/>For example, <br/>`http://<public_DNS_address>`<br/>`http://<public_ip_address>` <br/><br/>The default APP_URL is `http://localhost`<br/><br/> <b>Note:</b><br/>•	If you are using the IP address for the Base URL, ensure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.<br/>• For linux depoyment the default APP_URL is http://localhost or http://172.17.0.1<br/>• You can provide the HTTP or HTTPS scheme for APP_BASE_URL value.<br/>• Please refer to this section for [SSL Termination](docs/ssl-termination.md).|
 |`OPTIONAL_LIBS`|No|	These are the client libraries used in Bold BI by default.<br/><br/>`'mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google'`<br/><br/>Please refer [Consent to deploy client libraries](docs/consent-to-deploy-client-libraries.md) Libraries section to know more.|
-| `widget_bing_map_enable`      |No| If you need to use Bing Map widget feature, enable this to `true`.<br/>By default this feature will be set to `false`. | 
+| `widget_bing_map_enable`      |No| If you need to use Bing Map widget feature, enable this to `true`.<br/>By default, this feature is set to `false`. | 
 | `widget_bing_map_api_key`     |No| API key value for the Bing Map. |
 | `AppSettings__CustomSizePDFExport`|No|To utilize a customized page size for A4 PDF export, set this feature to `true`. By default, this feature is set to `false`.|
-| `AppSettings__BrowserTimezone`|No|If you need to use Browser time zone feature , enable this to `true`. By default this feature will be set to `false`.|
-|`<host_path_for_appdata_files>` |No|Persistent volume path for Bold BI application data|
-|`<host_path_for_nginx_config>` |No|Persistent volume path for Nginx configuration|
+| `AppSettings__BrowserTimezone`|No|If you need to use Browser time zone feature , enable this to `true`. By default, this feature is set to `false`.|
+|`<host_path_for_appdata_files>` |No|Persistent volume path for the Bold BI application data|
+|`<host_path_for_nginx_config>` |No|Persistent volume path for the Nginx configuration|
 
 <br/>
 
 ## Environment variables for configuring `Application Startup` in backend
 
-The below Environment variables are optional. If not provided a manual Application Startup configuration is needed.
+The following Environment variables are optional. If not provided, a manual Application Startup configuration is needed.
 
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- |
-|`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key for activating the Bold BI. Please refer to [this document](https://help.boldbi.com/embedded-bi/faq/how-to-get-offline-unlock-key/) to download the key. <br/> If you don't have the download key option, please create a support ticket [here](https://support.boldbi.com/create). |
-|`BOLD_SERVICES_DB_TYPE`|Yes|Type of database server can be used for configuring the Bold BI.<br/><br />The following DB types are accepted:<br />1. mssql – Microsoft SQL Server/Azure SQL Database<br />2. postgresql – PostgreSQL Server<br />3. mysql – MySQL/MariaDB Server|
+|`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key for activating Bold BI. Please refer to [this document](https://help.boldbi.com/embedded-bi/faq/how-to-get-offline-unlock-key/) to download the key. <br/> If you don't have the download key option, please create a support ticket [here](https://support.boldbi.com/create). |
+|`BOLD_SERVICES_DB_TYPE`|Yes|Type of database server can be used for configuring Bold BI.<br/><br />The following DB types are accepted:<br />1. mssql – Microsoft SQL Server/Azure SQL Database<br />2. postgresql – PostgreSQL Server<br />3. mysql – MySQL/MariaDB Server|
 |`BOLD_SERVICES_DB_HOST`|Yes|Name of the Database Server|
 |`BOLD_SERVICES_DB_PORT`|No|The system will use the following default port numbers based on the database server type.<br />PostgrSQL – 5234<br />MySQL -3306<br /><br />Please specify the port number for your database server if it is configured on a different port.<br /><br />For MS SQL Server, this parameter is not necessary.|
 |`BOLD_SERVICES_DB_USER`|Yes|Username for the database server<br /><br />Please refer to [this documentation](https://help.boldbi.com/embedded-bi/faq/what-are-the-database-permissions-required-to-set-up-bold-bi-embedded/) for information on the user's permissions.|
@@ -180,7 +181,7 @@ The below Environment variables are optional. If not provided a manual Applicati
 |`BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB`|Yes|For PostgreSQL DB Servers, this is an optional parameter.<br />The system will use the database name `postgres` by default.<br />If your database server uses a different default database, please provide it here.|
 |`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
 |`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
-|`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.<br /> <br />**Note:** <br />Password must meet the following requirements. It must contain,At least 6 characters, 1 uppercase character, 1 lowercase character, 1 numeric character, 1 special character |
+|`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.<br /> <br />**Note:** <br />Password must meet the following requirements. It must contain at least 6 characters, 1 uppercase character, 1 lowercase character, 1 numeric character, 1 special character |
 
 ### Environment variables for configuring `Branding` in backend
 The following environment variables are optional. If they are not provided, Bold BI will use the default configured values.
@@ -268,15 +269,15 @@ https://help.boldbi.com/embedded-bi/application-startup
 
 ## Start multiple containers Bold BI with `docker-compose`
 
-Bold BI also comes with multiple images for each of the services in it to run on docker-compose, which is mainly for the production environment to scale services within Bold BI. Please refer to [this guide](docs/multiple-container.md) to get to know about the multiple images and compose details to deploy Bold BI in an advanced docker-compose environment.
+Bold BI also comes with multiple images for each of the services in it to run on docker-compose, which is mainly for the production environment to scale services within Bold BI. Please refer to [this guide](docs/multiple-container.md) to learn about the multiple images and compose details to deploy Bold BI in an advanced docker-compose environment.
 
 # License
 
 https://www.boldbi.com/terms-of-use#embedded<br />
 
-The images are provided for your convenience and may contain other software that is licensed differently (Linux system, Bash, etc. from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
+The images are provided for your convenience and may contain other software that is licensed differently (Linux system, Bash, and more from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
 
-These pre-built images are provided for convenience and include all optional and additional libraries by default. These libraries may be subject to different licenses than the Bold BI product.
+These pre-built images are provided for your convenience and include all optional and additional libraries by default. These libraries may be subject to different licenses than the Bold BI product.
 
 If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team (https://www.boldbi.com/support).
 
