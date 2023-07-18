@@ -192,7 +192,7 @@ The following environment variables are optional. If they are not provided, Bold
 
 # How to Deploy Bold BI using Advanced Configuration?
 
-In this section, you will learn how to run the Bold BI application using advanced configurations such as persistence volume, environment variables, manually configuring the startup of Bold BI, and running multiple containers for Bold BI.
+In this section, you will learn how to run the Bold BI application using advanced configurations such as configuring Bold BI using an existing DB server, using a host directory as a persistent volume, configuring startup manually, configuring an SSL certificate, and running a multi-container BI application.
 
 #### How to deploy Bold BI using existing DB server? 
 
