@@ -45,3 +45,15 @@ In the following section, explain about how to use host path as persistent volum
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
      -d syncfusion/boldbi:6.8.9
    ``` 
+2. After running the command, access the Bold BI App by entering `APP_URL` in a browser. At this point, Bold BI should be running in `<app_url>` (as appropriate)
+
+   ![docker-compose-startup](/docs/images/docker-startup.png)
+ 
+    > **Note:**
+   > The BoldBI site is not immediately available because the containers are still being initialized and may take a couple of minutes for the first load.
+
+ **Application Startup**
+
+Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
+
+https://help.boldbi.com/embedded-bi/application-startup
