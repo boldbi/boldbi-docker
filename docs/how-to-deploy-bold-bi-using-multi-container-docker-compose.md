@@ -20,7 +20,7 @@ In the following section, we are going to starts BoldBI with volume mounts for d
           `http://example.com` <br/>
           `http://<public_ip_address>` <br/>
       * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
-      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
+      * For `Linux` use the Machine Public IP address as the value for APP_BASE_URL with the HTTP scheme.
 
 4. Run docker compose up command.
    
