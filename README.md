@@ -75,82 +75,9 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 5. After running the command, access the Bold BI App by entering APP_URL in a browser.
    ![docker-compose-startup](docs/images/docker-startup.png)
 
-### Using Docker 
+# Environment Variables and It's Usage
 
-1. Run the following command to run Postgres SQL container.
-   ```sh
-   docker run --name postgres -e POSTGRES_PASSWORD=Admin@123 -p 5433:5432 -v postgres_data:/var/lib/postgresql/data/ -d postgres
-   ```
-2. Run the following command to run Bold BI after replacing mandatory fields App_URL and Unlock Key.
-   ```sh
-   docker run --name boldbi -p 8085:80 -p 443:443 \
-      -e APP_URL=<APP_URL> \   
-      -e BOLD_SERVICES_UNLOCK_KEY=<Bold_BI_license_key>  \
-      -e BOLD_SERVICES_DB_TYPE=postgresql  \
-      -e BOLD_SERVICES_DB_HOST=host.docker.internal \
-      -e BOLD_SERVICES_DB_PORT=5433 \
-      -e BOLD_SERVICES_DB_USER=postgres \
-      -e BOLD_SERVICES_DB_PASSWORD=Admin@123 \
-      -e BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres \
-      -e BOLD_SERVICES_USER_EMAIL=adminuser@boldbi.com \
-      -e BOLD_SERVICES_USER_PASSWORD=Admin@123 \ 
-      -v boldbi_data:/application/app_data \
-      -v nginx_data:/etc/nginx/sites-available \
-      -d syncfusion/boldbi
-   ```
-   * Refer to [this](#app_url-guidance) steps for APP_URL guidance.
-   * Refer to [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
-   You need to pass the same credentials that you passed in the first command as arugument here. 
-
-4. After running the command, access the Bold BI App by entering APP_URL in a browser.
-   ![docker-compose-startup](docs/images/docker-startup.png)
-
-# How to deploy Bold BI using advanced configuration
-
-In this section, you will learn how to run the Bold BI application using advanced configurations such as persistence volume, environment variables, manually configuring the startup of Bold BI, and running multiple containers for Bold BI.
-
-## Persistent Volume
-
-Volumes are the preferred way to persist data in Docker containers and services. While bind mounts are dependent on the directory structure and OS of the host machine, volumes are completely managed by Docker.
-
-```sh
-docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=https://example.com \
-     -e OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google \
-     -e widget_bing_map_enable=true\
-     -e widget_bing_map_api_key=<widget_bing_map_api_key> \
-     -e AppSettings__CustomSizePDFExport=false \
-     -e AppSettings__BrowserTimezone=false \
-     -v <host_path_for_appdata_files>:/application/app_data \
-     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:6.8.9
-``` 
-
-### Persisting application data
-
-Store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
- 
-Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
-
-> **For example**<br/>
-> Windows: `-v D:/boldbi/app_data:/application/app_data`<br/>
-> Linux: `-v /home/boldbi/app_data:/application/app_data`
-
-### Nginx configuration
-
-Mount a host directory to the Bold BI container for maintaining the Nginx configuration. You can also store SSL certificates in this directory and can configure Nginx with them.
-
-Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
-
-> **For example**<br/>
-> Windows: `-v D:/boldbi/nginx:/etc/nginx/sites-available`<br/>
-> Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
-
-Once the Bold BI container has started to run, check the directory in your host machine. The `boldbi-nginx-config` file will be generated there. You can configure the Nginx inside the container using this file.
-
-## Environment Variable
-
-Bold BI accepts the following environment variables from the command line.
+Bold BI accepts the following environment variables: 
 
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- | 
@@ -261,15 +188,19 @@ The following environment variables are optional. If they are not provided, Bold
 </table>
 <br/>
 
-## Application Startup
+# How to deploy Bold BI using advanced configuration
 
-Bold BI application startup can be configured manually if you don't wish to configure application startup automatically. Please refer to the following link, for more details on configuring the application startup.
+In this section, you will learn how to run the Bold BI application using advanced configurations such as persistence volume, environment variables, manually configuring the startup of Bold BI, and running multiple containers for Bold BI.
 
-https://help.boldbi.com/embedded-bi/application-startup
+#### How to deploy Bold BI using existing DB server? 
 
-## Start multiple containers Bold BI with `docker-compose`
+#### How to deploy Bold BI and configure startup manually?
 
-Bold BI also comes with multiple images for each of the services in it to run on docker-compose, which is mainly for the production environment to scale services within Bold BI. Please refer to [this guide](docs/multiple-container.md) to learn about the multiple images and compose details to deploy Bold BI in an advanced docker-compose environment.
+#### How to use host path as Persistent Volume?
+
+#### How to configure SSL certificate for Bold BI?
+
+### [Start multiple containers Bold BI with `docker-compose`](docs/multiple-container.md)
 
 # License
 
