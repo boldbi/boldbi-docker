@@ -19,6 +19,9 @@ In the following section, we are going to starts BoldBI and a separate PostgreSQ
       * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
       * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
  
+   <b>Environment variable Usage:</b>
+
+
     | Name                          |Required| Description   | 
    | -------------                 |----------| ------------- |
    |`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key for activating Bold BI. Please refer to [this document](https://help.boldbi.com/embedded-bi/faq/how-to-get-offline-unlock-key/) to download the key. <br/> If you don't have the download key option, please create a support ticket [here](https://support.boldbi.com/create). |
