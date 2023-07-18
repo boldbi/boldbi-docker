@@ -1,0 +1,47 @@
+# How to use host path as persistent volume for Bold BI deployment
+
+You can store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
+In the following section, explain about how to use host path as persistent volume for Bold BI deployment.
+
+1. Open Terminal or PowerShell and execute the Docker command to deploy the Bold BI application.
+
+   ```sh
+     docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=<app_url> \
+     -v <host_path_for_appdata_files>:/application/app_data \
+     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:<tag>
+   ```
+   <b>APP_URL Guidance:</b>
+      * Provide the HTTP scheme for APP_BASE_URL value.
+      For example, <br/>
+          `http://example.com` <br/>
+          `http://<public_ip_address>` <br/>
+      * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
+      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
+
+     <br>
+    <b>Persisting application app_data</b> </br></br>
+     
+    Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
+
+   > **For example**<br/>
+   > Windows: `-v D:/boldbi/app_data:/application/app_data`<br/>
+   > Linux: `-v /home/boldbi/app_data:/application/app_data`
+
+   <b>Nginx configuration</b>
+
+   Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
+
+   > **For example**<br/>
+   > Windows: `-v D:/boldbi/nginx:/etc/nginx/sites-available`<br/>
+   > Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
+
+   <b>Example:</b>
+   ```sh
+    docker run --name boldbi -p 80:80 -p 443:443 \
+     -e APP_URL=https://example.com \
+     -v D:/boldbi/app_data:/application/app_data \
+     -v D:/boldbi/nginx:/etc/nginx/sites-available \
+     -d syncfusion/boldbi:6.8.9
+   ``` 
