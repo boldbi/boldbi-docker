@@ -2,17 +2,17 @@
  
  This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have installed [Compose](https://docs.docker.com/compose/install/)
 
-In the following section, we are going to starts BoldBI with volume mounts for data persistence using Multi Docker Compose file.
+In the following section, we are going to starts BoldBI and PostgreSQL with volume mounts for data persistence using Multi Docker Compose file.
 
 1. Download docker compose file using the following command.
    
    ```sh
-   curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/multi-container-with-env-variable/docker-compose.yml"
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/multi-container-pre-configured/docker-compose.yml"
    ```
 3. Open the docker compose file and fill the mandatory fields - <b>APP_BASE_URL</b>, <b>Unlock Key</b> and <b>Database details</b>
 
     ![docker-compose-variable](/docs/images/app_base_url.png)
-    ![database-details](/docs/images/multi-container-env-details.png)
+    ![License-Key](/docs/images/license-key-variable.png)
 
       <b>APP_BASE_URL Guidance:</b>
    
@@ -21,10 +21,10 @@ In the following section, we are going to starts BoldBI with volume mounts for d
           `http://example.com` <br/>
           `http://<public_ip_address>` <br/>
       * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
-      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
+      * For `Linux` use the Machine Public IP address as the value for APP_BASE_URL with the HTTP scheme.
 
 
-   <b>Environment variable Usage:</b>
+   <b>Environment variable and it's usage:</b>
 
     | Name                          |Required| Description   | 
    | -------------                 |----------| ------------- |
