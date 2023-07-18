@@ -1,6 +1,6 @@
  # How to deploy Bold BI and configure startup manually?
 
-In the following section, we are going to deploy single container Bold BI application using Docker Compose and configure application startup manually. 
+In the following section, we will deploy a single container Bold BI application using Docker Compose and manually configure the application startup.
 
 **Bold BI Deployment:**
 
@@ -31,7 +31,8 @@ In the following section, we are going to deploy single container Bold BI applic
 
       > **Note:**
       > The docker volumes `boldbi_data` persists data of Bold BI. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
-5. After running the command, access the Bold BI App by entering `APP_URL` in a browser.At this point, Bold BI should be running in `<app_url>:8085` (as appropriate)
+      
+5. After running the command, access the Bold BI App by entering `APP_URL` in a browser. At this point, Bold BI should be running in `<app_url>:8085` (as appropriate)
 
    ![docker-compose-startup](/docs/images/docker-startup.png)
 
