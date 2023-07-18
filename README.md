@@ -52,7 +52,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 1. Download docker compose file using the following command.
    
    ```sh
-   curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container/docker-compose.yml"
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container-pre-configured/docker-compose.yml"
    ```
 3. Open the docker compose file and fill the mandatory fields - <b>APP_URL</b> and <b>Unlock Key</b>.
 
