@@ -1,6 +1,7 @@
+ # How to deploy Bold BI application using single docker compose file
  This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have installed [Compose](https://docs.docker.com/compose/install/)
 
-In the following section, we are going to starts BoldBI and a separate PostgreSQL instance with volume mounts for data persistence usin Docker Compose.
+In the following section, we are going to starts BoldBI with volume for data persistence using Docker Compose.
 
 1. Download docker compose file using the following command.
    
@@ -36,6 +37,12 @@ In the following section, we are going to starts BoldBI and a separate PostgreSQ
 
    > **Note:**
    > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
+
+### Application Startup
+
+Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
+
+https://help.boldbi.com/embedded-bi/application-startup
 
 ### Shutdown and cleanup
 

@@ -38,6 +38,18 @@ In the following section, we are going to starts BoldBI with volume mounts for d
    > **Note:**
    > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
 
+### Application Startup
+
+Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
+
+https://help.boldbi.com/embedded-bi/application-startup
+
+
+### Shutdown and cleanup
+
+The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
+The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
+
 
 
 
