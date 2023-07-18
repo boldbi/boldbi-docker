@@ -9,6 +9,11 @@ In the following section, we are going to starts BoldBI with volume mounts for d
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/multi-container-with-env-variable/docker-compose.yml"
    ```
+2. Download the `default.conf` file using the following command.
+
+   ```sh
+   curl -o default.conf "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/multi-container-with-env-variable/default.conf"
+   ```
 3. Open the docker compose file and fill the mandatory fields - <b>APP_BASE_URL</b>, <b>Unlock Key</b> and <b>Database details</b>
 
     ![docker-compose-variable](/docs/images/app_base_url.png)
@@ -49,7 +54,14 @@ In the following section, we are going to starts BoldBI with volume mounts for d
 
       > **Note:**
       > The docker volumes `boldservices_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
-5. After running the command, access the Bold BI App by entering APP_URL in a browser.At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
+
+5. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
+
+       For example, <br>`"./default.conf:/etc/nginx/conf.d/default.conf"`<br>
+        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`<br>
+        `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
+
+6. After running the command, access the Bold BI App by entering APP_URL in a browser.At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
 
    ![docker-compose-startup](/docs/images/docker-startup.png)
 
@@ -57,6 +69,10 @@ In the following section, we are going to starts BoldBI with volume mounts for d
    > **Note:**
    > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
 
+**Shutdown and Cleanup**
+
+The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
+The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
 
 
 

@@ -7,8 +7,14 @@ In the following section, we are going to starts BoldBI and PostgreSQL with volu
 1. Download docker compose file using the following command.
    
    ```sh
-   curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/multi-container-pre-configured/docker-compose.yml"
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/multi-container-pre-configured/docker-compose.yaml"
    ```
+. Download the `default.conf` file using the following command.
+
+   ```sh
+   curl -o default.conf "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/multi-container-pre-configured/default.conf"
+   ```
+
 3. Open the docker compose file and fill the mandatory fields - <b>APP_BASE_URL</b>, <b>Unlock Key</b> and <b>Database details</b>
 
     ![docker-compose-variable](/docs/images/app_base_url.png)
@@ -39,7 +45,14 @@ In the following section, we are going to starts BoldBI and PostgreSQL with volu
    |`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
    |`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
    |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.<br /> <br />**Note:** <br />Password must meet the following requirements. It must contain at least 6 characters, 1 uppercase character, 1 lowercase character, 1 numeric character, 1 special character |
-4. Run docker compose up command.
+
+4. Provide the **default.conf** file path, which you have downloaded earlier in `<default_conf_path>` place.
+
+       For example, <br>`"./default.conf:/etc/nginx/conf.d/default.conf"`<br>
+        `"D:/boldbi/docker/default.conf":"/etc/nginx/conf.d/default.conf"`<br>
+        `"/var/boldbi/docker/default.conf:/etc/nginx/conf.d/default.conf"`
+
+5. Run docker compose up command.
    
    ```sh
    docker-compose up -d
@@ -49,7 +62,7 @@ In the following section, we are going to starts BoldBI and PostgreSQL with volu
 
       > **Note:**
       > The docker volumes `boldservices_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
-5. After running the command, access the Bold BI App by entering APP_URL in a browser.At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
+6. After running the command, access the Bold BI App by entering APP_URL in a browser.At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
 
    ![docker-compose-startup](/docs/images/docker-startup.png)
 
@@ -57,6 +70,9 @@ In the following section, we are going to starts BoldBI and PostgreSQL with volu
    > **Note:**
    > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
 
+**Shutdown and Cleanup**
 
+The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
+The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
 
 
