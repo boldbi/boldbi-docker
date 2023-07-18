@@ -77,7 +77,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    
    ![docker-compose-startup](docs/images/docker-startup.png)
 
-# Bold BI Supported Environment Variables and It's Usage
+# Environment variables and their usage
 
 Bold BI requires the following environment variables to be set when running it in basic mode. You can also find the advanced configuration variables in upcoming topics.
 
