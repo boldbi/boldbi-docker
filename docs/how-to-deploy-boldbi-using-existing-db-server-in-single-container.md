@@ -40,7 +40,7 @@ In the following section, we are going to starts BoldBI and a separate PostgreSQ
    ```sh
    docker-compose up -d
    ```
-   ![docker-compose-command](/docs/images/docker-compose-up-multi.png)
+   ![docker-compose-command](/docs/images/docker-compose-up.png)
    
 
       > **Note:**
