@@ -45,7 +45,7 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 | `6.8.9-focal`     | Ubuntu 20.04  (amd64)       | 07/05/2023 |
 |`6.8.9-arm64`      | Debian 10 (arm64)|07/05/2023
 
-# How to use this image
+# How to use this image?
 
 The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to starts BoldBI and a separate PostgreSQL instance with volume mounts for data persistence usin Docker Compose.
 
@@ -190,7 +190,7 @@ The following environment variables are optional. If they are not provided, Bold
 </table>
 <br/>
 
-# How to deploy Bold BI using advanced configuration
+# How to Deploy Bold BI using Advanced Configuration?
 
 In this section, you will learn how to run the Bold BI application using advanced configurations such as persistence volume, environment variables, manually configuring the startup of Bold BI, and running multiple containers for Bold BI.
 
@@ -200,9 +200,9 @@ In this section, you will learn how to run the Bold BI application using advance
 
 #### How to use host path as Persistent Volume?
 
-#### How to configure SSL certificate for Bold BI?
+#### [How to configure SSL certificate for Bold BI](docs/FAQ/how-to-configure-ssl-for-docker-compose.md)?
 
-### [Start multiple containers Bold BI with `docker-compose`](docs/multiple-container.md)
+#### [Start multiple containers Bold BI with `docker-compose`](docs/multiple-container.md)
 
 # License
 
