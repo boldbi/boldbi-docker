@@ -1,3 +1,5 @@
+ # How to deploy the Bold BI application in multi container using docker compose file
+ 
  This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have installed [Compose](https://docs.docker.com/compose/install/)
 
 In the following section, we are going to starts BoldBI with volume mounts for data persistence using multi container Docker Compose.
