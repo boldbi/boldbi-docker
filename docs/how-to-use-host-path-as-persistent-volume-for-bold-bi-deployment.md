@@ -1,4 +1,4 @@
-# How to use host path as persistent volume for Bold BI deployment
+# How to use host path as persistent volume for Bold BI deployment?
 
 You can store the application data in your host machine to make the Bold BI container a stateful application. Bold BI application will read and write the data in your host machine.
 In the following section, explain about how to use host path as persistent volume for Bold BI deployment.
