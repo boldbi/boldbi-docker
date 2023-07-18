@@ -1,8 +1,6 @@
- # How to deploy the Bold BI application using existing server database details.
+ # How to deploy Bold BI using existing DB server?
 
- This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have installed [Compose](https://docs.docker.com/compose/install/)
-
-In the following section, we are going to starts BoldBI and a separate PostgreSQL instance with volume mounts for data persistence using Docker Compose.
+In the following section, we are going to run the Bold BI application by passing the application startup backend configuration environment variable using the existing DB server details.
 
 1. Download docker compose file using the following command.
    
@@ -47,6 +45,7 @@ In the following section, we are going to starts BoldBI and a separate PostgreSQ
 
       > **Note:**
       > The docker volumes `boldservices_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+      
 5. After running the command, access the Bold BI App by entering APP_URL in a browser.At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
 
    ![docker-compose-startup](/docs/images/docker-startup.png)
@@ -55,7 +54,7 @@ In the following section, we are going to starts BoldBI and a separate PostgreSQ
    > **Note:**
    > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
 
-### Shutdown and cleanup
+**Shutdown and Cleanup**
 
 The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
 The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
