@@ -47,15 +47,14 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 # How to use this image
 
-The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, starts BoldBI and a separate PostgreSQL instance with volume mounts for data persistence.
-
-### Using Docker Compose 
+The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to starts BoldBI and a separate PostgreSQL instance with volume mounts for data persistence usin Docker Compose.
 
 1. Download docker compose file using the following command.
+   
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container/docker-compose.yml"
    ```
-2. Open the docker compose file and fill the mandatory fields - <b>APP_URL</b> and <b>Unlock Key</b>.
+3. Open the docker compose file and fill the mandatory fields - <b>APP_URL</b> and <b>Unlock Key</b>.
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
@@ -68,16 +67,19 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
 
 4. Run docker compose up command.
+   
    ```sh
    docker-compose up -d
    ```
    ![docker-compose-command](docs/images/docker-compose-up.png)
-5. After running the command, access the Bold BI App by entering APP_URL in a browser.
+   
+6. After running the command, access the Bold BI App by entering APP_URL in a browser.
+   
    ![docker-compose-startup](docs/images/docker-startup.png)
 
-# Environment Variables and It's Usage
+# Bold BI Supported Environment Variables and It's Usage
 
-Bold BI accepts the following environment variables: 
+Bold BI requires the following environment variables to be set when running it in basic mode. You can also find the advanced configuration variables in upcoming topics.
 
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- | 
