@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+  boldbi:
+   container_name: boldbi
+   image: syncfusion/boldbi
+   restart: always
+   ports:
+     - 8085:80
+   environment:
+     - APP_URL=<APP_URL>
+     - BOLD_SERVICES_UNLOCK_KEY=<BOLD_SERVICES_UNLOCK_KEY>
+     - BOLD_SERVICES_DB_TYPE=<data_base_server_type>
+     - BOLD_SERVICES_DB_HOST=<data_base_server_host>
+     - BOLD_SERVICES_DB_PORT=<data_base_server_port>
+     - BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=<maintenance_db_name>
+     - BOLD_SERVICES_DB_USER=<data_base_user_name>
+     - BOLD_SERVICES_DB_PASSWORD=<data_base_server_password>
+     - BOLD_SERVICES_USER_EMAIL=<Bold_BI_user_email>
+     - BOLD_SERVICES_USER_PASSWORD=<Bold_BI_user_password>
+   networks:
+     - boldbi
+   volumes:
+     - boldbi_data:/application/app_data
+    
+  pgdb:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Admin@123
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    networks:
+      - boldbi
+
+networks:
+  boldbi:
+  
+volumes:
+  boldbi_data:
+  db_data:
