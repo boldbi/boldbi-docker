@@ -89,7 +89,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
 # Environment variables and their usage
 
-Bold BI requires the following environment variables to be set when running it in basic mode. You can also find the advanced configuration variables in upcoming topics.
+Bold BI supports the following environment variables. You can find the name of the environment variable and its usage below.
 
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- | 
@@ -104,7 +104,7 @@ Bold BI requires the following environment variables to be set when running it i
 
 <br/>
 
-## Environment variables for configuring `Application Startup` in backend
+### Environment variables for configuring `Application Startup` in backend
 
 The following Environment variables are optional. If not provided, a manual Application Startup configuration is needed.
 
@@ -204,11 +204,11 @@ The following environment variables are optional. If they are not provided, Bold
 
 In this section, you will learn how to run the Bold BI application using advanced configurations such as configuring Bold BI using an existing DB server, using a host directory as a persistent volume, configuring startup manually, configuring an SSL certificate, and running a multi-container BI application.
 
-#### How to deploy Bold BI using existing DB server? 
+#### [How to deploy Bold BI using existing DB server](docs/how-to-deploy-bold-bi-using-existing-db-server.md)? 
 
-#### How to deploy Bold BI and configure startup manually?
+#### [How to deploy Bold BI and configure startup manually](docs/how-to-deploy-bold-bi-and-configure-startup-manually.md)?
 
-#### How to use host path as Persistent Volume?
+#### [How to use host path as Persistent Volume](docs/how-to-use-host-path-as-persistent-volume-for-bold-bi-deployment.md)?
 
 #### [How to configure SSL certificate for Bold BI](docs/FAQ/how-to-configure-ssl-for-docker-compose.md)?
 
