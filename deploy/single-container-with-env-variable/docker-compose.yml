@@ -2,6 +2,7 @@ version: '3.5'
 
 services:
   boldbi:
+   container_name: boldbi
    image: syncfusion/boldbi
    restart: always
    ports:
@@ -23,6 +24,7 @@ services:
      - boldbi_data:/application/app_data
     
   pgdb:
+    container_name: postgres
     image: postgres
     restart: always
     environment:

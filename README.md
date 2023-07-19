@@ -52,7 +52,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 1. Download the Docker Compose file by using the following command.
    
    ```sh
-   curl -o docker-compose.yml "https://raw.githubusercontent.com/Vinoth-Krishnamoorthy/boldbi-docker/main/deploy/single-container-pre-configured/docker-compose.yml"
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-pre-configured/docker-compose.yml"
    ```
 2. Open the Docker Compose file, fill in the mandatory fields, and save it. You can refer to the guidance provided below for filling in the APP_URL and BOLD_SERVICES_UNLOCK_KEY details.
 
@@ -81,7 +81,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    ```sh
    docker logs boldbi
    ```
-   
+   ![docker-boldbi-logs](docs/images/docker-logs.png)
    
 5. Now, access the Bold BI application by entering the APP_URL in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds.
    
