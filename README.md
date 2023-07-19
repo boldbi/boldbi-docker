@@ -58,7 +58,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
-      #### APP_URL Guidance
+      **APP_URL Guidance**
       * Provide the HTTP scheme for APP_URL value.
       For example, <br/>
           `http://example.com` <br/>
@@ -66,7 +66,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
       * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
 
-      ### BOLD_SERVICES_UNLOCK_KEY Guidance
+      **BOLD_SERVICES_UNLOCK_KEY Guidance**
       * Refer to [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
 
 3. Run the "docker-compose up -d" command.  
