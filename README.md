@@ -40,10 +40,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags               | OS Version    | Last Modified(MM/DD/YYYY)|
 | -------------      | ------------- | ------------- |
-| `6.8.9`, `latest` | Debian 10  (amd64,arm64)    | 07/05/2023 |
-| `6.8.9-alpine`    | Alpine 3.13  (amd64)  | 07/05/2023 |
-| `6.8.9-focal`     | Ubuntu 20.04  (amd64)       | 07/05/2023 |
-|`6.8.9-arm64`      | Debian 10 (arm64)|07/05/2023
+| `6.9.10`, `latest` | Debian 10  (amd64,arm64)    | 07/19/2023 |
+| `6.9.10-alpine`    | Alpine 3.13  (amd64)  | 07/19/2023 |
+| `6.9.10-focal`     | Ubuntu 20.04  (amd64)       | 07/19/2023 |
+|`6.9.10-arm64`      | Debian 10 (arm64)|07/19/2023
 
 # How to use this image?
 
@@ -59,17 +59,8 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
       **APP_URL Guidance**
-      * Provide the HTTP scheme for APP_URL value.
-      For example, <br/>
-          `http://example.com` <br/>
-          `http://<public_ip_address>` <br/>
-          `http://localhost` <br/>
-          `http://<internal-host-ip>` <br/>
-      * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
-      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
-      * When running the Bold BI container on a port other than 80, we need to include the port number along with the APP_URL. For example, <br/>
-        Syntax - `protocal://ip-address:port-number` <br/>
-        Example - `http://182.06.05.5:8085`  <br/>
+      * For physical and GUI machines, you can mention the APP_URL as `http://localhost:8085` or `http://internal-ip-address:8085`. You can obtain the internal IP address by using the `ipconfig` or `ifconfig` command.
+      * For virtual machines and non-GUI machines, you can mention the APP_URL as `http://host-ip:8085` or `http://public-ip:8085`.
 
       **BOLD_SERVICES_UNLOCK_KEY Guidance**
       * Refer to [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
