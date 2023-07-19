@@ -63,8 +63,12 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       For example, <br/>
           `http://example.com` <br/>
           `http://<public_ip_address>` <br/>
-      * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
-      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
+          `http://localhost` <br/>
+          `http://<internal-host-ip>` <br/>
+      * For `Windows` and `MacOS` use either http://host.docker.internal:port-number or http://localhost:port-number along with port number for other than 80 ports. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
+      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme for 80 port. Other than 80 port, we need to pass port number also in APP_URL like below:
+        protocal://ip-address:port-number
+        Example - http://182.06.05.5:8085
 
       **BOLD_SERVICES_UNLOCK_KEY Guidance**
       * Refer to [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
