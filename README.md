@@ -63,7 +63,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
       * For virtual machines and non-GUI machines, you can mention the APP_URL as `http://host-ip:8085` or `http://public-ip:8085`.
 
       **BOLD_SERVICES_UNLOCK_KEY Guidance**
-      * Refer to [this](https://help.boldbi.com/faq/how-to-get-offline-unlock-key/) document to get Bold BI unlock key.
+      * Refer to [this](https://support.boldbi.com/kb/article/12983/how-to-get-offline-license-key-for-bold-bi) document to get Bold BI unlock key.
 
 3. Run the "docker-compose up -d" command.  
    
