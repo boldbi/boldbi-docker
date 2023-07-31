@@ -230,4 +230,6 @@ It is the image user's responsibility to ensure that any use of this image compl
 
 [How to auto deploy multiple services Bold BI via docker-compose?](https://github.com/boldbi/boldbi-docker/blob/main/docs/FAQ/how-to-auto-deploy-bold-bi-multiple-services-in-docker-compose.md)
 
+[How to upgrade a new image in docker environment using docker compose yaml file](https://support.boldbi.com/kb/article/462/how-to-upgrade-a-new-image-in-docker-environment-using-docker-compose-yaml-file)
+
 
