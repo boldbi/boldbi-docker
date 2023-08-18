@@ -8,7 +8,7 @@ services:
    ports:
      - 8085:80
    environment:
-     - APP_URL=<APP_URL>
+    # - APP_URL=<APP_URL>
      - BOLD_SERVICES_UNLOCK_KEY=<BOLD_SERVICES_UNLOCK_KEY>
      - BOLD_SERVICES_DB_TYPE=<data_base_server_type>
      - BOLD_SERVICES_DB_HOST=<data_base_server_host>

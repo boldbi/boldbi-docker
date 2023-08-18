@@ -7,19 +7,20 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
   1. Create an empty project directory.<br/>
   You can name the directory something easy for you to remember. This directory is the context for your application image. This project directory should contains a `docker-compose.yml` file which is complete in itself for a good starter BoldBI project.
 
-  2. Download the configuration files [here](/deploy/multiple-container/). This directory includes docker-compose YML file and configuration file for Nginx.
-  
-      > **Tip:**
-        You can use either a `.yml` or `.yaml` extension for this file. They both works well.
-  
-  3.  Change into your project directory.
+  2.  Make and change into your project directory.
   For example, if you named your directory `my_boldbi`
 
       ```sh
       $  cd my_boldbi/
       ```
 
-  4. Create a docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
+  3. Download the configuration files [here](/deploy/multiple-container/). This directory includes docker-compose YML file and configuration file for Nginx.
+  
+      > **Tip:**
+        You can use either a `.yml` or `.yaml` extension for this file. They both works well.
+  
+
+  4. The docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
       ```sh
       version: '3.5'
@@ -27,7 +28,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
       services:
         id-web:
           container_name: id_web_container
-          image: gcr.io/boldbi-294612/bold-identity:6.10.12
+          image: gcr.io/boldbi-294612/bold-identity:6.11.10
           restart: on-failure
           environment:
             - APP_BASE_URL=<app_base_url>
@@ -44,7 +45,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-api:
           container_name: id_api_container
-          image: gcr.io/boldbi-294612/bold-identity-api:6.10.12
+          image: gcr.io/boldbi-294612/bold-identity-api:6.11.10
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -60,7 +61,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-ums:
           container_name: id_ums_container
-          image: gcr.io/boldbi-294612/bold-ums:6.10.12
+          image: gcr.io/boldbi-294612/bold-ums:6.11.10
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -76,7 +77,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-web:
           container_name: bi_web_container
-          image: gcr.io/boldbi-294612/boldbi-server:6.10.12
+          image: gcr.io/boldbi-294612/boldbi-server:6.11.10
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -92,7 +93,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-api:
           container_name: bi_api_container
-          image: gcr.io/boldbi-294612/boldbi-server-api:6.10.12
+          image: gcr.io/boldbi-294612/boldbi-server-api:6.11.10
           restart: on-failure
           volumes:
             - boldservices_data:/application/app_data
@@ -109,7 +110,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-jobs:
           container_name: bi_jobs_container
-          image: gcr.io/boldbi-294612/boldbi-server-jobs:6.10.12
+          image: gcr.io/boldbi-294612/boldbi-server-jobs:6.11.10
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -126,7 +127,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-dataservice:
           container_name: bi_dataservice_container
-          image: gcr.io/boldbi-294612/boldbi-designer:6.10.12
+          image: gcr.io/boldbi-294612/boldbi-designer:6.11.10
           restart: on-failure
           environment:
             - widget_bing_map_enable=false
