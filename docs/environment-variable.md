@@ -32,6 +32,7 @@ The following Environment variables are optional. If not provided, a manual Appl
 |`BOLD_SERVICES_DB_ADDITIONAL_PARAMETERS`|No|If your database server requires additional connection string parameters, include them here.<br /><br />Connection string parameters can be found in the official document.<br />My SQL: https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html<br />PostgreSQL: https://www.npgsql.org/doc/connection-string-parameters.html<br />MS SQL: https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring<br /><br /><b>Note:</b> A semicolon(;) should be used to separate multiple parameters.|
 |`BOLD_SERVICES_USER_EMAIL`|Yes|It should be a valid email.|
 |`BOLD_SERVICES_USER_PASSWORD`|Yes|It should meet our password requirements.<br /> <br />**Note:** <br />Password must meet the following requirements. It must contain at least 6 characters, 1 uppercase character, 1 lowercase character, 1 numeric character, 1 special character |
+|`BOLD_SERVICES_USE_SITE_IDENTIFIER`|No|The variable is optional, and the default value is <b>TRUE</b>. <br />By default, all sites in Bold BI require a site identifier, which differentiates sites on the same domain. That is https://example.com/bi/site/{site_identifier}<br />You can ignore the site identifier by setting the value as <b>FALSE</b>. If the site identifier is disabled, each site requires a unique domain.|
 
 ### Environment variables for configuring `Branding` in backend
 The following environment variables are optional. If they are not provided, Bold BI will use the default configured values.
@@ -106,18 +107,6 @@ The following environment variables are optional. If they are not provided, Bold
        This is site identifier, and it will be the part of the application URL.
       <br />
       If the value is not given, the site will be deployed using the default value.
-      </td>
-    </tr>
-    <tr>
-      <td>
-       BOLD_SERVICES_USE_SITE_IDENTIFIER
-      </td>
-      <td>     
-       The variable is optional, and the default value is <b>TRUE</b>. 
-      <br />
-        By default, all sites in Bold BI require a site identifier, which differentiates sites on the same domain. That is https://example.com/bi/site/{site_identifier}
-        <br />
-        You can ignore the site identifier by setting the value as <b>FALSE</b>. If the site identifier is disabled, each site requires a unique domain.
       </td>
     </tr>
 </table>
