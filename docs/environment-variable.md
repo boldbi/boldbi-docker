@@ -108,5 +108,17 @@ The following environment variables are optional. If they are not provided, Bold
       If the value is not given, the site will be deployed using the default value.
       </td>
     </tr>
+    <tr>
+      <td>
+       BOLD_SERVICES_USE_SITE_IDENTIFIER
+      </td>
+      <td>     
+       The variable is optional, and the default value is <b>TRUE</b>. 
+      <br />
+        By default, all sites in Bold BI require a site identifier, which differentiates sites on the same domain. That is https://example.com/bi/site/{site_identifier}
+        <br />
+        You can ignore the site identifier by setting the value as <b>FALSE</b>. If the site identifier is disabled, each site requires a unique domain.
+      </td>
+    </tr>
 </table>
 <br/>
