@@ -28,7 +28,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
       services:
         id-web:
           container_name: id_web_container
-          image: gcr.io/boldbi-294612/bold-identity:6.13.11
+          image: gcr.io/boldbi-294612/bold-identity:6.14.12
           restart: on-failure
           environment:
             - APP_BASE_URL=<app_base_url>
@@ -45,7 +45,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         id-api:
           container_name: id_api_container
-          image: gcr.io/boldbi-294612/bold-identity-api:6.13.11
+          image: gcr.io/boldbi-294612/bold-identity-api:6.14.12
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -61,7 +61,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         id-ums:
           container_name: id_ums_container
-          image: gcr.io/boldbi-294612/bold-ums:6.13.11
+          image: gcr.io/boldbi-294612/bold-ums:6.14.12
           restart: on-failure
           environment:
             - BOLD_SERVICES_HOSTING_ENVIRONMENT=docker
@@ -88,7 +88,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-web:
           container_name: bi_web_container
-          image: gcr.io/boldbi-294612/boldbi-server:6.13.11
+          image: gcr.io/boldbi-294612/boldbi-server:6.14.12
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -104,7 +104,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-api:
           container_name: bi_api_container
-          image: gcr.io/boldbi-294612/boldbi-server-api:6.13.11
+          image: gcr.io/boldbi-294612/boldbi-server-api:6.14.12
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -121,7 +121,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-jobs:
           container_name: bi_jobs_container
-          image: gcr.io/boldbi-294612/boldbi-server-jobs:6.13.11
+          image: gcr.io/boldbi-294612/boldbi-server-jobs:6.14.12
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -138,7 +138,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-dataservice:
           container_name: bi_dataservice_container
-          image: gcr.io/boldbi-294612/boldbi-designer:6.13.11
+          image: gcr.io/boldbi-294612/boldbi-designer:6.14.12
           restart: on-failure
           # environment:                         ## Refer README.md for available environment variables.
           #   - widget_bing_map_enable=false
