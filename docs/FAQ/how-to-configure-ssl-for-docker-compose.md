@@ -30,8 +30,8 @@
 4. Refer below document for SSL changes in `nginx` file .
 
    https://github.com/boldbi/boldbi-docker/blob/main/docs/ssl-termination.md
-   
-5. Restart the Bold BI container using below command.
+5. Add `- 443:443` in ports section.   
+6. Restart the Bold BI container using below command.
    ~~~sh
    docker restart <container-name or container ID>
    ~~~
@@ -44,8 +44,8 @@
 2. Refer below document for SSL changes in `nginx` file .
 
    https://github.com/boldbi/boldbi-docker/blob/main/docs/ssl-termination.md
-
-3. Restart the Nginx container using below command.
+3. Uncomment the `- "443:443"` in  reverse-proxy service.
+4. Restart the Nginx container using below command.
    ~~~sh
    docker restart <container-name or container ID>
    ~~~
