@@ -44,6 +44,8 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 | `6.18.11-alpine`    | Alpine 3.13  (amd64, arm64)  | 06/12/2023 |
 | `6.18.11-focal`     | Ubuntu 20.04  (amd64, arm64)       | 06/12/2023 |
 
+**Note**: Image and PDF exporting is not supported in ARM architecture images.
+
 # How to use this image?
 
 The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to start the Bold BI application and a separate PostgreSQL instance with volume mounts for data persistence using Docker Compose.
