@@ -21,7 +21,7 @@ The following Environment variables are optional. If not provided, a manual Appl
 
 | Name                          |Required| Description   | 
 | -------------                 |----------| ------------- |
-|`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key for activating Bold BI. Please refer to [this document](https://support.boldbi.com/kb/article/12983/how-to-get-offline-license-key-for-bold-bi) to download the key. <br/> If you don't have the download key option, please create a support ticket [here](https://support.boldbi.com/create). |
+|`BOLD_SERVICES_UNLOCK_KEY`|Yes|License key for activating Bold BI. Please download the offline Bold BI unlock key from the [downloads](https://www.boldbi.com/account) page. <br/> If you don't have the download key option, please create a support ticket [here](https://support.boldbi.com/create). |
 |`BOLD_SERVICES_DB_TYPE`|Yes|Type of database server can be used for configuring Bold BI.<br/><br />The following DB types are accepted:<br />1. mssql – Microsoft SQL Server/Azure SQL Database<br />2. postgresql – PostgreSQL Server<br />3. mysql – MySQL/MariaDB Server|
 |`BOLD_SERVICES_DB_HOST`|Yes|Name of the Database Server|
 |`BOLD_SERVICES_DB_PORT`|No|The system will use the following default port numbers based on the database server type.<br />PostgrSQL – 5234<br />MySQL -3306<br /><br />Please specify the port number for your database server if it is configured on a different port.<br /><br />For MS SQL Server, this parameter is not necessary.|
