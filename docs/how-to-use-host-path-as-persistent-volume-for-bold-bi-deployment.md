@@ -34,7 +34,7 @@ You can store the application data on your host machine to make the Bold BI cont
      -e APP_URL=https://example.com \
      -v D:/boldbi/app_data:/application/app_data \
      -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:7.1.16
+     -d syncfusion/boldbi:7.2.8
    ``` 
 3. After running the command, access the Bold BI App by entering `APP_URL` in a browser. At this point, Bold BI should be running in `<app_url>` (as appropriate)
 
