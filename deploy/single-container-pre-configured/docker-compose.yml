@@ -8,14 +8,15 @@ services:
    ports:
      - 8085:80
    environment:
-    # - APP_URL=<APP_URL>
+      # Required
      - BOLD_SERVICES_UNLOCK_KEY=<BOLD_SERVICES_UNLOCK_KEY>
+      # less frequently changed - defaults are fine for most users
      - BOLD_SERVICES_DB_TYPE=postgresql
      - BOLD_SERVICES_DB_HOST=pgdb
      - BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres
      - BOLD_SERVICES_DB_USER=postgres
      - BOLD_SERVICES_DB_PASSWORD=Admin@123
-     - BOLD_SERVICES_USER_EMAIL=demo@boldbi.com
+     - BOLD_SERVICES_USER_EMAIL=testuser@boldbi.com
      - BOLD_SERVICES_USER_PASSWORD=Admin@123
    networks:
      - boldbi

@@ -8,19 +8,7 @@ In the following section, we will deploy a single container Bold BI application 
    
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container/docker-compose.yml"
-   ```
-3. Open the docker compose file and fill the mandatory field - <b>APP_URL</b>
-
-    ![docker-compose-database-detail](/docs/images/single-container-app-url.png)
-
-      <b>APP_URL Guidance:</b>
-      * Provide the HTTP scheme for APP_BASE_URL value.
-      For example, <br/>
-          `http://example.com` <br/>
-          `http://<public_ip_address>` <br/>
-      * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
-      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
- 
+   ``` 
 4. Run docker compose up command.
    
    ```sh
@@ -32,13 +20,9 @@ In the following section, we will deploy a single container Bold BI application 
       > **Note:**
       > The docker volumes `boldbi_data` persists data of Bold BI. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
       
-5. After running the command, access the Bold BI App by entering `APP_URL` in a browser. At this point, Bold BI should be running in `<app_url>:8085` (as appropriate)
+3. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will display the License page within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
+      ![License Page](images/license-page.png)
 
-   ![docker-compose-startup](/docs/images/docker-startup.png)
-
-
-   > **Note:**
-   > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
 
 **Application Startup**
 
