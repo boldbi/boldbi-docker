@@ -45,10 +45,6 @@ In the following section, we are going to run the Bold BI application by passing
 
    > Note: Don't use `http://127.0.0.1:8085` to access the application.
 
-
-   > **Note:**
-   > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
-
 **Shutdown and Cleanup**
 
 The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
