@@ -24,16 +24,14 @@
 
       services:
         boldbi:
-        image: syncfusion/boldbi
-        restart: always
-        ports:
-          - 8085:80
-        # environment:
-          # - APP_URL=<app_url>
-        networks:
-          - boldbi
-        volumes:
-          - boldbi_data:/application/app_data
+          image: syncfusion/boldbi
+          restart: always
+          ports:
+            - 8085:80
+          networks:
+            - boldbi
+          volumes:
+            - boldbi_data:/application/app_data
           
         pgdb:
           image: postgres
@@ -62,18 +60,7 @@
             o: 'bind'
             device: '<host_path_db_data>'
       ```
-  4. Replace `<app_url>` with your DNS or IP address, by which you want to access the application.
-    
-      For example, <br/>
-          `http://example.com` <br/>
-          `https://example.com` <br/>
-          `http://<public_ip_address>` <br/>
-
-      > **Note:**
-      > * If you are using the IP address for the Base URL, make sure you are using the public IP of the machine instead of internal IP or local IP address. Applications can communicate with each other using the public IP alone. Host machine IP will not be accessible inside the application container.
-      > * Provide the HTTP or HTTPS scheme for APP_BASE_URL value.
-
-  5. You can also change the Port number other than `8085`
+  4. You can also change the Port number other than `8085`.
 
   6. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldbi_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
@@ -106,11 +93,11 @@ Creating my_boldbi_db_1     ... done
 ```
 ### Bring up Bold BI in a web browser
 
-At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
+At this point, you can access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
+   
+   ![docker-compose-startup](images/docker-startup.png)
 
-> **Note:**
-> The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
-
+   > **Note:** Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 ### Application Startup
 
 Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.

@@ -2,49 +2,54 @@
 
 You can store the application data on your host machine to make the Bold BI container a stateful application. The Bold BI application will read and write the data on your host machine. In the following section, we will learn how to use the host path as a persistent volume for Bold BI deployment.
 
-1. When deploying the Bold BI application using Docker or Docker compose, you can pass the host path as a persistent volume. Here is an example using the Docker Command.
+## Run single container `Bold BI` via `docker-compose`
+
+ This quick-start guide demonstrates how to use Compose to set up and run Bold BI. Before starting, make sure you have installed [Compose](https://docs.docker.com/compose/install/)
+
+### Define the Project
+
+1. Download the Docker Compose file by using the following command.
    
    ```sh
-     docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=<app_url> \
-     -v <host_path_for_appdata_files>:/application/app_data \
-     -v <host_path_for_nginx_config>:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:<tag>
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-with-host-path/docker-compose.yml"
    ```
-  
-    <b>Persisting application app_data</b> </br></br>
-     
-    Replace the `<host_path_for_appdata_files>` value with a directory path from your host machine in the advanced docker run command.
+2. Open the Docker Compose file, fill the BOLD_SERVICES_UNLOCK_KEY value, and save it. You can download the offline Bold BI unlock key from the [downloads](https://www.boldbi.com/account) page.
 
-   > **For example**<br/>
-   > Windows: `-v D:/boldbi/app_data:/application/app_data`<br/>
-   > Linux: `-v /home/boldbi/app_data:/application/app_data`
+   ![docker-compose-variable](images/docker-compose-variable.png)
 
-   <b>Nginx configuration</b>
+3. Allocate a directory in your host machine to store the shared folders for applications’ usage. Replace the directory path with `<host_path_boldbi_data>` and `<host_path_db_data>` in **docker-compose.yml** file.
 
-   Replace the `<host_path_for_nginx_config>` value with a directory path from your host machine in the advanced docker run command.
+   For example, <br><b>Windows:</b> `device: 'D:/boldbi/boldbi_data'` and `device: 'D:/boldbi/db_data'` <br><b>Linux:</b> `device: '/var/boldbi/boldbi_data'` and `device: '/var/boldbi/db_data'`
+   
+      ![Host path](images/host-path-volume.png)
+      > **Note:**
+      > The docker volumes `boldbi_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
 
-   > **For example**<br/>
-   > Windows: `-v D:/boldbi/nginx:/etc/nginx/sites-available`<br/>
-   > Linux: `-v /home/boldbi/nginx:/etc/nginx/sites-available`
-
-   <b>Example:</b>
+3. Run the command below. This command will start the Bold BI and Postgres SQL containers and display the Bold BI logs to provide information about the installation status of the Bold BI application.
+   
    ```sh
-    docker run --name boldbi -p 80:80 -p 443:443 \
-     -e APP_URL=https://example.com \
-     -v D:/boldbi/app_data:/application/app_data \
-     -v D:/boldbi/nginx:/etc/nginx/sites-available \
-     -d syncfusion/boldbi:7.5.13
-   ``` 
-3. After running the command, access the Bold BI App by entering `APP_URL` in a browser. At this point, Bold BI should be running in `<app_url>` (as appropriate)
+   docker-compose up -d; docker-compose logs -f boldbi
+   ```
+   ![docker-compose-command](images/docker-compose-up.png)
 
-   ![docker-compose-startup](/docs/images/docker-startup.png)
- 
-    > **Note:**
-   > The BoldBI site is not immediately available because the containers are still being initialized and may take a couple of minutes for the first load.
+4. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
+   
+   ![docker-compose-startup](images/docker-startup.png)
 
-**Application Startup**
+   > **Note:** Don't use `http://127.0.0.1` with `port` to access the application.
+
+
+### Application Startup
 
 Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.
 
 https://help.boldbi.com/embedded-bi/application-startup
+
+> **Note:**
+> To use the above configured PostgreSQL server in Bold BI please use `pgdb` as the PostgreSQL server name.
+
+### Shutdown and cleanup
+
+The command `docker-compose down` removes the containers and default network, but preserves the volumes of Bold BI and PostgreSQL. <br /><br />
+The command `docker-compose down --volumes` removes the containers, default network, and all the volumes.
+

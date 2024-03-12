@@ -7,18 +7,11 @@ In the following section, we are going to run the Bold BI application by passing
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-with-env-variable/docker-compose.yml"
    ```
-3. Open the docker compose file and fill the mandatory fields - <b>APP_BASE_URL</b>, <b>Unlock Key</b> and <b>Database details</b>
+3. Open the docker compose file and fill the mandatory fields - <b>Unlock Key</b> and <b>Database details</b>
 
     ![docker-compose-database-detail](/docs/images/database-env-value.png)
 
-      <b>APP_BASE_URL Guidance:</b>
-      * Provide the HTTP scheme for APP_BASE_URL value.
-      For example, <br/>
-          `http://example.com` <br/>
-          `http://<public_ip_address>` <br/>
-      * For `Windows` and `MacOS` use either http://host.docker.internal or http://localhost. Docker Desktop provides `host.docker.internal` and `gateway.docker.internal` DNS for communication between docker applications and host machine. Please make sure that the host.docker.internal DNS has your IPv4 address mapped in your hosts file on Windows(C:\Windows\System32\drivers\etc\hosts).
-      * For `Linux` use the Machine Public IP address as the value for APP_URL with the HTTP scheme.
- 
+
    <b>Environment variable Usage:</b>
 
 
@@ -44,15 +37,13 @@ In the following section, we are going to run the Bold BI application by passing
    
 
       > **Note:**
-      > The docker volumes `boldservices_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+      > The docker volumes `boldservices_data` persists data of Bold BI. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
       
-5. After running the command, access the Bold BI App by entering APP_URL in a browser.At this point, Bold BI should be running in `<app_base_url>:8085` (as appropriate)
+5. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
+   
+   ![docker-compose-startup](images/docker-startup.png)
 
-   ![docker-compose-startup](/docs/images/docker-startup.png)
-
-
-   > **Note:**
-   > The BoldBI site is not immediately available on port 8085 because the containers are still being initialized and may take a couple of minutes for the first load.
+      > **Note:** <br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. <br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 
 **Shutdown and Cleanup**
 

@@ -7,8 +7,6 @@ services:
    restart: always
    ports:
      - 8085:80
-   environment:
-     - APP_URL=<APP_URL>
    networks:
      - boldbi
    volumes:
