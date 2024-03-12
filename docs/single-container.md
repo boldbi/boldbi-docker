@@ -97,7 +97,7 @@ At this point, you can access the Bold BI application by entering the URL as `ht
    
    ![docker-compose-startup](images/docker-startup.png)
 
-   > Note: Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
+   > **Note:** Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 ### Application Startup
 
 Configure the Bold BI On-Premise application startup to use the application. Please refer the following link for more details on configuring the application startup.

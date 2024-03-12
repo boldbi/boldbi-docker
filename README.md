@@ -72,7 +72,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    
    ![docker-compose-startup](docs/images/docker-startup.png)
 
-   > Note: <br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. <br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
+   > **Note:** <br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. <br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 
 # How to Deploy Bold BI using Advanced Configuration?
 
