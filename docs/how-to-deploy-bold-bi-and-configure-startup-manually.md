@@ -9,7 +9,7 @@ In the following section, we will deploy a single container Bold BI application 
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container/docker-compose.yml"
    ``` 
-4. Run docker compose up command.
+2. Run docker compose up command.
    
    ```sh
    docker-compose up -d
