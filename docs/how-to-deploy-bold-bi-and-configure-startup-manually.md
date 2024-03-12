@@ -23,7 +23,7 @@ In the following section, we will deploy a single container Bold BI application 
 3. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will display the License page within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
       ![License Page](images/license-page.png)
 
-      > Note: Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
+      > **Note:** Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
       
 **Application Startup**
 

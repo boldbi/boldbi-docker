@@ -36,7 +36,7 @@ You can store the application data on your host machine to make the Bold BI cont
    
    ![docker-compose-startup](images/docker-startup.png)
 
-   > Note: Don't use `http://127.0.0.1` with `port` to access the application.
+   > **Note:** Don't use `http://127.0.0.1` with `port` to access the application.
 
 
 ### Application Startup
