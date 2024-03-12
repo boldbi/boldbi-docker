@@ -10,7 +10,7 @@ services:
    environment:
       # Required
      - BOLD_SERVICES_UNLOCK_KEY=<BOLD_SERVICES_UNLOCK_KEY>
-      # less frequently changed - defaults are fine for most users
+      # Optional: Default values are fine for evaluation purposes.
      - BOLD_SERVICES_DB_TYPE=postgresql
      - BOLD_SERVICES_DB_HOST=pgdb
      - BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres

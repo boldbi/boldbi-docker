@@ -37,13 +37,13 @@ In the following section, we are going to run the Bold BI application by passing
    
 
       > **Note:**
-      > The docker volumes `boldservices_data` and `db_data` persists data of Bold BI and PostgreSQL respectively. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
+      > The docker volumes `boldservices_data` persists data of Bold BI. [Learn more about docker volumes](https://docs.docker.com/storage/volumes/)
       
 5. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
    
    ![docker-compose-startup](images/docker-startup.png)
 
-   > Note: Don't use `http://127.0.0.1:8085` to access the application.
+      > Note: <br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. <br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 
 **Shutdown and Cleanup**
 
