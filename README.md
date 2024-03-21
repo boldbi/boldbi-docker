@@ -40,9 +40,9 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags               | OS Version    | Last Modified(MM/DD/YYYY)|
 | -------------      | ------------- | ------------- |
-| `7.5.13`, `latest` | Debian 10  (amd64,arm64)    | 03/06/2024 |
-| `7.5.13-alpine`    | Alpine 3.13  (amd64, arm64)  | 03/06/2024 |
-| `7.5.13-focal`     | Ubuntu 20.04  (amd64, arm64)       | 03/06/2024 |
+| `7.6.12`, `latest` | Debian 10  (amd64,arm64)    | 03/21/2024 |
+| `7.6.12-alpine`    | Alpine 3.13  (amd64, arm64)  | 03/21/2024 |
+| `7.6.12-focal`     | Ubuntu 20.04  (amd64, arm64)       | 03/21/2024 |
 
 **Note**: 
 * Image and PDF exporting is not supported in ARM architecture images and Alpine variant images.
