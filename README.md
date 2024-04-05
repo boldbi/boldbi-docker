@@ -112,5 +112,5 @@ It is the image user's responsibility to ensure that any use of this image compl
 
 [How to upgrade a new image in docker environment using docker compose yaml file?](https://support.boldbi.com/kb/article/462/how-to-upgrade-a-new-image-in-docker-environment-using-docker-compose-yaml-file)
 
-[How to deploy Bold BI on an ECS Fargate cluster using an Application Load Balancer](https://support.boldbi.com/kb/article/13855/deploy-bold-bi-on-an-ecs-fargate-cluster-using-an-application-load-balancer)
+[How to deploy Bold BI on an ECS Fargate cluster using an Application Load Balancer?](https://support.boldbi.com/kb/article/13855/deploy-bold-bi-on-an-ecs-fargate-cluster-using-an-application-load-balancer)
 
