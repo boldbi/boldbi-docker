@@ -14,6 +14,7 @@ Bold BI supports the following environment variables. You can find the name of t
 |`<host_path_for_nginx_config>` |No|Persistent volume path for the Nginx configuration|
 |`AppSettings__EnableQueryMetricsInDebugFiles`|No|	If the query metrics needs to be logged in debug files, enable this to `true`. By default, this option is set to `false`.|
 |`AppSettings__EnableQueryMetricsWithQueryInDebugFiles`|No|If the query and query metrics needs to be logged in debug files, enable this to `true`. By default, this option is set to `false`.|
+|`BOLD_SERVICES_REVERSE_PROXY`|No|This property is used to perform HTTPS redirection correctly in Bold BI when using an External Balancer such as ALB or NLB to access Bold BI, set this to `true`. By default, this option is set to `false`.|
 <br/>
 
 ### Environment variables for configuring `Application Startup` in backend
