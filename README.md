@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
-<a href="https://www.boldbi.com"><img alt="boldbi"width="400" src="https://cdn.boldbi.com/DevOps/boldbi-logo.svg"></a>
+<a href="https://www.boldbi.com"><img alt="boldbi" width="400" src="https://cdn.boldbi.com/DevOps/boldbi-logo.svg"></a>
 </br>
 </br>
 
