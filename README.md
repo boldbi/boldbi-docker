@@ -30,7 +30,7 @@ The following hardware requirements are necessary to run the Bold BI solution:
 * Memory: 4 GB RAM.
 * Disk Space: 8 GB or more.
 
-### Software requirements
+## Software requirements
 
 The following software requirements are necessary to run the Bold BI Enterprise edition:
 
