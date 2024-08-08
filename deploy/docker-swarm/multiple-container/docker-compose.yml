@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   id-web:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:7.11.24
     restart: on-failure
     environment:
       - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
@@ -18,7 +18,7 @@ services:
         retries: 5
         
   id-api:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:7.11.24
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -33,7 +33,7 @@ services:
         retries: 5
         
   id-ums:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:7.11.24
     restart: on-failure
     volumes:
       - boldservices_data:/application/app_data
@@ -48,7 +48,7 @@ services:
         retries: 5
         
   bi-web:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:7.11.24
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -63,7 +63,7 @@ services:
         retries: 5
         
   bi-api:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:7.11.24
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -79,7 +79,7 @@ services:
         retries: 5
       
   bi-jobs:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:7.11.24
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -95,7 +95,7 @@ services:
         retries: 5
       
   bi-dataservice:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:7.11.24
     restart: on-failure
     # environment:                         ## Refer README.md for available environment variables.
     #   - widget_bing_map_enable=false
@@ -115,7 +115,7 @@ services:
         retries: 5
 
   bi-etl:
-    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:7.10.16
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:7.11.24
     restart: on-failure
     volumes:
       - boldservices_data:/application/app_data
