@@ -1,10 +1,12 @@
-<a href="https://www.boldbi.com"><img alt="boldbi" width="400" src="https://cdn.boldbi.com/DevOps/boldbi-logo.svg"></a>
-<br/>
-<br/>
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
+<a href="https://www.boldbi.com?utm_source=github&utm_medium=backlinks"><img alt="boldbi" width="400" src="https://cdn.boldbi.com/DevOps/boldbi-logo.svg"></a>
+</br>
+</br>
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/boldbi/boldbi-docker?sort=semver)](https://github.com/boldbi/boldbi-docker/releases/latest)
-[![Documentation](https://img.shields.io/badge/docs-help.boldbi.com-blue.svg)](https://help.boldbi.com/embedded-bi)
-[![File Issues](https://img.shields.io/badge/file_issues-boldbi_support-blue.svg)](https://www.boldbi.com/support)
+[![Documentation](https://img.shields.io/badge/docs-help.boldbi.com-blue.svg)](https://help.boldbi.com/embedded-bi?utm_source=github&utm_medium=backlinks)
+[![File Issues](https://img.shields.io/badge/file_issues-boldbi_support-blue.svg)](https://www.boldbi.com/support?utm_source=github&utm_medium=backlinks)
 
 # What is Bold BI
 
@@ -16,11 +18,11 @@ With deep embedding, you can interact more with your data and get insights direc
 
 # Deployment Prerequisites
 
-### Hardware requirements
+## Hardware requirements
 
 The following hardware requirements are necessary to run the Bold BI solution:
 
-* Operating System: Use the Bold BI Docker on the following operating systems: 
+* Operating System: Use the Bold BI Docker on the following operating systems:
   * Windows
   * Linux
   * Mac
@@ -28,12 +30,12 @@ The following hardware requirements are necessary to run the Bold BI solution:
 * Memory: 4 GB RAM.
 * Disk Space: 8 GB or more.
 
-### Software requirements
+## Software requirements
 
 The following software requirements are necessary to run the Bold BI Enterprise edition:
 
 * Database: Microsoft SQL Server 2012+ | PostgreSQL | MySQL
-* Application: [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/). 
+* Application: [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/).
 * Web Browser: Microsoft Edge, Mozilla Firefox, and Chrome.
 
 # Supported tags
@@ -44,7 +46,8 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 | `7.11.24-alpine`    | Alpine 3.13  (amd64, arm64)  | 08/08/2024 |
 | `7.11.24-focal`     | Ubuntu 20.04  (amd64, arm64)       | 08/08/2024 |
 
-**Note**: 
+**Note**:
+
 * Image and PDF exporting is not supported in ARM architecture images and Alpine variant images.
 * Filesystem and Web connectors are not supported in Bold ETL for Alpine variant images.
 
@@ -53,32 +56,34 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to start the Bold BI application and a separate PostgreSQL instance with volume mounts for data persistence using Docker Compose.
 
 1. Download the Docker Compose file by using the following command.
-   
+
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-pre-configured/docker-compose.yml"
    ```
-2. Open the Docker Compose file, fill the BOLD_SERVICES_UNLOCK_KEY value, and save it. You can download the offline unlock key from the [Subscriptions](https://www.boldbi.com/account/my-subscriptions) page.
+
+2. Open the Docker Compose file, fill the BOLD_SERVICES_UNLOCK_KEY value, and save it. You can download the offline unlock key from the [Subscriptions](https://www.boldbi.com/account/my-subscriptions?utm_source=github&utm_medium=backlinks) page.
 
     ![docker-compose-variable](docs/images/docker-compose-variable.png)
 
 3. Run the command below. This command will start the Bold BI and Postgres SQL containers and display the Bold BI logs to provide information about the installation status of the Bold BI application.
-   
+
    ```sh
    docker-compose up -d; docker-compose logs -f boldbi
    ```
+
    ![docker-compose-command](docs/images/docker-compose-up.png)
 
 4. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
-   
+
    ![docker-compose-startup](docs/images/docker-startup.png)
 
-   > **Note:** <br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. <br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
+   > **Note:** </br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. </br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 
 # How to Deploy Bold BI using Advanced Configuration?
 
 In this section, you will learn how to run the Bold BI application using advanced configurations such as configuring Bold BI using an existing DB server, using a host directory as a persistent volume, configuring startup manually, configuring an SSL certificate, and running a multi-container BI application.
 
-1. [How to deploy Bold BI using existing DB server](docs/how-to-deploy-bold-bi-using-existing-db-server.md)? 
+1. [How to deploy Bold BI using existing DB server](docs/how-to-deploy-bold-bi-using-existing-db-server.md)?
 
 2. [How to deploy Bold BI and configure startup manually](docs/how-to-deploy-bold-bi-and-configure-startup-manually.md)?
 
@@ -92,13 +97,13 @@ In this section, you will learn how to run the Bold BI application using advance
 
 # License
 
-https://www.boldbi.com/terms-of-use#embedded<br />
+<https://www.boldbi.com/terms-of-use#embedded?utm_source=github&utm_medium=backlinks></br>
 
 The images are provided for your convenience and may contain other software that is licensed differently (Linux system, Bash, and more from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
 
 These pre-built images are provided for your convenience and include all optional and additional libraries by default. These libraries may be subject to different licenses than the Bold BI product.
 
-If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team (https://www.boldbi.com/support).
+If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team (<https://www.boldbi.com/support?utm_source=github&utm_medium=backlinks>).
 
 It is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
 
@@ -113,4 +118,3 @@ It is the image user's responsibility to ensure that any use of this image compl
 [How to upgrade a new image in docker environment using docker compose yaml file?](https://support.boldbi.com/kb/article/462/how-to-upgrade-a-new-image-in-docker-environment-using-docker-compose-yaml-file)
 
 [How to deploy Bold BI on an ECS Fargate cluster using an Application Load Balancer?](https://support.boldbi.com/kb/article/13855/deploy-bold-bi-on-an-ecs-fargate-cluster-using-an-application-load-balancer)
-
