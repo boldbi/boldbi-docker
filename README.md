@@ -97,13 +97,13 @@ In this section, you will learn how to run the Bold BI application using advance
 
 # License
 
-<https://www.boldbi.com/terms-of-use#embedded?utm_source=github&utm_medium=backlinks></br>
+[https://www.boldbi.com/terms-of-use#embedded](<https://www.boldbi.com/terms-of-use#embedded?utm_source=github&utm_medium=backlinks>)</br>
 
 The images are provided for your convenience and may contain other software that is licensed differently (Linux system, Bash, and more from the base distribution, along with any direct or indirect dependencies of the Bold BI platform).
 
 These pre-built images are provided for your convenience and include all optional and additional libraries by default. These libraries may be subject to different licenses than the Bold BI product.
 
-If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team (<https://www.boldbi.com/support?utm_source=github&utm_medium=backlinks>).
+If you want to install Bold BI from scratch and precisely control which optional libraries are installed, please download the stand-alone product from boldbi.com. If you have any questions, please contact the Bold BI team ([https://www.boldbi.com/support](<https://www.boldbi.com/support?utm_source=github&utm_medium=backlinks>)).
 
 It is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
 
