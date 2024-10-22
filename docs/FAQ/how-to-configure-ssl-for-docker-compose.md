@@ -30,7 +30,7 @@
 4. Refer below document for SSL changes in `nginx` file .
 
    https://github.com/boldbi/boldbi-docker/blob/main/docs/ssl-termination.md
-5. Add `- 443:443` in ports section.   
+5. Add `- 443:443` in ports section from docker-compose.yaml file.   
 6. Restart the Bold BI container using below command.
    ~~~sh
    docker restart <container-name or container ID>
