@@ -40,7 +40,7 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 # Supported tags
 
-| Tags                        | OS Version    | Last Modified(MM/DD/YYYY)| Purpose |
+| Tags  | OS Version    | Last Modified(MM/DD/YYYY)| Purpose |
 | ------------- | ------------- | ------------- | ------------- |
 | `8.2.22_eval` | Debian 10  (amd64,arm64) | 12/4/2024 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
 | `8.2.22`, `latest` | Debian 10  (amd64,arm64)    | 11/14/2024 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
