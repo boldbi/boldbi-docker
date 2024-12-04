@@ -40,39 +40,6 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 # Supported tags
 
-<table>
-  <tr>
-    <th style="width:150px;">Tags</th>
-    <th style="width:200px;"> OS Version</th>
-    <th style="width:250px;">Last Modified(MM/DD/YYYY)</th>
-    <th style="width:250px;">Purpose</th>
-  </tr>
-  <tr>
-    <td>`8.2.22_eval`</td>
-    <td>Row 1, Col 2</td>
-    <td>Row 1, Col 3</td>
-   <td>This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments.</td>
-  </tr>
-  <tr>
-    <td>Row 2, Col 1</td>
-    <td>Row 2, Col 2</td>
-    <td>Row 2, Col 3</td>
-   <td>Row 1, Col 3</td>
-  </tr>
- <tr>
-    <td>Row 2, Col 1</td>
-    <td>Row 2, Col 2</td>
-    <td>Row 2, Col 3</td>
-   <td>Row 1, Col 3</td>
-  </tr>
- <tr>
-    <td>Row 2, Col 1</td>
-    <td>Row 2, Col 2</td>
-    <td>Row 2, Col 3</td>
-   <td>Row 1, Col 3</td>
-  </tr>
-</table>
-
 | Tags  | OS Version    | Last Modified(MM/DD/YYYY)| Purpose |
 | ------------- | ------------- | ------------- | ------------- |
 | `8.2.22_eval` | Debian 10  (amd64,arm64) | 12/4/2024 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
