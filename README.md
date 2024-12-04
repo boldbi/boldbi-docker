@@ -59,7 +59,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 1. Download the Docker Compose file by using the following command.
 
    ```sh
-   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-pre-configured/docker-compose.yml"
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval/docker-compose.yml"
    ```
 
 2. Open the Docker Compose file, fill the BOLD_SERVICES_UNLOCK_KEY value, and save it. You can download the offline unlock key from the [Subscriptions](https://www.boldbi.com/account/my-subscriptions?utm_source=github&utm_medium=backlinks) page.
