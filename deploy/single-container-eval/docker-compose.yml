@@ -3,7 +3,7 @@ version: '3.5'
 services:
   boldbi:
    container_name: boldbi
-   image: syncfusion/boldbi:8.2.22_eval
+   image: syncfusion/boldbi:8.3.17_eval
    restart: always
    ports:
      - 8085:80

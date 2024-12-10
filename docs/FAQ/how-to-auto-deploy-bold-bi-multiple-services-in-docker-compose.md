@@ -28,7 +28,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
       services:
         id-web:
           container_name: id_web_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:8.3.17
           restart: on-failure
           environment:
             - APP_BASE_URL=<app_base_url>
@@ -45,7 +45,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         id-api:
           container_name: id_api_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:8.3.17
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -61,7 +61,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         id-ums:
           container_name: id_ums_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:8.3.17
           restart: on-failure
           environment:
             - BOLD_SERVICES_HOSTING_ENVIRONMENT=docker
@@ -88,7 +88,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-web:
           container_name: bi_web_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:8.3.17
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -104,7 +104,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-api:
           container_name: bi_api_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:8.3.17
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -121,7 +121,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-jobs:
           container_name: bi_jobs_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:8.3.17
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -138,7 +138,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-dataservice:
           container_name: bi_dataservice_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:8.3.17
           restart: on-failure
           # environment:                         ## Refer README.md for available environment variables.
           #   - widget_bing_map_enable=false
@@ -161,7 +161,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
 
         bi-etl:
           container_name: bi_etl_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:8.2.22
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:8.3.17
           restart: on-failure
           volumes:
             - boldservices_data:/application/app_data
