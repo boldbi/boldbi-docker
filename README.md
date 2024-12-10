@@ -42,10 +42,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags  | OS Version    | Last Modified(MM/DD/YYYY)| Purpose |
 | ------------- | ------------- | ------------- | ------------- |
-| `8.3.17_eval` | Debian 10  (amd64,arm64) | 12/10/2024 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
-| `8.3.17`, `latest` | Debian 10  (amd64,arm64)    | 12/10/2024 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
+| `8.3.17_eval` | Debian 12  (amd64,arm64) | 12/10/2024 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
+| `8.3.17`, `latest` | Debian 12  (amd64,arm64)    | 12/10/2024 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
 | `8.3.17-alpine`    | Alpine 3.13  (amd64, arm64)  | 12/10/2024 | This tag is intended for production use. Select this variant if you prefer Alpine as the base image for your deployment. |
-| `8.3.17-focal`     | Ubuntu 20.04  (amd64, arm64)       | 12/10/2024 | This tag is intended for production use. Select this variant if you prefer Ubuntu as the base image for your deployment. |
+| `8.3.17-focal`     | Ubuntu 22.04  (amd64, arm64)       | 12/10/2024 | This tag is intended for production use. Select this variant if you prefer Ubuntu as the base image for your deployment. |
 
 **Note**:
 
