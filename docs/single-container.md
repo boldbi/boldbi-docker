@@ -20,8 +20,6 @@
         You can use either a `.yml` or `.yaml` extension for this file. They both works well.
 
       ```sh
-      version: '3.5'
-
       services:
         boldbi:
           image: syncfusion/boldbi

@@ -23,8 +23,6 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
   4. The docker-compose.yml file that starts your `BoldBI`  and a separate `PostgreSQL` instance with volume mounts for data persistence:
 
       ```sh
-      version: '3.5'
-
       services:
         id-web:
           container_name: id_web_container

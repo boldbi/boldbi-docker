@@ -1,5 +1,3 @@
-version: '3.5'
-
 services:
   id-web:
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:8.3.17
