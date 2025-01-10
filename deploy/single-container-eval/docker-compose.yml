@@ -1,7 +1,7 @@
 services:
   boldbi:
    container_name: boldbi
-   image: syncfusion/boldbi:8.3.17-eval
+   image: syncfusion/boldbi:9.1.73-eval
    restart: always
    ports:
      - 8085:80
