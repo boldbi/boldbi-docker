@@ -49,7 +49,7 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 **Note**:
 
-* Image and PDF exporting is not supported in ARM architecture images and Alpine variant images.
+* Image and PDF exporting is not supported in ARM architecture images of the Ubuntu and Alpine variants.
 * Filesystem and Web connectors are not supported in Bold ETL for Alpine variant images.
 
 # How to use this image?
