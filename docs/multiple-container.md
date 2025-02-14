@@ -26,7 +26,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
       services:
         id-web:
           container_name: id_web_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:10.1.18
           restart: on-failure
           environment:
             - APP_BASE_URL=<app_base_url>
@@ -43,7 +43,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-api:
           container_name: id_api_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:10.1.18
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -59,7 +59,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         id-ums:
           container_name: id_ums_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:10.1.18
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -75,7 +75,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-web:
           container_name: bi_web_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:10.1.18
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -91,7 +91,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
               
         bi-api:
           container_name: bi_api_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:10.1.18
           restart: on-failure
           volumes:
             - boldservices_data:/application/app_data
@@ -108,7 +108,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-jobs:
           container_name: bi_jobs_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:10.1.18
           restart: on-failure
           volumes: 
             - boldservices_data:/application/app_data
@@ -125,7 +125,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             
         bi-dataservice:
           container_name: bi_dataservice_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:10.1.18
           restart: on-failure
           environment:
             - widget_bing_map_enable=false
@@ -145,7 +145,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
 
         bi-etl:
           container_name: bi_etl_container
-          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:9.1.73
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:10.1.18
           restart: on-failure
           volumes:
             - boldservices_data:/application/app_data

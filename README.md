@@ -42,10 +42,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags  | OS Version    | Last Modified(MM/DD/YYYY)| Purpose |
 | ------------- | ------------- | ------------- | ------------- |
-| `9.1.73-eval` | Debian 12  (amd64,arm64) | 01/10/2025 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
-| `9.1.73`, `latest` | Debian 12  (amd64,arm64)    | 01/10/2025 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
-| `9.1.73-alpine`    | Alpine 3.13  (amd64, arm64)  | 01/10/2025 | This tag is intended for production use. Select this variant if you prefer Alpine as the base image for your deployment. |
-| `9.1.73-focal`     | Ubuntu 22.04  (amd64, arm64)       | 01/10/2025 | This tag is intended for production use. Select this variant if you prefer Ubuntu as the base image for your deployment. |
+| `10.1.18-eval` | Debian 12  (amd64,arm64) | 02/14/2025 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
+| `10.1.18`, `latest` | Debian 12  (amd64,arm64)    | 02/14/2025 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
+| `10.1.18-alpine`    | Alpine 3.13  (amd64, arm64)  | 02/14/2025 | This tag is intended for production use. Select this variant if you prefer Alpine as the base image for your deployment. |
+| `10.1.18-focal`     | Ubuntu 22.04  (amd64, arm64)       | 02/14/2025 | This tag is intended for production use. Select this variant if you prefer Ubuntu as the base image for your deployment. |
 
 **Note**:
 
