@@ -176,6 +176,23 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
               timeout: 10s
               retries: 5
 
+        bold-ai:
+          container_name: bold_ai_container
+          image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ai:10.1.18
+          restart: on-failure
+          volumes:
+            - boldservices_data:/application/app_data
+          networks:
+            - boldservices
+          depends_on:
+            - id-web
+            - bi-web
+          healthcheck:
+              test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+              interval: 10s
+              timeout: 10s
+              retries: 5
+
         reverse-proxy:
           container_name: nginx
           image: nginx
@@ -199,6 +216,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
             - bi-api
             - bi-jobs
             - bi-dataservice
+            - bold-ai
         pgdb:
           image: postgres
           restart: always
