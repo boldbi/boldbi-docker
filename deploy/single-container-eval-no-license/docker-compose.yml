@@ -1,14 +1,15 @@
+
 services:
   boldbi:
    container_name: boldbi
-   image: syncfusion/boldbi
+   image: syncfusion/boldbi:11.2.7-eval
    restart: always
    ports:
      - 8085:80
    environment:
       # Optional: Default values are fine for evaluation purposes.
      - BOLD_SERVICES_DB_TYPE=postgresql                      # Preconfigured PostgreSQL database details that are deployed along with this deployment.
-     - BOLD_SERVICES_DB_HOST=pgdb
+     - BOLD_SERVICES_DB_HOST=localhost
      - BOLD_SERVICES_POSTGRESQL_MAINTENANCE_DB=postgres
      - BOLD_SERVICES_DB_USER=postgres
      - BOLD_SERVICES_DB_PASSWORD=Admin@123
@@ -18,17 +19,7 @@ services:
      - boldbi
    volumes:
      - boldbi_data:/application/app_data
-    
-  pgdb:
-    container_name: postgres
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: Admin@123
-    volumes:
-      - db_data:/var/lib/postgresql/data/
-    networks:
-      - boldbi
+     - db_data:/var/lib/postgresql
 
 networks:
   boldbi:
