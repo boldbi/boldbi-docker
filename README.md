@@ -70,9 +70,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
    ![docker-compose-command](docs/images/docker-compose-up.png)
 
-3. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds.So, slect the proceed with 30 days trial option to activate  trail license. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
-
-4. Now, access the Bold BI application by entering the following URL in your browser:
+3. Now, access the Bold BI application by entering the following URL in your browser:
 
       `http://localhost:8085`  (or)</br>
       `http://<host-ip>:8085`
