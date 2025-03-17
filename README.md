@@ -52,9 +52,9 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 * Image and PDF exporting is not supported in ARM architecture images of the Ubuntu and Alpine variants.
 * Filesystem and Web connectors are not supported in Bold ETL for Alpine variant images.
 
-# How to use this image?
+# Deploying Bold BI Using Docker Compose
 
-The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to start the Bold BI application and a separate PostgreSQL instance with volume mounts for data persistence using Docker Compose.
+The Bold BI image can be deployed using Docker Compose. In this guide, we will demonstrate how to start the Bold BI application and a PostgreSQL database within a single container using Docker Compose, with volume mounts configured for data persistence.
 
 1. Download the Docker Compose file by using the following command.
 
@@ -70,19 +70,12 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
    ![docker-compose-command](docs/images/docker-compose-up.png)
 
-3. Now, access the Bold BI application by entering the following URL in your browser:
+3. When you open this URL, the application will configure its startup in the background. Within a few seconds, the setup page will appear. You can either activate your license using the available option or try the trial version by selecting the `Proceed with 30 Days Trial` option.
 
-      `http://localhost:8085`  (or)</br>
-      `http://<host-ip>:8085`
-
-
-   When you open this URL, the application will configure its startup in the background. Within a few seconds, the setup page will appear.
-
-   To activate the trial license, select the `Proceed with 30 Days Trial` option.
 
    ![registration-page](docs/images/registration-page.png)
 
-   Once the `Proceed with 30 Days Trial` option is selected, the application will redirect you to the dashboard page.
+   After selecting the license option, the application will redirect you to the dashboard page.
 
    ![Dashboard page](docs/images/dashboard-page.png)
 
