@@ -62,11 +62,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval/docker-compose.yml"
    ```
 
-2. Open the Docker Compose file, fill the BOLD_SERVICES_UNLOCK_KEY value, and save it. You can download the offline unlock key from the [Subscriptions](https://www.boldbi.com/account/my-subscriptions?utm_source=github&utm_medium=backlinks) page.
-
-    ![docker-compose-variable](docs/images/docker-compose-variable.png)
-
-3. Run the command below. This command will start the Bold BI and Postgres SQL containers and display the Bold BI logs to provide information about the installation status of the Bold BI application.
+2. Run the command below. This command will start the Bold BI and Postgres SQL containers and display the Bold BI logs to provide information about the installation status of the Bold BI application.
 
    ```sh
    docker-compose up -d; docker-compose logs -f boldbi
@@ -74,9 +70,21 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
    ![docker-compose-command](docs/images/docker-compose-up.png)
 
-4. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
+3. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds.So, slect the proceed with 30 days trial option to activate  trail license. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
 
-   ![docker-compose-startup](docs/images/docker-startup.png)
+4. Now, access the Bold BI application by entering the following URL in your browser:
+
+      `http://localhost:8085` </br>
+      `http://<host-ip>:8085`
+
+
+   When you open this URL, the application will configure its startup in the background. Within a few seconds, the setup page will appear.
+
+   To activate the trial license, select the `Proceed with 30 Days Trial` option.
+
+   ![registration-page](docs/images/registration-page.png)
+
+   ![Dashboard page](docs/images/dashboard-page.png)
 
    > **Note:** </br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. </br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 
