@@ -59,7 +59,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 1. Download the Docker Compose file by using the following command.
 
    ```sh
-   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval/docker-compose.yml"
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval-no-license/docker-compose.yml"
    ```
 
 2. Run the command below. This command will start the Bold BI and Postgres SQL containers and display the Bold BI logs to provide information about the installation status of the Bold BI application.
@@ -74,7 +74,7 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
 4. Now, access the Bold BI application by entering the following URL in your browser:
 
-      `http://localhost:8085` </br>
+      `http://localhost:8085`  (or)</br>
       `http://<host-ip>:8085`
 
 
@@ -83,6 +83,8 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
    To activate the trial license, select the `Proceed with 30 Days Trial` option.
 
    ![registration-page](docs/images/registration-page.png)
+
+   Once the `Proceed with 30 Days Trial` option is selected, the application will redirect you to the dashboard page.
 
    ![Dashboard page](docs/images/dashboard-page.png)
 
