@@ -52,9 +52,9 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 * Image and PDF exporting is not supported in ARM architecture images of the Ubuntu and Alpine variants.
 * Filesystem and Web connectors are not supported in Bold ETL for Alpine variant images.
 
-# Deploying Bold BI Using Docker Compose
+# Deploying Bold BI Evaluation Image Using Docker Compose
 
-The Bold BI image can be deployed using Docker Compose. In this guide, we will demonstrate how to start the Bold BI application and a PostgreSQL database within a single container using Docker Compose, with volume mounts configured for data persistence.
+The eval tag (11.2.7-eval) is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. In this guide, we will demonstrate how to deploy the Bold BI evaluation image using Docker Compose, with volume mounts configured for data persistence.
 
 1. Download the Docker Compose file by using the following command.
 
@@ -62,7 +62,7 @@ The Bold BI image can be deployed using Docker Compose. In this guide, we will d
    curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval-no-license/docker-compose.yml"
    ```
 
-2. Run the command below. This command will start the Bold BI and Postgres SQL containers and display the Bold BI logs to provide information about the installation status of the Bold BI application.
+2. Run the command below. This command will start the Bold BI application container and display the Bold BI container logs, providing information about the installation status of the Bold BI application.
 
    ```sh
    docker-compose up -d; docker-compose logs -f boldbi
@@ -70,12 +70,13 @@ The Bold BI image can be deployed using Docker Compose. In this guide, we will d
 
    ![docker-compose-command](docs/images/docker-compose-up.png)
 
-3. When you open this URL, the application will configure its startup in the background. Within a few seconds, the setup page will appear. You can either activate your license using the available option or try the trial version by selecting the `Proceed with 30 Days Trial` option.
+3. Now, access the Bold BI application by entering the URL as http://localhost:8085 or http://host-ip:8085 in the browser. When you open this URL, the application will configure its startup in the background and display the license activation page below within a few seconds. You can either activate your license using the available option or try the trial version by selecting the Proceed with 30 Days Trial option.
 
+   > Note: The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
 
    ![registration-page](docs/images/registration-page.png)
 
-   After selecting the license option, the application will redirect you to the dashboard page.
+   After selecting the license option, the application will redirect you to the dashboard listing page.
 
    ![Dashboard page](docs/images/dashboard-page.png)
 
