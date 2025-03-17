@@ -52,21 +52,17 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 * Image and PDF exporting is not supported in ARM architecture images of the Ubuntu and Alpine variants.
 * Filesystem and Web connectors are not supported in Bold ETL for Alpine variant images.
 
-# How to use this image?
+# Deploying Bold BI Evaluation Image Using Docker Compose
 
-The above Bold BI image can be deployed using Docker or Docker Compose. In the following section, we are going to start the Bold BI application and a separate PostgreSQL instance with volume mounts for data persistence using Docker Compose.
+The eval tag (11.2.7-eval) is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. In this guide, we will demonstrate how to deploy the Bold BI evaluation image using Docker Compose, with volume mounts configured for data persistence.
 
 1. Download the Docker Compose file by using the following command.
 
    ```sh
-   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval/docker-compose.yml"
+   curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval-no-license/docker-compose.yml"
    ```
 
-2. Open the Docker Compose file, fill the BOLD_SERVICES_UNLOCK_KEY value, and save it. You can download the offline unlock key from the [Subscriptions](https://www.boldbi.com/account/my-subscriptions?utm_source=github&utm_medium=backlinks) page.
-
-    ![docker-compose-variable](docs/images/docker-compose-variable.png)
-
-3. Run the command below. This command will start the Bold BI and Postgres SQL containers and display the Bold BI logs to provide information about the installation status of the Bold BI application.
+2. Run the command below. This command will start the Bold BI application container and display the Bold BI container logs, providing information about the installation status of the Bold BI application.
 
    ```sh
    docker-compose up -d; docker-compose logs -f boldbi
@@ -74,9 +70,15 @@ The above Bold BI image can be deployed using Docker or Docker Compose. In the f
 
    ![docker-compose-command](docs/images/docker-compose-up.png)
 
-4. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
+3. Now, access the Bold BI application by entering the URL as http://localhost:8085 or http://host-ip:8085 in the browser. When you open this URL, the application will configure its startup in the background and display the license activation page below within a few seconds. You can either activate your license using the available option or try the trial version by selecting the Proceed with 30 Days Trial option.
 
-   ![docker-compose-startup](docs/images/docker-startup.png)
+   > Note: The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
+
+   ![registration-page](docs/images/registration-page.png)
+
+   After selecting the license option, the application will redirect you to the dashboard listing page.
+
+   ![Dashboard page](docs/images/dashboard-page.png)
 
    > **Note:** </br> 1. The deployment steps above are recommended for evaluation purposes only. For a production use case, you will need to mount the volume to the host path location or online storage and utilize managed DB servers. </br>2. Don't use localhost IP (`http://127.0.0.1`) with `port` to access the application.
 
