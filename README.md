@@ -42,10 +42,10 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags  | OS Version    | Last Modified(MM/DD/YYYY)| Purpose |
 | ------------- | ------------- | ------------- | ------------- |
-| `11.2.7-eval` | Debian 12  (amd64,arm64) | 03/13/2025 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
-| `11.2.7`, `latest` | Debian 12  (amd64,arm64)    | 03/13/2025 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
-| `11.2.7-alpine`    | Alpine 3.13  (amd64, arm64)  | 03/13/2025 | This tag is intended for production use. Select this variant if you prefer Alpine as the base image for your deployment. |
-| `11.2.7-focal`     | Ubuntu 22.04  (amd64, arm64)       |03/13/2025  | This tag is intended for production use. Select this variant if you prefer Ubuntu as the base image for your deployment. |
+| `11.3.24-eval` | Debian 12  (amd64,arm64) | 04/21/2025 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
+| `11.3.24`, `latest` | Debian 12  (amd64,arm64)    | 04/21/2025 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
+| `11.3.24-alpine`    | Alpine 3.13  (amd64, arm64)  | 04/21/2025 | This tag is intended for production use. Select this variant if you prefer Alpine as the base image for your deployment. |
+| `11.3.24-focal`     | Ubuntu 22.04  (amd64, arm64)       | 04/21/2025 | This tag is intended for production use. Select this variant if you prefer Ubuntu as the base image for your deployment. |
 
 **Note**:
 
@@ -54,14 +54,13 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 # Deploying Bold BI Evaluation Image Using Docker Compose
 
-The eval tag (11.2.7-eval) is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. In this guide, we will demonstrate how to deploy the Bold BI evaluation image using Docker Compose, with volume mounts configured for data persistence.
+The eval tag (11.3.24-eval) is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. In this guide, we will demonstrate how to deploy the Bold BI evaluation image using Docker Compose, with volume mounts configured for data persistence.
 
 1. Download the Docker Compose file by using the following command.
 
    ```sh
    curl -o docker-compose.yml "https://raw.githubusercontent.com/boldbi/boldbi-docker/main/deploy/single-container-eval-no-license/docker-compose.yml"
    ```
-
 2. Run the command below. This command will start the Bold BI application container and display the Bold BI container logs, providing information about the installation status of the Bold BI application.
 
    ```sh
