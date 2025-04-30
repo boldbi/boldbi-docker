@@ -24,17 +24,18 @@ The following hardware requirements are necessary to run the Bold BI solution:
 
 * Operating System: Use the Bold BI Docker on the following operating systems:
   * Windows
-  * Linux
+  * Ubuntu 22.04 LTS
+  * Cent OS 9
   * Mac
 * CPU: 2-core.
-* Memory: 4 GB RAM.
-* Disk Space: 8 GB or more.
+* Memory: 8 GB RAM.
+* Disk Space: 10 GB or more.
 
 ## Software requirements
 
 The following software requirements are necessary to run the Bold BI Enterprise edition:
 
-* Database: Microsoft SQL Server 2012+ | PostgreSQL | MySQL
+* Database: PostgreSQL 13.0+| Microsoft SQL Server 2016+ | MySQL 8.0+ | Oracle Database 19c+
 * Application: [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/).
 * Web Browser: Microsoft Edge, Mozilla Firefox, and Chrome.
 
