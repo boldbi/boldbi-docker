@@ -98,6 +98,8 @@ In this section, you will learn how to run the Bold BI application using advance
 
 6. [Bold BI supported environment variables and their usage](docs/environment-variable.md)?
 
+7. [How to deploy Bold BI and Bold Reports as combinational deployment using docker-compose?](docs/combinational-deployment.md)
+
 # License
 
 [https://www.boldbi.com/terms-of-use#embedded](<https://www.boldbi.com/terms-of-use#embedded?utm_source=github&utm_medium=backlinks>)</br>
@@ -121,3 +123,4 @@ It is the image user's responsibility to ensure that any use of this image compl
 [How to upgrade a new image in docker environment using docker compose yaml file?](https://support.boldbi.com/kb/article/462/how-to-upgrade-a-new-image-in-docker-environment-using-docker-compose-yaml-file)
 
 [How to deploy Bold BI on an ECS Fargate cluster using an Application Load Balancer?](https://support.boldbi.com/kb/article/13855/deploy-bold-bi-on-an-ecs-fargate-cluster-using-an-application-load-balancer)
+

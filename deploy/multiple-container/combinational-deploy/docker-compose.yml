@@ -1,0 +1,295 @@
+services:
+  id-web:
+    container_name: id_web_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:11.3.24
+    restart: on-failure
+    environment:
+      - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
+      - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+        
+  id-api:
+    container_name: id_api_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:11.3.24
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+        
+  id-ums:
+    container_name: id_ums_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:11.3.24
+    restart: on-failure
+    volumes:
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+        
+  bi-web:
+    container_name: bi_web_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:11.3.24
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+        
+  bi-api:
+    container_name: bi_api_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:11.3.24
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - bi-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+      
+  bi-jobs:
+    container_name: bi_jobs_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:11.3.24
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - bi-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+      
+  bi-dataservice:
+    container_name: bi_dataservice_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:11.3.24
+    restart: on-failure
+    # environment:                         ## Refer README.md for available environment variables.
+    #   - widget_bing_map_enable=false
+    #   - widget_bing_map_api_key=""
+    #   - AppSettings__locale-path=""
+    volumes:
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - bi-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+
+  bi-etl:
+    container_name: bi_etl_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:11.3.24
+    restart: on-failure
+    volumes:
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - bi-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+
+  bold-ai:
+    container_name: bold_ai_container
+    image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ai:11.3.24
+    restart: on-failure
+    volumes:
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - bi-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+  reports-web:
+    container_name: reports_web_container
+    image: us-docker.pkg.dev/boldreports/v9-1-7/boldreports-server:9.1.7
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+  reports-api:
+    container_name: reports_api_container
+    image: us-docker.pkg.dev/boldreports/v9-1-7/boldreports-server-api:9.1.7
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - reports-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+      
+  reports-jobs:
+    container_name: reports_jobs_container
+    image: us-docker.pkg.dev/boldreports/v9-1-7/boldreports-server-jobs:9.1.7
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - reports-web
+      - reports-api
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+      
+  reports-reportservice:
+    container_name: reports_reportservice_container
+    image: us-docker.pkg.dev/boldreports/v9-1-7/boldreports-designer:9.1.7
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - reports-web
+      - reports-api
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+
+  reports-viewer:
+    container_name: reports_viewer_container
+    image: us-docker.pkg.dev/boldreports/v9-1-7/boldreports-viewer:9.1.7
+    restart: on-failure
+    volumes: 
+      - boldservices_data:/application/app_data
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - reports-web
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health-check"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+
+
+  reverse-proxy:
+    container_name: nginx
+    image: nginx
+    restart: on-failure
+    volumes:
+      -  "<default_conf_path>:/etc/nginx/conf.d/default.conf"
+      # - "<ssl_cert_file_path>:/etc/ssl/domain.crt"
+      # - "<ssl_key_file_path>:/etc/ssl/domain.key"
+    ports:
+      - "8085:80"
+      #- "443:443"
+    environment:
+      - NGINX_PORT=80
+    networks:
+      - boldservices
+    depends_on:
+      - id-web
+      - id-api
+      - id-ums
+      - bi-web
+      - bi-api
+      - bi-jobs
+      - bi-dataservice
+      - bold-ai
+      - reports-web
+      - reports-api
+      - reports-jobs
+      - reports-reportservice
+      - reports-viewer
+  pgdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: <Password>
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    networks:
+      - boldservices
+
+networks:
+  boldservices:
+  
+volumes:
+  boldservices_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path_boldservices_data>'
+  db_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '<host_path_db_data>'
