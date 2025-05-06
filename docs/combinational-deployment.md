@@ -107,7 +107,7 @@ At this point, BoldBI should be running in `<app_base_url>:8085` (as appropriate
    docker restart <container name or id>
    ```
 8. Refer to the document below to activate the License either by using your login credentials or by an offline unlock key for Bold Reports.
-    https://help.boldreports.com/enterprise-reporting/administrator-guide/application-startup/#activate-bold-reports-license
+    https://help.boldreports.com/enterprise-reporting/administrator-guide/application-startup/#activate-the-account-using-login-credentials
 
 > **Note:**
 > To use the above configured PostgreSQL server in Bold BI please use `pgdb` as the PostgreSQL server name.
