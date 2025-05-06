@@ -86,7 +86,7 @@ At this point, BoldBI should be running in `<app_base_url>:8085` (as appropriate
    ![product-url-editor](/docs/images/product-update-url.png)
 
 
-5. In product.json and config.json file, append the lines below for Bold Reports:
+5. In product.json file, append the lines below for Bold Reports:
     ```console
     {
     "Name": "BoldReports",
