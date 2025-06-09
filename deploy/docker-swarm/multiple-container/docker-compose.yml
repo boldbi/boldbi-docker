@@ -5,6 +5,7 @@ services:
     environment:
       - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
       - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,npgsql
+      - DEPLOY_MODE=docker_multi_container
     volumes: 
       - boldservices_data:/application/app_data
     networks:
