@@ -32,7 +32,6 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             - APP_BASE_URL=<app_base_url>
             - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
             - DEPLOY_MODE=docker_multi_container
-            - Is_Common_IDP=true
           volumes: 
             - boldservices_data:/application/app_data
           networks:
