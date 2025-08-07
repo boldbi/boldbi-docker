@@ -6,6 +6,8 @@ services:
     environment:
       - APP_BASE_URL=<app_base_url>     # use http://host.docker.internal to configure Bold BI in localhost
       - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
+      - DEPLOY_MODE=docker_multi_container
+      - Is_Common_IDP=true
     volumes: 
       - boldservices_data:/application/app_data
     networks:
@@ -20,6 +22,8 @@ services:
     container_name: id_api_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:13.1.10
     restart: on-failure
+    environment:
+      - DEPLOY_MODE=docker_multi_container
     volumes: 
       - boldservices_data:/application/app_data
     networks:
@@ -36,6 +40,8 @@ services:
     container_name: id_ums_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:13.1.10
     restart: on-failure
+    environment:
+      - DEPLOY_MODE=docker_multi_container
     volumes:
       - boldservices_data:/application/app_data
     networks:

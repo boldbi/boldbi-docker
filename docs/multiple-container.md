@@ -32,6 +32,7 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
             - APP_BASE_URL=<app_base_url>
             - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
             - DEPLOY_MODE=docker_multi_container
+            - Is_Common_IDP=true
           volumes: 
             - boldservices_data:/application/app_data
           networks:
@@ -46,6 +47,8 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
           container_name: id_api_container
           image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:13.1.10
           restart: on-failure
+          environment:
+            - DEPLOY_MODE=docker_multi_container
           volumes: 
             - boldservices_data:/application/app_data
           networks:
@@ -63,6 +66,8 @@ This quick-start guide demonstrates how to use Compose to set up and run Bold BI
           container_name: id_ums_container
           image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:13.1.10
           restart: on-failure
+          environment:
+            - DEPLOY_MODE=docker_multi_container
           volumes:
             - boldservices_data:/application/app_data
           networks:
