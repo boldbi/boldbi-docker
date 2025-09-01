@@ -14,7 +14,7 @@ In the following section, we will deploy a single container Bold BI application 
    ```sh
    docker-compose up -d
    ```
-    ![docker-compose-command](/docs/images/docker-compose-up.png)
+    ![docker-compose-command](/docs/images/docker-compose-up-new.png)
    
 
       > **Note:**
