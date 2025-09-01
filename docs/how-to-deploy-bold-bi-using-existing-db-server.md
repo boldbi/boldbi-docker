@@ -33,7 +33,7 @@ In the following section, we are going to run the Bold BI application by passing
    ```sh
    docker-compose up -d
    ```
-   ![docker-compose-command](/docs/images/docker-compose-up.png)
+   ![docker-compose-command](/docs/images/docker-compose-up-new.png)
    
 
       > **Note:**
