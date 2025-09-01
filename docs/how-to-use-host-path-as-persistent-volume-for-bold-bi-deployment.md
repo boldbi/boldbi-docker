@@ -30,7 +30,7 @@ You can store the application data on your host machine to make the Bold BI cont
    ```sh
    docker-compose up -d; docker-compose logs -f boldbi
    ```
-   ![docker-compose-command](images/docker-compose-up.png)
+   ![docker-compose-command](images/docker-compose-up-new.png)
 
 4. Now, access the Bold BI application by entering the URL as `http://localhost:8085` or `http://host-ip:8085` in the browser. When opening this URL in the browser, it will configure the application startup in the background and display the page below within a few seconds. The default port number mentioned in the compose file is 8085. If you are making changes to the port number, then you need to use that port number for accessing the Bold BI application.
    
