@@ -160,7 +160,7 @@ services:
         retries: 5
   reports-web:
     container_name: reports_web_container
-    image: us-docker.pkg.dev/boldreports/v10-1-11/boldreports-server:10.1.11
+    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-server:11.1.10
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -175,7 +175,7 @@ services:
         retries: 5
   reports-api:
     container_name: reports_api_container
-    image: us-docker.pkg.dev/boldreports/v10-1-11/boldreports-server-api:10.1.11
+    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-server-api:11.1.10
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -192,7 +192,7 @@ services:
       
   reports-jobs:
     container_name: reports_jobs_container
-    image: us-docker.pkg.dev/boldreports/v10-1-11/boldreports-server-jobs:10.1.11
+    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-server-jobs:11.1.10
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -210,7 +210,7 @@ services:
       
   reports-reportservice:
     container_name: reports_reportservice_container
-    image: us-docker.pkg.dev/boldreports/v10-1-11/boldreports-designer:10.1.11
+    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-designer:11.1.10
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
@@ -228,7 +228,7 @@ services:
 
   reports-viewer:
     container_name: reports_viewer_container
-    image: us-docker.pkg.dev/boldreports/v10-1-11/boldreports-viewer:10.1.11
+    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-viewer:11.1.10
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
