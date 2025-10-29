@@ -20,6 +20,9 @@ services:
      - boldbi
    volumes:
      - boldbi_data:/application/app_data
+   depends_on:
+      pgdb:
+        condition: service_healthy # Wait for pgdb to be healthy before starting boldbi
     
   pgdb:
     image: postgres
@@ -30,6 +33,11 @@ services:
       - db_data:/var/lib/postgresql/data/
     networks:
       - boldbi
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 networks:
   boldbi:
