@@ -218,7 +218,7 @@ This section allows you to deploy [Bold BI](https://www.boldbi.com/) in docker-c
             - bi-dataservice
             - bold-ai
         pgdb:
-          image: postgres
+          image: postgres:17
           restart: always
           environment:
             POSTGRES_PASSWORD: <Password>
