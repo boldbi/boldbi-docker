@@ -32,7 +32,7 @@
             - boldbi_data:/application/app_data
           
         pgdb:
-          image: postgres
+          image: postgres:17
           restart: always
           environment:
             POSTGRES_PASSWORD: <Password>

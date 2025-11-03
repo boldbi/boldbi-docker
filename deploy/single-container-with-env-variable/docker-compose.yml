@@ -23,7 +23,7 @@ services:
     
   pgdb:
     container_name: postgres
-    image: postgres
+    image: postgres:17
     restart: always
     environment:
       POSTGRES_PASSWORD: Admin@123
