@@ -114,6 +114,8 @@ services:
     container_name: bi_dataservice_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:15.1.65
     restart: on-failure
+    environment:
+      - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
     volumes:
       - boldservices_data:/application/app_data
     networks:
