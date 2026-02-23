@@ -29,7 +29,8 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -47,7 +48,8 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -63,7 +65,8 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -79,8 +82,10 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - bi-web
+      bi-web:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -96,8 +101,10 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - bi-web
+      bi-web:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -108,17 +115,20 @@ services:
     container_name: bi_dataservice_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:15.1.65
     restart: on-failure
-    # environment:                         ## Refer README.md for available environment variables.
+    environment:                         ## Refer README.md for available environment variables.
     #   - widget_bing_map_enable=false
     #   - widget_bing_map_api_key=""
     #   - AppSettings__locale-path=""
+      - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
     volumes:
       - boldservices_data:/application/app_data
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - bi-web
+      bi-web:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -134,8 +144,10 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - bi-web
+      bi-web:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -151,39 +163,46 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - bi-web
+      bi-web:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
         timeout: 10s
         retries: 5
+
   reports-web:
     container_name: reports_web_container
-    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-server:11.1.10
+    image: us-docker.pkg.dev/boldreports/multi-container/boldreports-server:12.2.6
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
     networks:
       - boldservices
     depends_on:
-      - id-web
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
         timeout: 10s
         retries: 5
+
   reports-api:
     container_name: reports_api_container
-    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-server-api:11.1.10
+    image: us-docker.pkg.dev/boldreports/multi-container/boldreports-server-api:12.2.6
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - reports-web
+      reports-web:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -192,16 +211,19 @@ services:
       
   reports-jobs:
     container_name: reports_jobs_container
-    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-server-jobs:11.1.10
+    image: us-docker.pkg.dev/boldreports/multi-container/boldreports-server-jobs:12.2.6
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - reports-web
-      - reports-api
+      reports-web:
+        condition: service_started
+      reports-api:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -210,16 +232,19 @@ services:
       
   reports-reportservice:
     container_name: reports_reportservice_container
-    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-designer:11.1.10
+    image: us-docker.pkg.dev/boldreports/multi-container/boldreports-designer:12.2.6
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - reports-web
-      - reports-api
+      reports-web:
+        condition: service_started
+      reports-api:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -228,15 +253,17 @@ services:
 
   reports-viewer:
     container_name: reports_viewer_container
-    image: us-docker.pkg.dev/boldreports/v11-1-10/boldreports-viewer:11.1.10
+    image: us-docker.pkg.dev/boldreports/multi-container/boldreports-viewer:12.2.6
     restart: on-failure
     volumes: 
       - boldservices_data:/application/app_data
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - reports-web
+      reports-web:
+        condition: service_started
+      id-web:
+        condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost/health-check"]
         interval: 10s
@@ -260,19 +287,32 @@ services:
     networks:
       - boldservices
     depends_on:
-      - id-web
-      - id-api
-      - id-ums
-      - bi-web
-      - bi-api
-      - bi-jobs
-      - bi-dataservice
-      - bold-ai
-      - reports-web
-      - reports-api
-      - reports-jobs
-      - reports-reportservice
-      - reports-viewer
+      id-web:
+        condition: service_healthy
+      id-api:
+        condition: service_started
+      id-ums:
+        condition: service_started
+      bi-web:
+        condition: service_started
+      bi-api:
+        condition: service_started
+      bi-jobs:
+        condition: service_started
+      bi-dataservice:
+        condition: service_started
+      bold-ai:
+        condition: service_started
+      reports-web:
+        condition: service_started
+      reports-api:
+        condition: service_started
+      reports-jobs:
+        condition: service_started
+      reports-reportservice:
+        condition: service_started
+      reports-viewer:
+        condition: service_started
   pgdb:
     image: postgres:17
     restart: always
