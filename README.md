@@ -43,12 +43,12 @@ The following software requirements are necessary to run the Bold BI Enterprise 
 
 | Tags  | Last Modified(MM/DD/YYYY)| Purpose |
 | ------------- | ------------- | ------------- |
-| `16.1.70-eval` | 06/17/2026 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
-| `16.1.70`, `latest` | 06/17/2026 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
+| `16.1.80-eval` | 07/03/2026 | This Docker image is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. |
+| `16.1.80`, `latest` | 07/03/2026 | This tag is intended for production use. Select this variant if you prefer Debian as the base image for your deployment. |
 
 # Deploying Bold BI Evaluation Image Using Docker Compose
 
-The eval tag (16.1.70-eval) is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. In this guide, we will demonstrate how to deploy the Bold BI evaluation image using Docker Compose, with volume mounts configured for data persistence.
+The eval tag (16.1.80-eval) is specifically designed to streamline the Bold BI evaluation process by integrating a PostgreSQL server within the Bold BI container. Please note that this image tag is intended for evaluation purposes only and should not be used in production environments. In this guide, we will demonstrate how to deploy the Bold BI evaluation image using Docker Compose, with volume mounts configured for data persistence.
 
 1. Download the Docker Compose file by using the following command.
 
