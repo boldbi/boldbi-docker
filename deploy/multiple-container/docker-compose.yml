@@ -2,7 +2,7 @@ services:
   id-web:
     container_name: id_web_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity:16.1.90
-    restart: on-failure
+    restart: always
     environment:
       - APP_BASE_URL=<app_base_url>
       - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
@@ -20,7 +20,7 @@ services:
   id-api:
     container_name: id_api_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-identity-api:16.1.90
-    restart: on-failure
+    restart: always
     environment:
       - DEPLOY_MODE=docker_multi_container
     volumes: 
@@ -39,7 +39,7 @@ services:
   id-ums:
     container_name: id_ums_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ums:16.1.90
-    restart: on-failure
+    restart: always
     environment:
       - DEPLOY_MODE=docker_multi_container
     volumes:
@@ -58,7 +58,7 @@ services:
   bi-web:
     container_name: bi_web_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server:16.1.90
-    restart: on-failure
+    restart: always
     volumes: 
       - boldservices_data:/application/app_data
     networks:
@@ -77,7 +77,7 @@ services:
   bi-api:
     container_name: bi_api_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-api:16.1.90
-    restart: on-failure
+    restart: always
     volumes: 
       - boldservices_data:/application/app_data
     networks:
@@ -96,7 +96,7 @@ services:
   bi-jobs:
     container_name: bi_jobs_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-server-jobs:16.1.90
-    restart: on-failure
+    restart: always
     volumes: 
       - boldservices_data:/application/app_data
     networks:
@@ -115,7 +115,7 @@ services:
   bi-dataservice:
     container_name: bi_dataservice_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/boldbi-designer:16.1.90
-    restart: on-failure
+    restart: always
     environment:
       - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
     volumes:
@@ -136,7 +136,7 @@ services:
   bi-etl:
     container_name: bi_etl_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-etl:16.1.90
-    restart: on-failure
+    restart: always
     volumes:
       - boldservices_data:/application/app_data
     networks:
@@ -155,7 +155,7 @@ services:
   bold-ai:
     container_name: bold_ai_container
     image: us-docker.pkg.dev/boldbi-294612/boldbi/bold-ai:16.1.90
-    restart: on-failure
+    restart: always
     volumes:
       - boldservices_data:/application/app_data
     networks:
@@ -174,7 +174,7 @@ services:
   reverse-proxy:
     container_name: nginx
     image: nginx
-    restart: on-failure
+    restart: always
     volumes:
       - "<default_conf_path>:/etc/nginx/conf.d/default.conf"
       #- "<ssl_cert_file_path>:/etc/ssl/domain.crt"
