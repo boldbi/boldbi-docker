@@ -8,7 +8,7 @@ services:
       - INSTALL_OPTIONAL_LIBS=mongodb,mysql,influxdb,snowflake,oracle,clickhouse,google
       - DEPLOY_MODE=docker_multi_container
       - Is_Common_IDP=true
-      - ID_Version=5.1.23
+      - ID_Version=5.1.24
       - BI_Version=16.3.5
       - Reports_Version=14.1.18
     volumes:
